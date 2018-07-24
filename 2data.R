@@ -1,0 +1,113 @@
+#### Intro to R: working with dataframes ####
+
+#### Reading in data ####
+
+# making a directory
+dir.create("data")
+
+# download data from url
+download.file("URL", "data/clinical.csv")
+# reading in data and saving to object
+clinical <- read.csv("data/clinical.csv")
+# recall object
+clinical
+# view in tab
+View(clinical)
+# note data in tab can't be edited!
+# note missing data
+
+#### Data frames ####
+
+# data frames: tabular/spreadsheet data
+# rows are observations
+# columns are variables
+# table where columns are vectors all of same length
+# columns contain single type of data (characters, integers, factors)
+
+# inspect data frames
+# assess size of data frame
+dim(clinical)
+nrow(clinical)
+ncol(clinical)
+# preview content
+head(clinical) # show first few rows
+tail(clinical) # show last few rows
+# view names
+names(clinical) # column names
+rownames(clinical) # row names (only numbers here)
+# summarize
+str(clinical) # structure of object
+summary(clinical) # summary statistics by column
+
+## Challenge: Using the output of str(), what is the class, how many rows/columns, how many types of cancer (disease)?
+
+#### Subsetting data frames ####
+
+# rows, columns
+# extract first column
+clinical[ , 1]
+clinical[1]
+
+## Challenge: what is the difference in results between the last two lines of code?
+
+# extract first row, first column
+clinical[1,1]
+# extract single row 
+clinical[1, ]
+# extract a range of cells
+clinical[1:3, 2] # rows 1 to 3, second column
+# exclude certain data subsets
+clinical[ , -1] # exclude first column
+clinical[-c(1:100), ] # exclude first 100 rows
+# save extracted data to new object
+test_clinical <- clinical[1:20, ]
+
+# extract columns by name
+clinical["tumor_stage"] # result is data.frame
+clinical[ , "tumor_stage"] # results in vector
+clinical[["tumor_stage"]] # results in vector
+clinical$tumor_stage # results in vector
+
+# performing functions on columns
+mean(clinical$days_to_death)
+# accomodate missing data
+mean(clinical$days_to_death, na.rm = TRUE)
+
+## Challenge: extract cigarettes per day into new object and calculcate the range and mean
+
+#### Factors ####
+
+# factors represent categorical data
+# predefined sets of values (levels), in alphabetical order
+# stored as integers with labels
+# can be ordered or unordered
+
+# create factor
+sex <- factor(c("male", "female", "female", "male"))
+levels(sex) # show levels
+nlevels(sex) # count levels
+# show current
+sex
+# reorder (may be necessary if order matters)
+sex <- factor(sex, levels = c("male", "female"))
+# show reordered
+sex
+
+# converting factors
+as.character(sex)
+
+# renaming factors
+plot(clinical$race) # plot data (may need to resize the window)
+race <- clinical$race # save data to object
+levels(race) # show levels of factor
+# rename factors
+levels(race)[1] <- "American Indian"
+levels(race)[2] <- "Asian"
+levels(race)[3] <- "black"
+race # show revised data
+# replace race in data frame
+clinical$race <- race
+# replot with corrected names
+plot(clinical$race)
+
+## Challenge: replace "not reported" in ethnicity and race with NA
