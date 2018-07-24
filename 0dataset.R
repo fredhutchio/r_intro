@@ -47,4 +47,4 @@ PRAD <- select(PRAD, good_col)
 # bind all together
 all_cancer <- rbind(LUSC, BRCA, PRAD)
 # save final dataset
-write.csv(all_cancer, "data/clinical.csv", row.names = FALSE)
+write.csv(all_cancer, "extra/clinical.csv", row.names = FALSE)
