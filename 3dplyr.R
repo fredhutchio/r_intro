@@ -1,6 +1,5 @@
 #### Intro to R: data parsing with dplyr ####
 
-
 #### Packages and tidyverse ####
 
 # packages are collections of functions that anyone can write and share for public use
@@ -23,7 +22,7 @@ clinical
 sel_columns <- select(clinical, tumor_stage, ethnicity, disease)
 # select rows conditionally
 filtered_rows <- filter(clinical, disease == "BRCA") # keep only breast cancer cases
-complete_weight <- filter(clinical, !is.na(years_smoked)) # remove missing data from years smoked
+filtered_smoke <- filter(clinical, !is.na(years_smoked)) # remove missing data from years smoked
 
 ## Challenge: create a new object from "clinical" called "race_disease" that includes only the race, ethnicity, and disease
 
@@ -76,33 +75,47 @@ clinical %>%
 clinical %>%
   group_by(gender) %>%
   summarize(mean_days_to_death = mean(days_to_death, na.rm = TRUE))
+# why doesn't the above work to remove NA?
 
-# quick and dirty plot
-plot(clinical$days_to_death)
+# remove NA
+clinical %>%
+  filter(!is.na(days_to_death)) %>%
+  group_by(gender) %>%
+  summarize(mean_days_to_death = mean(days_to_death))
 
-# remove missing data
-clinical_complete <- clinical %>% 
-  filter(species_id != "") %>% #removing empty cells
-  filter(!is.na(weight)) %>% #removing NA weights
-  filter(!is.na(hindfoot_length))
+#### Create datasets for visualization next week ####
 
-# remove species with less than 10 counts 
-# counting number of records in each species
-species_counts <- clinical_complete %>%
-  group_by(species_id) %>%
-  tally()
-# get names of frequently occcuring species
-frequent_species <- species_counts %>%
-  filter(n >= 10) %>%
-  select(species_id)
-# extract data from species to keep
-clinical_complete <- clinical_complete %>%
-  filter(species_id %in% frequent_species$species_id)
+# remove missing data for smoking, age at diagnosis
+smoke_complete <- clinical %>% 
+  filter(!is.na(age_at_diagnosis)) %>% 
+  filter(!is.na(cigarettes_per_day))
 
 # saving results to file
-write.csv(clinical_complete, "results/clinical_complete.csv", row.names=FALSE)
+write.csv(smoke_complete, "data/smoke_complete.csv", row.names = FALSE)
 
+## Challenge: create a new object called "birth_complete" that contains no missing data for year of birth or vital status 
 
+# make sure ALL mising data is removed!
+birth_complete <- clinical %>% 
+  filter(!is.na(year_of_birth)) %>% 
+  filter(!is.na(vital_status)) %>%
+  filter(vital_status != "not reported")
 
+# check to see numbers of each cancer type
+table(birth_complete$disease)
 
+# remove cancers with fewer than 500 cases
+# counting number of records in each cancer
+cancer_counts <- clinical %>%
+  count(disease) 
 
+# get names of frequently occcuring species
+frequent_cancers <- cancer_counts %>%
+  filter(n >= 500) %>%
+  select(disease)
+# extract data from cancers to keep
+birth_reduced <- birth_complete %>%
+  filter(disease %in% frequent_cancers$disease)
+
+# saving results to file
+write.csv(birth_reduced, "data/birth_reduced.csv", row.names = FALSE)
