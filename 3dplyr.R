@@ -85,7 +85,7 @@ clinical %>%
 
 #### Create datasets for visualization next week ####
 
-# remove missing data for smoking, age at diagnosis
+# Challenge: remove missing data for smoking, age at diagnosis
 smoke_complete <- clinical %>% 
   filter(!is.na(age_at_diagnosis)) %>% 
   filter(!is.na(cigarettes_per_day))
@@ -117,5 +117,5 @@ frequent_cancers <- cancer_counts %>%
 birth_reduced <- birth_complete %>%
   filter(disease %in% frequent_cancers$disease)
 
-# saving results to file
+# Challenge: save results to file
 write.csv(birth_reduced, "data/birth_reduced.csv", row.names = FALSE)
