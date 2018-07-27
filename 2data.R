@@ -6,7 +6,7 @@
 dir.create("data")
 
 # download data from url
-download.file("URL", "data/clinical.csv")
+download.file("https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.csv", "data/clinical.csv")
 # reading in data and saving to object
 clinical <- read.csv("data/clinical.csv")
 # recall object
@@ -67,6 +67,8 @@ clinical["tumor_stage"] # result is data.frame
 clinical[ , "tumor_stage"] # results in vector
 clinical[["tumor_stage"]] # results in vector
 clinical$tumor_stage # results in vector
+
+## Challenge: code as many different ways possible to extract the column days_to_death
 
 # performing functions on columns
 mean(clinical$days_to_death)
