@@ -24,6 +24,9 @@ plot(x=smoke_complete$age_at_diagnosis, y=smoke_complete$cigarettes_per_day)
 #### Intro to ggplot2 and scatterplots ####
 
 # create a simple ggplot
+# bind data to new plot
+# specify aesthetic: mapping data to plot
+# layers: ways (shapes) through which data are represented
 ggplot(data = smoke_complete, 
        aes(x = age_at_diagnosis, y = cigarettes_per_day)) +
   geom_point()
@@ -79,6 +82,9 @@ ggplot(data=smoke_complete,
   geom_boxplot() +
   geom_jitter(alpha = 0.3, color = "blue")
 
+# ggplot2 documentation: https://ggplot2.tidyverse.org
+# cheat sheet: https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf
+
 # Challenge: visualize the same data as a violin plot in a color of your choice
 
 #### Plotting time series data (line plots) ####
@@ -104,7 +110,7 @@ ggplot(data=yearly_counts,
            group=disease, color = disease)) +
   geom_line()
 
-## Challenge: create a plot of birth year with two lines representing the number of patients of each gender 
+## Challenge: create a plot of birth year and number of patients with two lines representing the number of patients of each gender 
 
 #### Faceting ####
 
@@ -154,6 +160,8 @@ ggplot(data = yearly_vital_birth,
        aes(x = year_of_birth, y = avg_age, color = disease)) +
   geom_line() +
   facet_grid(. ~ vital_status)  
+
+## Challenge: alter your last challenge plot of (birth year by number of patients) to show each gender in separate panels
 
 #### Customization ####
 
@@ -214,6 +222,8 @@ ggplot(data=yearly_vital_counts,
        x = "year of birth", y = " number of patients") +
   theme_bw() +
   grey_theme
+
+## Challenge: improve one of the plots previously created today, by changing thickness of lines, name of legend, or color palette (http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/)
 
 #### Arranging and exporting plots ####
 
