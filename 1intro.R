@@ -11,6 +11,8 @@
 # bottom right window: file browser, plots, packages, help
 # many buttons and keyboard shortcuts available for working in RStudio
 # workflow: testing commands in source, using keyboard shortcut to send to console
+# we have access to RStudio server through http://rstudio.fhcrc.org/
+# running on the server means tying up HPC resources
 
 #### Using functions ####
 
