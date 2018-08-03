@@ -10,6 +10,8 @@ This repository is adapted from content originally appearing in
 [R for data analysis and visualization of Ecological Data](https://datacarpentry.org/R-ecology-lesson/),
 Copyright (c) Data Carpentry. 
 
+Software requirements for this course can be found on [fredhutch.io's Software page](http://www.fredhutch.io/software/).
+
 
 ## Schedule
 
