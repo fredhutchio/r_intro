@@ -13,10 +13,10 @@ Copyright (c) Data Carpentry.
 
 ## Schedule
 
-Week 1: R syntax, assigning objects, using functions
-Week 2: Data types and structures; slicing and subsetting data
-Week 3: Data manipulation with `dplyr`
-Week 4: Data visualization in `ggplot2`
+* Week 1: R syntax, assigning objects, using functions
+* Week 2: Data types and structures; slicing and subsetting data
+* Week 3: Data manipulation with `dplyr`
+* Week 4: Data visualization in `ggplot2`
 
 Each week's materials are described in the R script prefaced with the number of the week. 
 `0dataset.R` includes code used to derive the original data from the 
