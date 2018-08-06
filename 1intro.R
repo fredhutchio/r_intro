@@ -1,7 +1,16 @@
 #### Intro to R: introduction to R syntax and RStudio ####
 
+#### Before class ####
+
+# share URL to hack.md
+# check installation of R and RStudio (install former before latter)
+# set up project ahead of time and have URL to Dropbox script ready
+
 #### Orientation to RStudio ####
 
+# ask about previous experience with R and RStudio
+# overview course philosophy, how to stay engaged
+# motivation for R and RStudio
 # RStudio makes working with R much easier
 # create new project in new directory (recommended to place on Desktop or in Documents)
 # create new R script, append with .R
@@ -30,7 +39,7 @@ round(3.14, digits = 1)
 # can switch order of arguments (but need to name value!)
 round(digits = 1, x = 3.14)
 
-## Challenge: what does the function ceiling do? What are its main arguments?
+## Challenge: what does the function ceiling do? What are its main arguments? How did you determine this?
 
 #### Assigning objects ####
 
