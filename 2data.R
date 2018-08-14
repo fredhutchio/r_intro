@@ -5,6 +5,16 @@
 # share url to hackmd
 # share Dropbox script to this week's content
 
+#### Objectives ####
+
+# review previous week's material
+
+# Today:
+# importing data into R
+# working with data frames
+# subsetting data frames
+# manipulating factors
+
 #### Reading in data ####
 
 # project organization
@@ -150,3 +160,8 @@ plot(clinical$race)
 
 ## Challenge: replace "not reported" in ethnicity and race with NA
 # do a Google search to find additional strategies for renaming missing data
+
+#### Wrapping up ####
+
+# review objectives
+# preview next week's objectives

@@ -6,6 +6,17 @@
 # check installation of R and RStudio (install former before latter)
 # set up project ahead of time and have URL to Dropbox script ready
 
+#### Objectives ####
+
+# Course: overview of basic functionality of R (syntax, data manipulation, visualization)
+
+# Today:
+# RStudio and R syntax
+# using functions
+# assigning objects
+# working with vectors
+# dealing with missing data
+
 #### Orientation to RStudio ####
 
 # ask about previous experience with R and RStudio
@@ -155,3 +166,8 @@ heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65,
 # remove NAs from heights
 # calculate median of heights
 # identify number of people who are taller than 67 inches
+
+#### Wrapping up ####
+
+# review objectives
+# preview next week's objectives
