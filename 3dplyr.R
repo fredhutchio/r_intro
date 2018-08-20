@@ -37,11 +37,12 @@ library(tidyverse)
 clinical <- read.csv("data/clinical.csv")
 # recall object
 clinical
+str(clinical)
 
 # selecting columns with dplyr
 sel_columns <- select(clinical, tumor_stage, ethnicity, disease)
 # select rows conditionally
-filtered_rows <- filter(clinical, disease == "BRCA") # keep only breast cancer cases
+filtered_rows <- filter(clinical, disease == "LUSC") # keep only breast cancer cases
 filtered_smoke <- filter(clinical, !is.na(years_smoked)) # remove missing data from years smoked
 
 ## Challenge: create a new object from "clinical" called "race_disease" that includes only the race, ethnicity, and disease
@@ -50,20 +51,26 @@ filtered_smoke <- filter(clinical, !is.na(years_smoked)) # remove missing data f
 
 #### Combining commands ####
 
-# use intermediate files to combine commands
-clinical2 <- select(clinical, race, ethnicity, disease)
-clinical_brca <- filter(clinical2, disease == "BRCA")
+# use intermediate files to combine commands (answer from previous challenge)
+race_disease <- select(clinical, race, ethnicity, disease)
+clinical_brca <- filter(race_disease, disease == "BRCA")
 
-# nest commands
+# nest commands (same object as created above, but here only in two lines)
 clinical_brca <- select(filter(clinical, disease == "BRCA"), race, ethnicity, disease)
 
-# combine commands using pipes
+# combine commands using pipes (easier to keep track of more complex data manipulations)
+# same example as above
 piped <- clinical %>%
   select(race, ethnicity, disease) %>%
   filter(disease == "BRCA")
+# extract race, ethinicity, and disease from cases born prior to 1930 
 piped2 <- clinical %>%
   filter(year_of_birth < 1930) %>%
   select(race, ethnicity, disease)
+# does the order of commands differ?
+piped3 <- clinical %>%
+  select(race, ethnicity, disease) %>%
+  filter(year_of_birth < 1930)
 
 ## Challenge: using pipes, extract the columns gender, years_smoked, and year_of_birth from the object clinical for only living patients (column "vital_status") who have smoked fewer than 1 cigarettes per day
 
@@ -91,7 +98,14 @@ clinical %>%
 
 # split data into groups, apply an analysis to each group, combine results back into one object
 
+# group_by not always useful by itself, but powerful together with tally()
+# count number of individuals with each tumor stage
+clinical %>%
+  group_by(tumor_stage) %>%
+  tally() # empty parentheses not required, but good practice
+
 # group_by often followed by summarize
+# summarize average days to death by gender
 clinical %>%
   group_by(gender) %>%
   summarize(mean_days_to_death = mean(days_to_death, na.rm = TRUE))
