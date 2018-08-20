@@ -117,14 +117,10 @@ clinical %>%
   group_by(gender) %>%
   summarize(mean_days_to_death = mean(days_to_death))
 
-#### Create datasets for visualization next week ####
-
-# Challenge: remove missing data for smoking, age at diagnosis
+## Challenge: create new object called smoke_complete that removes missing data for smoking, age at diagnosis and saves the results to a file in data/ called smoke_complete.csv
 smoke_complete <- clinical %>% 
   filter(!is.na(age_at_diagnosis)) %>% 
   filter(!is.na(cigarettes_per_day))
-
-# saving results to file
 write.csv(smoke_complete, "data/smoke_complete.csv", row.names = FALSE)
 
 ## Challenge: create a new object called "birth_complete" that contains no missing data for year of birth or vital status 
@@ -134,6 +130,8 @@ birth_complete <- clinical %>%
   filter(!is.na(year_of_birth)) %>% 
   filter(!is.na(vital_status)) %>%
   filter(vital_status != "not reported")
+
+#### Filtering data based on number of cases of each type ####
 
 # check to see numbers of each cancer type
 table(birth_complete$disease)
@@ -151,8 +149,10 @@ frequent_cancers <- cancer_counts %>%
 birth_reduced <- birth_complete %>%
   filter(disease %in% frequent_cancers$disease)
 
-# Challenge: save results to file
+# save results to file in data/ named birth_reduced
 write.csv(birth_reduced, "data/birth_reduced.csv", row.names = FALSE)
+
+## Challenge: extract all tumor stages for which more than 10 cases (also check to see if there are any other missing/ambiguous data!)
 
 #### Wrapping up ####
 
