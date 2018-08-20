@@ -1,15 +1,35 @@
 #### Intro to R: data parsing with dplyr ####
 
+#### Objectives ####
+
+# review previous weeks' material
+
+# Today:
+# installing and loading packages
+# selecting columns and rows
+# combining commands using pipes
+# creating new columns by modifying existing data
+# summarizing data based on data in other columns
+
 #### Packages and tidyverse ####
 
 # packages are collections of functions that anyone can write and share for public use
+# today, using dplyr for large scale data; part of tidyverse
 # tidyverse is a collection of packages that are trendy/useful for large-scale data manipulation
+# can install parts of tidyverse independently, but might as well install all at once (we'll use next week, too)
 # install package (only once on your own computer)
 install.packages("tidyverse") 
+# explain output in console; red doesn't necessarily mean anything is wrong!
 # load library/package (needs to happen every time R restarts)
 library(tidyverse)
+# attaching packages references everything included in tidyverse
+# there are many other packages included as dependencies
+# conflicts represents functions with same names that are present in base R (stats)
+# double colon syntax (::) allows you to reference functions with same name but present in other packages
 # check dplyr installation
 ?select
+# help documentation should open up for select {dplyr}, indicating package has loaded appropriately
+# some folks may end up with errors later if required packages didn't install perfectly; tell instructor if you get an error saying a function isn't available
 
 #### Selecting columns and rows ####
 
@@ -119,3 +139,8 @@ birth_reduced <- birth_complete %>%
 
 # Challenge: save results to file
 write.csv(birth_reduced, "data/birth_reduced.csv", row.names = FALSE)
+
+#### Wrapping up ####
+
+# review objectives
+# preview next week's objectives
