@@ -16,6 +16,7 @@
 # packages are collections of functions that anyone can write and share for public use
 # today, using dplyr for large scale data; part of tidyverse
 # tidyverse is a collection of packages that are trendy/useful for large-scale data manipulation
+# link to tidyverse documentation: https://www.tidyverse.org
 # can install parts of tidyverse independently, but might as well install all at once (we'll use next week, too)
 # install package (only once on your own computer)
 install.packages("tidyverse") 
@@ -41,9 +42,12 @@ str(clinical)
 
 # selecting columns with dplyr
 sel_columns <- select(clinical, tumor_stage, ethnicity, disease)
+# select range of columns
+sel_columns2 <- select(clinical, tumor_stage:vital_status)
 # select rows conditionally
-filtered_rows <- filter(clinical, disease == "LUSC") # keep only breast cancer cases
+filtered_rows <- filter(clinical, disease == "LUSC") # keep only lung cancer cases
 filtered_smoke <- filter(clinical, !is.na(years_smoked)) # remove missing data from years smoked
+# additional useful ways for selecting columns: starts_with(), ends_with(), contains(), matches(), num_range(), one_of(), everything()
 
 ## Challenge: create a new object from "clinical" called "race_disease" that includes only the race, ethnicity, and disease
 
@@ -139,7 +143,8 @@ table(birth_complete$disease)
 # remove cancers with fewer than 500 cases
 # counting number of records in each cancer
 cancer_counts <- clinical %>%
-  count(disease) 
+  count(disease) %>%
+  arrange(n) # sorts based on defined column
 
 # get names of frequently occcuring species
 frequent_cancers <- cancer_counts %>%
@@ -156,5 +161,7 @@ write.csv(birth_reduced, "data/birth_reduced.csv", row.names = FALSE)
 
 #### Wrapping up ####
 
-# review objectives
+# review today's objectives: single-table verbs, other functionality that allows combination and manipulation of multiple tables
+# dplyr includes two-table verbs for joining tables together
+# dplyr cheatsheet: https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf
 # preview next week's objectives
