@@ -1,5 +1,17 @@
 #### Intro to R: data visualization with ggplot2 ####
 
+#### Objectives ####
+
+# review previous weeks' material
+
+# Today:
+# creating and modifying scatterplots and boxplots
+# representing time series data as line plots
+# splitting into multiple panels
+# customizing plots
+
+#### Setting up ####
+
 # install package
 #install.packages("tidyverse") # watch for popup on lab computers to complete install
 # load library/package
@@ -8,8 +20,6 @@ library(tidyverse) # needs to happen every time R restarts
 ?select
 # check ggplot2 installation
 ?ggplot
-
-#### Setting up ####
 
 # reading in data and saving to object
 birth_reduced <- read.csv("data/birth_reduced.csv")
