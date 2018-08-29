@@ -165,32 +165,11 @@ ggplot(data = yearly_vital_birth,
 
 #### Customization ####
 
-# changing axes
-ggplot(data=yearly_vital_counts, 
-       aes(x=year_of_birth, y=n, color = vital_status)) +
-  geom_line() +
-  facet_wrap(~ disease) + 
-  labs(title = "Vital status by year of birth",
-       x = "year of birth", y = " number of patients") +
-  theme_bw() 
-
 # increase font size
 ggplot(data=yearly_vital_counts, 
        aes(x=year_of_birth, y=n, color = vital_status)) +
   geom_line() +
   facet_wrap(~ disease) + 
-  labs(title = "Vital status by year of birth",
-       x = "year of birth", y = " number of patients") +
-  theme_bw() +
-  theme(text = element_text(size=16))
-
-# increase font size
-ggplot(data=yearly_vital_counts, 
-       aes(x=year_of_birth, y=n, color = vital_status)) +
-  geom_line() +
-  facet_wrap(~ disease) + 
-  labs(title = "Vital status by year of birth",
-       x = "year of birth", y = " number of patients") +
   theme_bw() +
   theme(text = element_text(size=16))
 
@@ -202,9 +181,7 @@ ggplot(data=yearly_vital_counts,
   labs(title = "Vital status by year of birth",
        x = "year of birth", y = " number of patients") +
   theme_bw() +
-  theme(axis.text.x = element_text(colour = "grey20", size = 12,
-                    angle = 90, hjust = 0.5, vjust = 0.5),
-        axis.text.y = element_text(colour = "grey20", size = 12),
+  theme(axis.text.x = element_text(angle = 90, hjust = 0.5, vjust = 0.5),
         text = element_text(size = 16))
 
 # save theme changes
@@ -213,7 +190,7 @@ grey_theme <- theme(axis.text.x = element_text(colour = "grey20",
                     axis.text.y = element_text(colour = "grey20", size = 12),
                     text = element_text(size = 16))
 
-# apply theme changes
+# apply theme changes and add axis labels
 ggplot(data=yearly_vital_counts, 
        aes(x=year_of_birth, y=n, color = vital_status)) +
   geom_line() +
@@ -224,30 +201,3 @@ ggplot(data=yearly_vital_counts,
   grey_theme
 
 ## Challenge: improve one of the plots previously created today, by changing thickness of lines, name of legend, or color palette (http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/)
-
-#### Arranging and exporting plots ####
-
-install.packages("gridExtra")
-library(gridExtra)
-
-cig_boxplot <- ggplot(data=smoke_complete,
-      aes(x=vital_status, y=cigarettes_per_day)) +
-  geom_boxplot(color="tomato")
-
-birth_count_plot <- ggplot(data=yearly_counts, 
-    aes(x=year_of_birth, y=n, 
-        group=disease, color = disease)) +
-  geom_line()
-
-grid.arrange(cig_boxplot, birth_count_plot, ncol = 2, widths = c(4, 6))
-
-# exporting complex figures
-my_plot <- ggplot(data=yearly_counts, 
-                  aes(x=year_of_birth, y=n, 
-                      group=disease, color = disease)) +
-  geom_line()
-ggsave("figures/birth_yearly.png", my_plot, width = 15, height = 10)
-
-# This also works for grid.arrange() plots
-combo_plot <- grid.arrange(cig_boxplot, birth_count_plot, ncol = 2, widths = c(4, 6))
-ggsave("figures/combo_plot.png", combo_plot, width = 10, dpi = 300)
