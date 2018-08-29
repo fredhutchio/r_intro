@@ -74,9 +74,14 @@ ggsave("figures/awesomePlot.jpg")
 # creating a box and whisker plot
 ggplot(data=smoke_complete,
        aes(x=vital_status, y=cigarettes_per_day)) +
+  geom_boxplot()
+
+# adding color
+ggplot(data=smoke_complete,
+       aes(x=vital_status, y=cigarettes_per_day)) +
   geom_boxplot(color="tomato")
 
-# adding colored points to box and whisker plot
+# adding colored points to black box and whisker plot
 ggplot(data=smoke_complete,
        aes(x=vital_status, y=cigarettes_per_day)) +
   geom_boxplot() +
@@ -161,6 +166,12 @@ ggplot(data = yearly_vital_birth,
   geom_line() +
   facet_grid(. ~ vital_status)  
 
+# facet with vital status in rows and disease in columns
+ggplot(data = yearly_vital_birth, 
+       aes(x = year_of_birth, y = avg_age, color = disease)) +
+  geom_line() +
+  facet_grid(vital_status ~ disease)   
+
 ## Challenge: alter your last challenge plot of (birth year by number of patients) to show each gender in separate panels
 
 #### Customization ####
@@ -201,3 +212,4 @@ ggplot(data=yearly_vital_counts,
   grey_theme
 
 ## Challenge: improve one of the plots previously created today, by changing thickness of lines, name of legend, or color palette (http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/)
+
