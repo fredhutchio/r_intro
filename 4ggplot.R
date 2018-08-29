@@ -89,11 +89,11 @@ ggplot(data=smoke_complete,
 
 #### Plotting time series data (line plots) ####
 
-## count number of observations for each species by year
+## count number of observations for each disease by year
 yearly_counts <- birth_reduced %>%
   count(year_of_birth, disease) 
 
-# plot all species by year
+# plot all counts by year
 ggplot(data=yearly_counts, 
        aes(x=year_of_birth, y=n)) +
   geom_line()
