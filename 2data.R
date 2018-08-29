@@ -67,15 +67,6 @@ View(clinical)
 # table where columns are vectors all of same length
 # columns contain single type of data (characters, integers, factors)
 
-# creating a simple data frame without importing data
-# create individual vectors
-cancer <- c("lung", "prostate", "breast")
-metastasis <- c("yes", "no", "yes")
-cases <- c(30, 50, 100)
-# combine vectors
-example_df1 <- data.frame(cancer, metastasis, cases)
-str(example_df1)
-
 # inspect data frames
 # assess size of data frame
 dim(clinical)
@@ -125,11 +116,6 @@ clinical$tumor_stage # results in vector
 
 ## Challenge: extract the first 6 rows for only age at diagnosis and days to death
 
-# performing functions on columns
-mean(clinical$days_to_death)
-# accomodate missing data
-mean(clinical$days_to_death, na.rm = TRUE)
-
 ## Challenge: calculcate the range and mean for cigarettes per day
 
 #### Factors ####
@@ -170,12 +156,21 @@ plot(clinical$race)
 ## Challenge: replace "not reported" in ethnicity and race with NA
 # do a Google search to find additional strategies for renaming missing data
 
+#### Extra: creating a simple data frame without importing data ####
+
+# create individual vectors
+cancer <- c("lung", "prostate", "breast")
+metastasis <- c("yes", "no", "yes")
+cases <- c(30, 50, 100)
+# combine vectors
+example_df1 <- data.frame(cancer, metastasis, cases)
+str(example_df1)
+
 # create vectors and combine at once
 example_df2 <- data.frame(cancer = c("lung", "prostate", "breast"),
                           metastasis = c("yes", "no", "yes"),
                           cases = c(30, 50, 100), stringsAsFactors = FALSE) # determines whether character or factor
 str(example_df2)
-# use of = vs <- as assignment operator: https://stackoverflow.com/questions/1741820/what-are-the-differences-between-and-in-r
 
 #### Wrapping up ####
 
