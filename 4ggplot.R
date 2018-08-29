@@ -211,5 +211,14 @@ ggplot(data=yearly_vital_counts,
   theme_bw() +
   grey_theme
 
+## Challenge: find way to change tick marks (Google search!)
+
 ## Challenge: improve one of the plots previously created today, by changing thickness of lines, name of legend, or color palette (http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/)
 
+#### Wrapping up ####
+
+# review this class' objectives
+# review course objectives
+# preview other intermediate courses available
+# ask for other courses to offer
+# course evaluations
