@@ -6,21 +6,25 @@
 # check installation of R and RStudio (install former before latter)
 # set up project ahead of time and have URL to Dropbox script ready
 
+#### Welcome ####
+
+# instructor introduction
+# overview of fredhutch.io
+# sign in sheet
+# overview course philosophy, how to stay engaged
+# course objectives: overview of basic functionality of R (syntax, data manipulation, visualization)
+
 #### Objectives ####
 
-# Course: overview of basic functionality of R (syntax, data manipulation, visualization)
-
-# Today:
-# RStudio and R syntax
-# using functions
-# assigning objects
-# working with vectors
-# dealing with missing data
+#   RStudio and R syntax
+#   using functions
+#   assigning objects
+#   working with vectors
+#   dealing with missing data
 
 #### Orientation to RStudio ####
 
 # ask about previous experience with R and RStudio
-# overview course philosophy, how to stay engaged
 # motivation for R and RStudio
 # RStudio makes working with R much easier
 # create new project in new directory (recommended to place on Desktop or in Documents)
@@ -30,9 +34,9 @@
 # top right window: environment, showing what "things" are "remembered" by R
 # bottom right window: file browser, plots, packages, help
 # many buttons and keyboard shortcuts available for working in RStudio
-# workflow: testing commands in source, using keyboard shortcut to send to console
+# workflow: testing commands in source, using keyboard shortcut to send to console 
+# other keyboard shortcuts available in Help menu
 # we have access to RStudio server through http://rstudio.fhcrc.org/
-# running on the server means tying up HPC resources
 
 #### Using functions ####
 
@@ -51,6 +55,8 @@ round(3.14, digits = 1)
 round(digits = 1, x = 3.14)
 
 ## Challenge: what does the function ceiling do? What are its main arguments? How did you determine this?
+
+# to wrap R source files: Tools -> Global Options -> Code, check box for "Soft-wrap R source files"
 
 #### Assigning objects ####
 
@@ -73,9 +79,9 @@ weight_lb
 
 ## Challenge: what is the value of each item at each step?
 mass <- 47.5            # mass?
-width  <- 122             # length?
+width  <- 122             # width?
 mass <- mass * 2.0      # mass?
-width  <- width - 20        # age?
+width  <- width - 20        # width?
 mass_index <- mass/width  # mass_index?
 
 #### Vectors ####
@@ -125,8 +131,9 @@ ages <- c(ages, 90) # c stands for concatenate
 ages <- c(30, ages)
 
 # subsetting vectors (index starts at 1)
-organs[2] # single value
-organs[c(1, 3)] # multiple values
+organs[2] # extracting single value
+organs[c(1, 3)] # extracting multiple values
+organs[-2] # excluding values
 
 # conditional subsetting
 ages > 60 # identifies whether each part of vector meets condition
@@ -171,3 +178,6 @@ heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65,
 
 # review objectives
 # preview next week's objectives
+# closing RStudio projects:
+#   don't save .RData
+#   can change in Global Options
