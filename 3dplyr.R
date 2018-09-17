@@ -19,7 +19,7 @@
 # link to tidyverse documentation: https://www.tidyverse.org
 # can install parts of tidyverse independently, but might as well install all at once (we'll use next week, too)
 # install package (only once on your own computer)
-install.packages("tidyverse") 
+#install.packages("tidyverse") 
 # explain output in console; red doesn't necessarily mean anything is wrong!
 # load library/package (needs to happen every time R restarts)
 library(tidyverse)
@@ -100,15 +100,23 @@ clinical %>%
 
 #### Split-apply-combine ####
 
-# split data into groups, apply an analysis to each group, combine results back into one object
+# frame the problem: we want to summarizing by gender
+
+# show how summarize works
+summarize(clinical, mean_days_to_death = mean(days_to_death, na.rm = TRUE))
+
+# show table of categories in gender 
+table(clinical$gender)
 
 # group_by not always useful by itself, but powerful together with tally()
 # count number of individuals with each tumor stage
 clinical %>%
-  group_by(tumor_stage) %>%
+  group_by(gender) %>%
   tally() # empty parentheses not required, but good practice
+# shows missing data, too
 
-# group_by often followed by summarize
+# split data into groups, apply an analysis to each group, combine results back into one object
+
 # summarize average days to death by gender
 clinical %>%
   group_by(gender) %>%
