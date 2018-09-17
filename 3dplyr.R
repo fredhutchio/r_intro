@@ -13,14 +13,16 @@
 
 #### Packages and tidyverse ####
 
+# start package installation quickly, as sometimes it takes a few minutes
+# install package (only once on your own computer)
+install.packages("tidyverse")
+# explain output in console; red doesn't necessarily mean anything is wrong!
+
 # packages are collections of functions that anyone can write and share for public use
 # today, using dplyr for large scale data; part of tidyverse
 # tidyverse is a collection of packages that are trendy/useful for large-scale data manipulation
 # link to tidyverse documentation: https://www.tidyverse.org
 # can install parts of tidyverse independently, but might as well install all at once (we'll use next week, too)
-# install package (only once on your own computer)
-install.packages("tidyverse") 
-# explain output in console; red doesn't necessarily mean anything is wrong!
 # load library/package (needs to happen every time R restarts)
 library(tidyverse)
 # attaching packages references everything included in tidyverse
@@ -33,6 +35,10 @@ library(tidyverse)
 # some folks may end up with errors later if required packages didn't install perfectly; tell instructor if you get an error saying a function isn't available
 
 #### Selecting columns and rows ####
+
+# create data directory and download data again, if needed
+dir.create("data") # R will complain if this already exists
+download.file("https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.csv", "data/clinical.csv")
 
 # reading in data and saving to object
 clinical <- read.csv("data/clinical.csv")
@@ -67,7 +73,7 @@ clinical_brca <- select(filter(clinical, disease == "BRCA"), race, ethnicity, di
 piped <- clinical %>%
   select(race, ethnicity, disease) %>%
   filter(disease == "BRCA")
-# extract race, ethinicity, and disease from cases born prior to 1930 
+# extract race, ethinicity, and disease from cases born prior to 1930
 piped2 <- clinical %>%
   filter(year_of_birth < 1930) %>%
   select(race, ethnicity, disease)
@@ -122,16 +128,16 @@ clinical %>%
   summarize(mean_days_to_death = mean(days_to_death))
 
 ## Challenge: create new object called smoke_complete that removes missing data for smoking, age at diagnosis and saves the results to a file in data/ called smoke_complete.csv
-smoke_complete <- clinical %>% 
-  filter(!is.na(age_at_diagnosis)) %>% 
+smoke_complete <- clinical %>%
+  filter(!is.na(age_at_diagnosis)) %>%
   filter(!is.na(cigarettes_per_day))
 write.csv(smoke_complete, "data/smoke_complete.csv", row.names = FALSE)
 
-## Challenge: create a new object called "birth_complete" that contains no missing data for year of birth or vital status 
+## Challenge: create a new object called "birth_complete" that contains no missing data for year of birth or vital status
 
 # make sure ALL mising data is removed!
-birth_complete <- clinical %>% 
-  filter(!is.na(year_of_birth)) %>% 
+birth_complete <- clinical %>%
+  filter(!is.na(year_of_birth)) %>%
   filter(!is.na(vital_status)) %>%
   filter(vital_status != "not reported")
 
@@ -146,7 +152,7 @@ cancer_counts <- clinical %>%
   count(disease) %>%
   arrange(n) # sorts based on defined column
 
-# get names of frequently occcuring species
+# get names of frequently occurring species
 frequent_cancers <- cancer_counts %>%
   filter(n >= 500) %>%
   select(disease)
