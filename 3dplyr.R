@@ -144,7 +144,7 @@ write.csv(smoke_complete, "data/smoke_complete.csv", row.names = FALSE)
 
 ## Challenge: create a new object called "birth_complete" that contains no missing data for year of birth or vital status
 
-# make sure ALL mising data is removed!
+# make sure ALL missing data is removed!
 birth_complete <- clinical %>%
   filter(!is.na(year_of_birth)) %>%
   filter(!is.na(vital_status)) %>%
