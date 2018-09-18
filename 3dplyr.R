@@ -18,22 +18,29 @@
 install.packages("tidyverse")
 # explain output in console; red doesn't necessarily mean anything is wrong!
 
-# packages are collections of functions that anyone can write and share for public use
+# packages are collections of functions
+#   contributed by community, for public use
+#   can obtain on CRAN or GitHub
 # today, using dplyr for large scale data; part of tidyverse
-# tidyverse is a collection of packages that are trendy/useful for large-scale data manipulation
+# tidyverse is a collection of packages that are trendy/useful
+#   for large-scale data manipulation
 # link to tidyverse documentation: https://www.tidyverse.org
-# can install parts of tidyverse independently, but might as well install all at once (we'll use next week, too)
+# can install parts of tidyverse independently,
+#   but might as well install all at once (we'll use next week, too)
 
 # load library/package (needs to happen every time R restarts)
 library(tidyverse)
 # attaching packages references everything included in tidyverse
 # there are many other packages included as dependencies
-# conflicts represents functions with same names that are present in base R (stats)
-# double colon syntax (::) allows you to reference functions with same name but present in other packages
+# conflicts represents functions with same names are present in base R (stats)
+# double colon syntax (::) allows you to reference functions with same name,
+#   but present in other packages
 # check dplyr installation
 ?select
-# help documentation should open up for select {dplyr}, indicating package has loaded appropriately
-# some folks may end up with errors later if required packages didn't install perfectly; tell instructor if you get an error saying a function isn't available
+# help documentation should open up for select {dplyr},
+#   indicating package has loaded appropriately
+# you may end up with errors later if required packages didn't install;
+#   tell instructor if you get an error saying a function isn't available
 
 #### Selecting columns and rows ####
 
@@ -54,7 +61,8 @@ sel_columns2 <- select(clinical, tumor_stage:vital_status)
 # select rows conditionally
 filtered_rows <- filter(clinical, disease == "LUSC") # keep only lung cancer cases
 filtered_smoke <- filter(clinical, !is.na(years_smoked)) # remove missing data from years smoked
-# additional useful ways for selecting columns: starts_with(), ends_with(), contains(), matches(), num_range(), one_of(), everything()
+# additional useful ways for selecting columns: starts_with(), ends_with(),
+#   contains(), matches(), num_range(), one_of(), everything()
 
 ## Challenge: create a new object from "clinical" called "race_disease" that includes only the race, ethnicity, and disease
 
@@ -62,14 +70,14 @@ filtered_smoke <- filter(clinical, !is.na(years_smoked)) # remove missing data f
 
 #### Combining commands ####
 
-# use intermediate files to combine commands (answer from previous challenge)
+# use intermediate objects to combine commands (answer from previous challenge)
 race_disease <- select(clinical, race, ethnicity, disease)
 clinical_brca <- filter(race_disease, disease == "BRCA")
 
 # nest commands (same object as created above, but here only in two lines)
 clinical_brca <- select(filter(clinical, disease == "BRCA"), race, ethnicity, disease)
 
-# combine commands using pipes (easier to keep track of more complex data manipulations)
+# combine commands using pipes (improves readability of complex commands)
 # same example as above
 piped <- clinical %>%
   select(race, ethnicity, disease) %>%
@@ -91,7 +99,7 @@ piped3 <- clinical %>%
 # convert days to years
 clinical_years <- clinical %>%
   mutate(years_to_death = days_to_death / 365)
-# convert days to year and months at same time and send to head for easier viewing
+# convert days to year and months at same time, send to head for easier viewing
 clinical %>%
   mutate(years_to_death = days_to_death / 365,
          months_to_death = days_to_death / 30) %>%
@@ -122,7 +130,9 @@ clinical %>%
   tally() # empty parentheses not required, but good practice
 # shows missing data, too
 
-# split data into groups, apply an analysis to each group, combine results back into one object
+# split data into groups,
+# apply an analysis to each group,
+# combine results back into one object
 
 # summarize average days to death by gender
 clinical %>%
@@ -176,7 +186,10 @@ write.csv(birth_reduced, "data/birth_reduced.csv", row.names = FALSE)
 
 #### Wrapping up ####
 
-# review today's objectives: single-table verbs, other functionality that allows combination and manipulation of multiple tables
+# review today's objectives: single-table verbs in dplyr
+#   other functionality that allows combination
+#   and manipulation of multiple tables
 # dplyr includes two-table verbs for joining tables together
-# dplyr cheatsheet: https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf
+# dplyr cheatsheet:
+#   https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf
 # preview next week's objectives
