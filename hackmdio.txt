@@ -7,7 +7,7 @@ If you have feedback about this course, please
 [comment here](https://goo.gl/forms/Bw8dTV0Wghq2iG5i2)
 
 **Week 1: Introduction to R syntax and RStudio**
-[Dropbox link](https://www.dropbox.com/s/cmnxhnvmebx5dve/week1.R)
+[Dropbox link](XXX)
 
 **Week 2: Working with data frames**
 [Dropbox link](XXX)
