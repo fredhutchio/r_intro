@@ -7,3 +7,12 @@
 #   representing time series data as line plots
 #   splitting into multiple panels
 #   customizing plots
+
+# 
+yearly_vital_birth <- birth_reduced %>%
+  group_by(year_of_birth, vital_status, disease) %>%
+  summarize(avg_age = mean(age_at_diagnosis))
+ggplot(data = yearly_vital_birth, 
+       aes(x = year_of_birth, y = avg_age, color = disease)) +
+  geom_line() +
+  facet_grid(vital_status ~ .)

@@ -5,10 +5,10 @@
 # review previous weeks' material
 
 # Today:
-# creating and modifying scatterplots and boxplots
-# representing time series data as line plots
-# splitting into multiple panels
-# customizing plots
+#   creating and modifying scatterplots and boxplots
+#   representing time series data as line plots
+#   splitting into multiple panels
+#   customizing plots
 
 #### Setting up ####
 
@@ -104,7 +104,7 @@ ggplot(data=smoke_complete,
 
 #### Plotting time series data (line plots) ####
 
-## count number of observations for each disease by year
+# count number of observations for each disease by year of birth
 yearly_counts <- birth_reduced %>%
   count(year_of_birth, disease) 
 
@@ -129,56 +129,31 @@ ggplot(data=yearly_counts,
 
 #### Faceting ####
 
-# make separate time series plots for each cancer type
-ggplot(data=yearly_counts, 
-       aes(x=year_of_birth, y=n)) +
-  geom_line() +
-  facet_wrap(~ disease)
-
-# split line for each plot into vital status
-ggplot(data=yearly_counts, 
-       aes(x=year_of_birth, y=n, color = vital_status)) +
-  geom_line() +
-  facet_wrap(~ disease)
-# why doesn't this work?
-
-# split line for each plot into vital status
-# create new dataset
+# count observations by disease, year of birth, and vital status
 yearly_vital_counts <- birth_reduced %>%
   count(year_of_birth, disease, vital_status)
 
-# create plot with new data
+# plot each cancer type in separate panels with lines colored by vital status
 ggplot(data=yearly_vital_counts, 
        aes(x=year_of_birth, y=n, color = vital_status)) +
   geom_line() +
   facet_wrap(~ disease)
 
-# change theme and remove grid
-ggplot(data=yearly_vital_counts, 
-       aes(x=year_of_birth, y=n, color = vital_status)) +
-  geom_line() +
-  facet_wrap(~ disease) + 
-  theme_bw() +
-  theme(panel.grid = element_blank())
-
-# facet in one column and variables in rows
-yearly_vital_birth <- birth_reduced %>%
-  group_by(year_of_birth, vital_status, disease) %>%
-  summarize(avg_age = mean(age_at_diagnosis))
-ggplot(data = yearly_vital_birth, 
-       aes(x = year_of_birth, y = avg_age, color = disease)) +
+# plot each vital status in separate panels with lines colored by disease
+ggplot(data = yearly_vital_counts, 
+       aes(x = year_of_birth, y = n, color = disease)) +
   geom_line() +
   facet_grid(vital_status ~ .)       
 
-# facet in one row and variables in column
-ggplot(data = yearly_vital_birth, 
-       aes(x = year_of_birth, y = avg_age, color = disease)) +
+# change arrangement of panels
+ggplot(data = yearly_vital_counts, 
+       aes(x = year_of_birth, y = n, color = disease)) +
   geom_line() +
   facet_grid(. ~ vital_status)  
 
-# facet with vital status in rows and disease in columns
-ggplot(data = yearly_vital_birth, 
-       aes(x = year_of_birth, y = avg_age, color = disease)) +
+# plot diseases and vital statuses in different panels
+ggplot(data = yearly_vital_counts, 
+       aes(x = year_of_birth, y = n, color = disease)) +
   geom_line() +
   facet_grid(vital_status ~ disease)   
 
@@ -186,30 +161,21 @@ ggplot(data = yearly_vital_birth,
 
 #### Customization ####
 
-# increase font size
-ggplot(data=yearly_vital_counts, 
-       aes(x=year_of_birth, y=n, color = vital_status)) +
-  geom_line() +
-  facet_wrap(~ disease) + 
-  theme_bw() +
-  theme(text = element_text(size=16))
-
 # rotate font
 ggplot(data=yearly_vital_counts, 
        aes(x=year_of_birth, y=n, color = vital_status)) +
   geom_line() +
-  facet_wrap(~ disease) + 
-  labs(title = "Vital status by year of birth",
-       x = "year of birth", y = " number of patients") +
-  theme_bw() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 0.5, vjust = 0.5),
-        text = element_text(size = 16))
+  facet_wrap(~ disease) + # facet plot
+  labs(title = "Vital status by year of birth", # plot title
+       x = "year of birth", y = " number of patients") + # axis labels
+  theme_bw() + # add black and white theme
+  theme(axis.text.x = element_text(angle = 90, hjust = 0.5, vjust = 0.5), # rotate and adjust x axis
+        text = element_text(size = 16)) # increase all font size
 
 # save theme changes
 grey_theme <- theme(axis.text.x = element_text(colour = "grey20", 
                         size = 12,angle = 90, hjust = 0.5, vjust = 0.5),
-                    axis.text.y = element_text(colour = "grey20", size = 12),
-                    text = element_text(size = 16))
+                    axis.text.y = element_text(colour = "grey20", size = 12))
 
 # apply theme changes and add axis labels
 ggplot(data=yearly_vital_counts, 
