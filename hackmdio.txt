@@ -11,6 +11,7 @@ If you have feedback about this course, please
 Complete class notes [here](https://github.com/fredhutchio/R_intro)
 
 **Week 1: Introduction to R syntax and RStudio**
+* Have you installed R and RStudio? Instructions [here](http://www.fredhutch.io/software/)
 * [Instructor's script](XXX)
 
 **Week 2: Working with data frames**
