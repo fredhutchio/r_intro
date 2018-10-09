@@ -13,6 +13,7 @@ Complete class notes [here](https://github.com/fredhutchio/R_intro)
 **Week 1: Introduction to R syntax and RStudio**
 * Have you installed R and RStudio? Instructions [here](http://www.fredhutch.io/software/)
 * [Instructor's script](XXX)
+* [R style guide](http://adv-r.had.co.nz/Style.html)
 
 **Week 2: Working with data frames**
 * [Instructor's script](XXX)
