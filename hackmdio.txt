@@ -1,33 +1,39 @@
 Introduction to R
 ===
 
-URL to this page: https://hackmd.io/s/HyMWLLnPX
+URL to this page: XXX
+
+**Sign in to each class meeting** [here](XXX)
 
 This page is for easy access to links we'll use during class. You don't need to do anything with this information until directed by your instructor. Links to the instructor's script will be added as the course progresses.
 
 If you have feedback about this course, please
-[comment here](https://goo.gl/forms/Bw8dTV0Wghq2iG5i2)
+[comment here](XXX)
 
 Complete class notes [here](https://github.com/fredhutchio/R_intro)
 
 **Week 1: Introduction to R syntax and RStudio**
 * Have you installed R and RStudio? Instructions [here](http://www.fredhutch.io/software/)
-* [Instructor's script](XXX)
+* Instructor's script
+  * [Weekday](XXX)
 * [R style guide](http://adv-r.had.co.nz/Style.html)
 
 **Week 2: Working with data frames**
-* [Instructor's script](XXX)
+* Instructor's script
+  * [Weekday](XXX)
 * URL for direct download into R from GitHub: https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.csv
 * Other example data files:
 example1: https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.tsv
 example2: https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.txt
 
 **Week 3: Data parsing with dplyr**
-* [Instructor's script](XXX)
+* Instructor's script
+  * [Weekday](XXX)
 * [tidyverse website](https://www.tidyverse.org)
 * [dplyr cheetsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
 
 **Week 4: Data visualization with ggplot2**
-* [Instructor's script](XXX)
+* Instructor's script
+  * [Weekday](XXX)
 * [ggplot documentation](https://ggplot2.tidyverse.org)
 * [ggplot cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)
