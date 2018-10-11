@@ -34,7 +34,7 @@
 # top right window: environment, showing what "things" are "remembered" by R
 # bottom right window: file browser, plots, packages, help
 # many buttons and keyboard shortcuts available for working in RStudio
-# workflow: testing commands in source, using keyboard shortcut to send to console 
+# workflow: testing commands in source, using keyboard shortcut to send to console
 # other keyboard shortcuts available in Help menu
 # we have access to RStudio server through http://rstudio.fhcrc.org/
 
@@ -104,7 +104,7 @@ range(ages)
 # vector of characters
 organs <- c("lung", "prostate", "breast")
 
-## Challenge: 
+## Challenge:
 # How many things are in object?
 # what type of object?
 # get overview of object
@@ -115,7 +115,7 @@ organs <- c("lung", "prostate", "breast")
 # "integer" for integer numbers (e.g., 2L, the L indicates to R that it’s an integer)
 # "logical" for TRUE and FALSE (the boolean data type)
 # "complex" to represent complex numbers with real and imaginary parts (e.g., 1 + 4i)
-# "raw" for bitstreams 
+# "raw" for bitstreams
 
 ## Challenge: what happens when each of the objects are created?
 num_char <- c(1, 2, 3, "a")
@@ -158,11 +158,18 @@ mean(heights, na.rm = TRUE)
 max(heights, na.rm = TRUE)
 
 # additional ways to remove missing data
+
+# identify elements which are missing data
+is.na(heights)
+# reverse the TRUE/FALSE
+!is.na(heights)
 # extract elements which are not missing values
 heights[!is.na(heights)]
 
-# extract  elements which are complete cases
-heights[complete.cases(heights)] 
+# identify elements that are complete cases
+complete.cases(heights)
+# extract elements which are complete cases
+heights[complete.cases(heights)]
 
 # remove incomplete cases
 na.omit(heights) # what is different about this result?
@@ -173,6 +180,7 @@ heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65,
 # remove NAs from heights
 # calculate median of heights
 # identify number of people who are taller than 67 inches
+# visualize data as a histogram (hint: function hist)
 
 #### Wrapping up ####
 
