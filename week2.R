@@ -116,7 +116,7 @@ clinical$tumor_stage # results in vector
 
 ## Challenge: extract the first 6 rows for only age at diagnosis and days to death
 
-## Challenge: calculcate the range and mean for cigarettes per day
+## Challenge: calculate the range and mean for cigarettes per day
 
 #### Factors ####
 
