@@ -20,6 +20,9 @@
 ## Challenge: What is the class, how many rows/columns, how many types of cancer (disease)?
 
 ## Challenge: what is the difference in results between the last two lines of code?
+# extract first column
+clinical[ , 1]
+clinical[1]
 
 ## Challenge: code as many different ways possible to extract the column days_to_death
 
@@ -32,8 +35,10 @@
 
 #### Extra exercises ####
 
-# Using the same dataset as described in class, write code to accomplish the following tasks
+## Using the same clinical object from week 2, write code to accomplish the following tasks:
 
 # extract the last 100 rows for only disease and race and save to an object called disease_race
 
-# calculcate the range and mean for days to death
+# calculate the minimum and maximum for days to death
+
+# change all of the factors of race to shorter names for each category, and appropriately indicate missing data

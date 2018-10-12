@@ -143,10 +143,8 @@ as.character(sex)
 plot(clinical$race) # plot data (may need to resize the window)
 race <- clinical$race # save data to object
 levels(race) # show levels of factor
-# rename factors
-levels(race)[1] <- "American Indian"
+# rename factor
 levels(race)[2] <- "Asian"
-levels(race)[3] <- "black"
 race # show revised data
 # replace race in data frame
 clinical$race <- race
