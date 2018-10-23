@@ -146,13 +146,13 @@ clinical %>%
   group_by(gender) %>%
   summarize(mean_days_to_death = mean(days_to_death))
 
-## Challenge: create new object called smoke_complete that removes missing data for smoking, age at diagnosis and saves the results to a file in data/ called smoke_complete.csv
+## Challenge: create new object called smoke_complete that contains no missing data for cigarettes per day, age at diagnosis (extra: how do you save results to file?)
 smoke_complete <- clinical %>%
   filter(!is.na(age_at_diagnosis)) %>%
   filter(!is.na(cigarettes_per_day))
 write.csv(smoke_complete, "data/smoke_complete.csv", row.names = FALSE)
 
-## Challenge: create a new object called "birth_complete" that contains no missing data for year of birth or vital status
+## Challenge: create a new object called birth_complete that contains no missing data for year of birth or vital status
 
 # make sure ALL missing data is removed!
 birth_complete <- clinical %>%
