@@ -111,7 +111,7 @@ clinical %>%
          months_to_death = days_to_death / 30) %>%
   head()
 
-## Challenge: create a new object from clinical including only lung cancer patients (LUSC from disease column) that includes a new column called total_cig representing an estimate of the total number of cigarettes smoked during the individual's lifetime
+## Challenge: extract only lung cancer patients (LUSC from disease column) and create a new column called total_cig representing an estimate of the total number of cigarettes smoked (age at diagnosis and cig per day)
 
 #### Split-apply-combine ####
 
@@ -171,7 +171,7 @@ cancer_counts <- clinical %>%
   count(disease) %>%
   arrange(n) # sorts based on defined column
 
-# get names of frequently occurring species
+# get names of frequently occurring cancers
 frequent_cancers <- cancer_counts %>%
   filter(n >= 500) %>%
   select(disease)
