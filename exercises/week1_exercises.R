@@ -40,3 +40,5 @@ heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65,
 # calculate median of heights
 # identify number of people who are taller than 67 inches
 # visualize data as a histogram (hint: function hist)
+
+#### Extra exercises ####

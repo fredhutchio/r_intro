@@ -16,7 +16,7 @@
 ## Challenge: what is the value of each item at each step?
 mass <- 47.5            # mass? 47.5
 width  <- 122             # width? 122
-mass <- mass * 2.0      # mass? 
+mass <- mass * 2.0      # mass?
 width  <- width - 20        # width?
 mass_index <- mass/width  # mass_index?
 
@@ -40,3 +40,5 @@ heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65,
 # calculate median of heights
 # identify number of people who are taller than 67 inches
 # visualize data as a histogram (hint: function hist)
+
+#### Extra exercises ####
