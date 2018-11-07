@@ -26,7 +26,7 @@ ncol(clinical) # 20 columns
 dim(clinical) # 6832 rows, 20 columns
 str(clinical) # overview with all info, including 15 types of cancer ("Factor w/ 15 levels)
 
-## Challenge: what is the difference in results between the last two lines of code?
+## Challenge: what is the difference in results between these two lines of code?
 # extract first column, assigning each result to object to show that data structure differs between output
 test <- clinical[ , 1]
 test2 <- clinical[1]
