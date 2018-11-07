@@ -170,12 +170,12 @@ table(birth_complete$disease)
 # counting number of records in each cancer
 cancer_counts <- clinical %>%
   count(disease) %>%
-  arrange(n) # sorts based on defined column
+  arrange(n) # sorts based on defined column, not strictly necessary
 
 # get names of frequently occurring cancers
 frequent_cancers <- cancer_counts %>%
   filter(n >= 500) %>%
-  select(disease)
+  select(disease) # last step not necessary
 # extract data from cancers to keep
 birth_reduced <- birth_complete %>%
   filter(disease %in% frequent_cancers$disease)
@@ -183,7 +183,7 @@ birth_reduced <- birth_complete %>%
 # save results to file in data/ named birth_reduced
 write.csv(birth_reduced, "data/birth_reduced.csv", row.names = FALSE)
 
-## Challenge: extract all tumor stages for which more than 10 cases (also check to see if there are any other missing/ambiguous data!)
+## Challenge: extract all tumor stages for which more than 200 cases (also check to see if there are any other missing/ambiguous data!)
 
 #### Wrapping up ####
 
