@@ -72,10 +72,10 @@ filtered_smoke <- filter(clinical, !is.na(years_smoked)) # remove missing data f
 
 # use intermediate objects to combine commands (answer from previous challenge)
 race_disease <- select(clinical, race, ethnicity, disease)
-clinical_brca <- filter(race_disease, disease == "BRCA")
+race_BRCA <- filter(race_disease, disease == "BRCA")
 
 # nest commands (same object as created above, but here only in two lines)
-clinical_brca <- select(filter(clinical, disease == "BRCA"), race, ethnicity, disease)
+race_BRCA <- select(filter(clinical, disease == "BRCA"), race, ethnicity, disease)
 
 # combine commands using pipes (improves readability of complex commands)
 # same example as above
