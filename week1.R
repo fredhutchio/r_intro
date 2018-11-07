@@ -105,9 +105,9 @@ range(ages)
 organs <- c("lung", "prostate", "breast")
 
 ## Challenge:
-# How many things are in object?
-# what type of object?
-# get overview of object
+# How many things are in organs?
+# what type of organs?
+# get overview of organs
 
 # data types in R
 # "character" for strings, uses quotes

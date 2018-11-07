@@ -21,9 +21,9 @@ width  <- width - 20        # width?
 mass_index <- mass/width  # mass_index?
 
 ## Challenge:
-# How many things are in object?
-# what type of object?
-# get overview of object
+# How many things are in organs?
+# what type of organs?
+# get overview of organs
 
 ## Challenge: what happens when each of the objects are created?
 num_char <- c(1, 2, 3, "a")
