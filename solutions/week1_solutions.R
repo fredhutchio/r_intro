@@ -55,8 +55,34 @@ more_heights_clean <- na.omit(more_heights)
 median(more_heights, na.rm = TRUE)
 median(more_heights_clean)
 # identify how many elements from more_heights are greater than 67 inches
-length(more_heights > 67)
+length(length[more_heights > 67])
 # visualize data as a histogram (hint: function hist)
 hist(more_heights_clean)
 
 #### Extra exercises ####
+
+## Object manipulation
+# create an object called agge that contains your age in years
+agge <- 35
+# reassign the object to a new object called age (e.g., correct the typo)
+age <- agge
+# remove the previous object from your environment
+rm(agge)
+# calculate your age in days
+age * 365
+
+## Vector manipulation (character data):
+# create a object representing a vector that contains the names of buildings on Fred Hutch's campus: https://www.fredhutch.org/en/contact-us/visit-us.html
+buildings <- c("Arnold", "Yale", "Thomas", "Weintraub", "Hutchinson", "Eastlake")
+# add Seattle, Washington to the beginning of the vector, and Steam Plant to the end of the vector
+buildings <- c("Seattle, Washington", buildings, "Steam Plant")
+# subset the vector to show only the building in which you work
+buildings[2] # for Arnold
+
+## Vector manipulation (numerical data):
+# the following vector represents the number of vacation days possessed by various employees
+vacation_days <- c(5, 7, 20, 1, 0, 0, 12, 4, 2, 2, 2, 4, 5, 6, 7, 10, 4)
+# how many employees are represented in the vector?
+length(vacation_days)
+# how many employees have at least one work week's worth of vacation available to them?
+length(vacation_days[vacation_days >= 5])

@@ -44,3 +44,20 @@ heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65,
 # visualize data as a histogram (hint: function hist)
 
 #### Extra exercises ####
+
+## Object manipulation
+# create an object called agge that contains your age in years
+# reassign the object to a new object called age (e.g., correct the typo)
+# remove the previous object from your environment
+# calculate your age in days
+
+## Vector manipulation (character data):
+# create a object representing a vector that contains the names of buildings on Fred Hutch's campus: https://www.fredhutch.org/en/contact-us/visit-us.html
+# add Seattle, Washington to the beginning of the vector, and Steam Plant to the end of the vector
+# subset the vector to show only the building in which you work
+
+## Vector manipulation (numerical data):
+# the following vector represents the number of vacation days possessed by various employees
+vacation_days <- c(5, 7, 20, 1, 0, 0, 12, 4, 2, 2, 2, 4, 5, 6, 7, 10, 4)
+# how many employees are represented in the vector?
+# how many employees have at least one work week's worth of vacation available to them?
