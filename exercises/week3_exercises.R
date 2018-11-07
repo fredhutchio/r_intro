@@ -24,7 +24,7 @@
 
 ## Challenge: create a new object called birth_complete that contains no missing data for year of birth or vital status
 
-## Challenge: extract all tumor stages for which there are more than 10 cases (also check to see if there are any other missing/ambiguous data!)
+## Challenge: extract all tumor stages for which there are more than 200 cases (also check to see if there are any other missing/ambiguous data!)
 
 
 #### Extra exercises ####
