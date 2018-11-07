@@ -64,9 +64,9 @@ filtered_smoke <- filter(clinical, !is.na(years_smoked)) # remove missing data f
 # additional useful ways for selecting columns: starts_with(), ends_with(),
 #   contains(), matches(), num_range(), one_of(), everything()
 
-## Challenge: create a new object from "clinical" called "race_disease" that includes only the race, ethnicity, and disease
+## Challenge: create a new object from clinical called race_disease that includes only the race, ethnicity, and disease columns
 
-## Challenge: create a new object from "race_disease" called "race_BRCA" that includes only BRCA
+## Challenge: create a new object from race_disease called race_BRCA that includes only BRCA (disease)
 
 #### Combining commands ####
 
@@ -91,7 +91,7 @@ piped3 <- clinical %>%
   select(race, ethnicity, disease) %>%
   filter(year_of_birth < 1930)
 
-## Challenge: using pipes, extract the columns gender, years_smoked, and year_of_birth from the object clinical for only living patients (column "vital_status") who have smoked fewer than 1 cigarettes per day
+## Challenge: Use pipes to extract the columns gender, years_smoked, and year_of_birth from the object clinical for only living patients (vital_status) who have smoked fewer than 1 cigarettes per day
 
 #### Mutate ####
 
@@ -111,7 +111,7 @@ clinical %>%
          months_to_death = days_to_death / 30) %>%
   head()
 
-## Challenge: extract only lung cancer patients (LUSC from disease column) and create a new column called total_cig representing an estimate of the total number of cigarettes smoked (age at diagnosis and cig per day)
+## Challenge: extract only lung cancer patients (LUSC, from disease) and create a new column called total_cig representing an estimate of the total number of cigarettes smoked (use columns years smoked and cigarettes per day)
 
 #### Split-apply-combine ####
 
@@ -146,7 +146,8 @@ clinical %>%
   group_by(gender) %>%
   summarize(mean_days_to_death = mean(days_to_death))
 
-## Challenge: create new object called smoke_complete that contains no missing data for cigarettes per day, age at diagnosis (extra: how do you save results to file?)
+## Challenge: create object called smoke_complete from clinical that contains no missing data for cigarettes per day or age at diagnosis 
+# Extra: how do you save resulting table to file?
 smoke_complete <- clinical %>%
   filter(!is.na(age_at_diagnosis)) %>%
   filter(!is.na(cigarettes_per_day))
