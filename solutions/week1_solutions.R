@@ -14,16 +14,19 @@
 ## Challenge: what does the function ceiling do? What are its main arguments? How did you determine this?
 
 ## Challenge: what is the value of each item at each step?
-mass <- 47.5            # mass? 47.5
-width  <- 122             # width? 122
-mass <- mass * 2.0      # mass?
-width  <- width - 20        # width?
-mass_index <- mass/width  # mass_index?
+mass <- 47.5            # mass = 47.5
+width  <- 122             # width = 122
+mass <- mass * 2.0      # mass = 95 (replaces previous mass object)
+width  <- width - 20        # width = 102 (replacec previous width object)
+mass_index <- mass/width  # mass_index = 0.9313725 (uses second assigned values for each)
 
 ## Challenge:
-# How many things are in object?
-# what type of object?
-# get overview of object
+# How many things are in organs?
+length(organs)
+# what type of data is organs?
+class(organs)
+# get overview of organs
+str(organs)
 
 ## Challenge: what happens when each of the objects are created?
 num_char <- c(1, 2, 3, "a")

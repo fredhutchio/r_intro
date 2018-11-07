@@ -106,7 +106,7 @@ organs <- c("lung", "prostate", "breast")
 
 ## Challenge:
 # How many things are in organs?
-# what type of organs?
+# what type of data is organs?
 # get overview of organs
 
 # data types in R

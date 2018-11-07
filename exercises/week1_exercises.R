@@ -22,7 +22,7 @@ mass_index <- mass/width  # mass_index?
 
 ## Challenge:
 # How many things are in organs?
-# what type of organs?
+# what type of data is organs?
 # get overview of organs
 
 ## Challenge: what happens when each of the objects are created?
