@@ -176,10 +176,10 @@ na.omit(heights) # what is different about this result?
 
 ## Challenge:
 # create vector
-heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65, 64, 70, 63, 65)
+more_heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65, 64, 70, 63, 65)
 # remove NAs from heights
 # calculate median of heights
-# identify number of people who are taller than 67 inches
+# identify how many elements from more_heights are greater than 67 inches
 # visualize data as a histogram (hint: function hist)
 
 #### Wrapping up ####
