@@ -100,7 +100,9 @@ ggplot(data=smoke_complete,
 # ggplot2 documentation: https://ggplot2.tidyverse.org
 # cheat sheet: https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf
 
-# Challenge: visualize the same data as a violin plot in a color of your choice
+## Challenge: does the order of geom layers matter?
+
+## Challenge: visualize the same data as a violin plot in a color of your choice
 
 #### Plotting time series data (line plots) ####
 
@@ -126,6 +128,8 @@ ggplot(data=yearly_counts,
   geom_line()
 
 ## Challenge: create a plot of birth year and number of patients with two lines representing the number of patients of each gender 
+
+## Challenge: how do you change the line type instead of color?
 
 #### Faceting ####
 
@@ -187,7 +191,7 @@ ggplot(data=yearly_vital_counts,
   theme_bw() +
   grey_theme
 
-## Challenge: find way to change tick marks (Google search!)
+## Challenge: find way to change axes, like tick marks, labels, lines, etc (Google search!)
 
 ## Challenge: improve one of the plots previously created today, by changing thickness of lines, name of legend, or color palette (http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/)
 
