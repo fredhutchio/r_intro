@@ -20,6 +20,16 @@ Software requirements for this course can be found on [fredhutch.io's Software p
 * Week 3: Data manipulation with `dplyr`
 * Week 4: Data visualization in `ggplot2`
 
-Each week's materials are described in the R script prefaced with the number of the week. 
-`0dataset.R` includes code used to derive the original data from the 
-[National Cancer Institute's Genomic Data Commons](https://gdc.cancer.gov).
+## Resources
+
+* Each week's materials are described in the R script prefaced with the number of the week. 
+* `0dataset.R` includes code used to derive the original data from the 
+[National Cancer Institute's Genomic Data Commons](https://gdc.cancer.gov). `extra/` holds the original data files used for 
+download during the activities, as well as the intermediate data files for each cancer type directly downloaded from NCI-GDC
+* `exercises/` includes a file for each week representing both the aggregated in-class exercises as well as additional 
+supplemental exercises for practice
+* `solutions/` includes the solutions for all files in `exercises/`
+* `resources.md` includes useful links mentioned during lessons; additional information about continued learning in R as well 
+as Hutch-specific resources can be found on the 
+[Data Science Wiki](https://sciwiki.fredhutch.org/bioinformatics/prog_overview/)
+* `hackmdio.txt` is an archive of the [interactive webpage](https://hackmd.io) used during lessons
