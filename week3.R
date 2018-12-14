@@ -61,8 +61,7 @@ sel_columns2 <- select(clinical, tumor_stage:vital_status)
 # select rows conditionally
 filtered_rows <- filter(clinical, disease == "LUSC") # keep only lung cancer cases
 filtered_smoke <- filter(clinical, !is.na(years_smoked)) # remove missing data from years smoked
-# additional useful ways for selecting columns: starts_with(), ends_with(),
-#   contains(), matches(), num_range(), one_of(), everything()
+# additional useful ways for selecting columns: starts_with(), ends_with(), contains()
 
 ## Challenge: create a new object from clinical called race_disease that includes only the race, ethnicity, and disease columns
 
