@@ -17,6 +17,8 @@
 
 #### Reading in data ####
 
+# review opening project in RStudio
+
 # project organization
 # remind that folders and directories are synonymous
 # tie into the strength of RStudio projects
@@ -173,4 +175,6 @@ str(example_df2)
 #### Wrapping up ####
 
 # review objectives
+# direct towards practice questions (linked in HackMD)
 # preview next week's objectives
+# install tools for next week: install.packages("tidyverse")

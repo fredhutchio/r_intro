@@ -185,6 +185,7 @@ more_heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72
 #### Wrapping up ####
 
 # review objectives
+# direct towards practice questions (linked in HackMD)
 # preview next week's objectives
 # closing RStudio projects:
 #   don't save .RData

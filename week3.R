@@ -190,6 +190,7 @@ write.csv(birth_reduced, "data/birth_reduced.csv", row.names = FALSE)
 # review today's objectives: single-table verbs in dplyr
 #   other functionality that allows combination
 #   and manipulation of multiple tables
+# direct towards practice questions (linked in HackMD)
 # dplyr includes two-table verbs for joining tables together
 # dplyr cheatsheet:
 #   https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf

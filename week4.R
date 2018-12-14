@@ -198,7 +198,7 @@ ggplot(data=yearly_vital_counts,
 #### Wrapping up ####
 
 # review this class' objectives
+# direct towards practice questions (linked in HackMD)
 # review course objectives
-# preview other intermediate courses available
-# ask for other courses to offer
-# course evaluations
+# direct to additional resources available on HackMD
+# reminder about course evaluations and when HackMD page will be cleared
