@@ -5,6 +5,8 @@ URL to this page: XXX
 
 **Sign in to each class meeting** [here](XXX)
 
+Have you installed R and RStudio to the latest versions? See our [Software](http://www.fredhutch.io/software/) instructions for links!
+
 This page is for easy access to links we'll use during class. You don't need to do anything with this information until directed by your instructor. Links to the instructor's script will be added as the course progresses.
 
 If you have feedback about this course, please
@@ -13,28 +15,35 @@ If you have feedback about this course, please
 Complete class notes [here](https://github.com/fredhutchio/R_intro)
 
 **Week 1: Introduction to R syntax and RStudio**
-* Have you installed R and RStudio? Instructions [here](http://www.fredhutch.io/software/)
+* [Instructor's script](XXX)
 * [R style guide](http://adv-r.had.co.nz/Style.html)
-* Instructor's script
-  * [Weekday](XXX)
+* [Week 1 exercises](https://github.com/fredhutchio/R_intro/blob/master/exercises/week1_exercises.R)
 
 **Week 2: Working with data frames**
+* [Instructor's script](XXX)
 * URL for direct download into R from GitHub: https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.csv
 * Other example data files:
-example1: https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.tsv
-example2: https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.txt
-* Instructor's script
-  * [Weekday](XXX)
+  * example1: https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.tsv
+  * example2: https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.txt
+* [Week 2 exercises](https://github.com/fredhutchio/R_intro/blob/master/exercises/week2_exercises.R)
 
 **Week 3: Data parsing with dplyr**
+* [Instructor's script](XXX)
 * [tidyverse website](https://www.tidyverse.org)
 * [dplyr cheetsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
-* Instructor's script
-  * [Weekday](XXX)
+* [Week 3 exercises](https://github.com/fredhutchio/R_intro/blob/master/exercises/week3_exercises.R)
   
 **Week 4: Data visualization with ggplot2**
+* [Instructor's script](XXX)
 * [ggplot documentation](https://ggplot2.tidyverse.org)
 * [ggplot cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)
-* Instructor's script
-  * [Weekday](XXX)
-  
+* [ggplot colors](http://sape.inf.usi.ch/quick-reference/ggplot2/colour)
+* [viridis color palettes](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html)
+* [Week 4 exercises](https://github.com/fredhutchio/R_intro/blob/master/exercises/week4_exercises.R)
+
+**Resources for continued learning**
+* Intermediate R courses from fredhutch.io
+* fredhutch.io office hours on XXX
+* [The Coop](https://centernet.fredhutch.org/cn/u/bdsc.html): a centralized hub for data science at Fred Hutch
+* [FHBig](https://fredhutch.github.io/FHBig/): community-focused events and Slack channel
+* [Fred Hutch Biomedical Data Science Wiki](https://sciwiki.fredhutch.org): community-contributed resource for data management, bioinformatics, and computing
