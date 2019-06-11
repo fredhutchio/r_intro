@@ -33,3 +33,4 @@ supplemental exercises for practice
 as Hutch-specific resources can be found on the 
 [Data Science Wiki](https://sciwiki.fredhutch.org/bioinformatics/prog_overview/)
 * `hackmdio.txt` is an archive of the [interactive webpage](https://hackmd.io) used during lessons
+* Information about use of R and RStudio at Fred Hutch is available on the [Data Science Wiki](https://sciwiki.fredhutch.org/scicomputing/software_R/)
