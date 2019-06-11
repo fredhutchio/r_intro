@@ -2,10 +2,17 @@
 
 ## Notes on teaching
 
-### Week 1
 - This class lasts two hours, with a break occuring 45-60 minutes after the start of class. It works well to administer a challenge exercise and then take a 10 minute break, so folks can work on the exercise and/or move around as necessary. Address the challenge after the break before moving on to the next section. 
 - Timing can be adjusted with challenge exercises. You can add or remove challenges from a given class, or give more or less time as pacing allows. There are extra challenges in `exercises/`
+
+### Week 1
 - [Data Carpentry's Intro to R and RStudio](https://datacarpentry.org/R-ecology-lesson/00-before-we-start.html) describes what you should include in the introduction to the IDE
+
+### Week 2
+
+### Week 3
+
+### Week 4
 
 ## FAQs
 - [use of = vs <- as assignment operator](https://stackoverflow.com/questions/1741820/what-are-the-differences-between-and-in-r)
