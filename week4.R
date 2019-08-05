@@ -100,7 +100,7 @@ my_plot +
 
 ## Challenge: In the last plot, does the order of layers matter?
 
-## BREAK
+#### BREAK ####
 
 #### Plotting time series data (line plots) ####
 

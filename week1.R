@@ -84,9 +84,6 @@ weight_lb
 
 #### BREAK ####
 
-# administer the following challenge and give ~10 minute break
-#   should occur 45-60 minutes after class starts
-
 ## Challenge: what is the value of each item at each step?
 mass <- 47.5            # mass?
 width  <- 122             # width?

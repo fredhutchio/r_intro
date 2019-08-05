@@ -94,6 +94,8 @@ piped3 <- clinical %>%
   filter(year_of_birth < 1930)
 # in this case, yes it does matter!
 
+#### BREAK ####
+
 ## Challenge: Use pipes to extract the columns gender, years_smoked, and year_of_birth from the object clinical for only living patients (vital_status) who have smoked fewer than 1 cigarettes per day
 
 #### Mutate ####
