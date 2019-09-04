@@ -8,6 +8,8 @@
 #   subsetting data frames
 #   manipulating factors
 
+# Solutions available here: https://github.com/fredhutchio/R_intro/blob/master/solutions/week2_solutions.R
+
 #### In-class exercises ####
 
 ## Challenge: download, inspect, and import the following data files (smaller set of data from same clinical set)

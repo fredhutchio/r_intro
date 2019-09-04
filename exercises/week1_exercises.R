@@ -9,6 +9,8 @@
 #   working with vectors
 #   dealing with missing data
 
+# Solutions available here: https://github.com/fredhutchio/R_intro/blob/master/solutions/week1_solutions.R
+
 #### In-class exercises ####
 
 ## Challenge: what does the function ceiling do? What are its main arguments? How did you determine this?

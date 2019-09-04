@@ -17,6 +17,8 @@
 
 #### Reading in data ####
 
+# review opening project in RStudio
+
 # project organization
 # remind that folders and directories are synonymous
 # tie into the strength of RStudio projects
@@ -70,8 +72,6 @@ View(clinical)
 # inspect data frames
 # assess size of data frame
 dim(clinical)
-nrow(clinical)
-ncol(clinical)
 # preview content
 head(clinical) # show first few rows
 tail(clinical) # show last few rows
@@ -111,6 +111,8 @@ clinical[ , "tumor_stage"] # results in vector
 clinical[["tumor_stage"]] # results in vector
 clinical$tumor_stage # results in vector
 # reference exploring different types of subsetting: https://davetang.org/muse/2013/08/16/double-square-brackets-in-r/
+
+#### BREAK ####
 
 ## Challenge: code as many different ways possible to extract the column days_to_death
 
@@ -173,4 +175,6 @@ str(example_df2)
 #### Wrapping up ####
 
 # review objectives
+# direct towards practice questions (linked in HackMD)
 # preview next week's objectives
+# install tools for next week: install.packages("tidyverse")

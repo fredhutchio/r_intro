@@ -8,6 +8,8 @@
 #   splitting into multiple panels
 #   customizing plots
 
+# Solutions available here: https://github.com/fredhutchio/R_intro/blob/master/solutions/week4_solutions.R
+
 #### In-class exercises ####
 
 ## Challenge: create a scatterplot showing age at diagnosis vs years smoked with points colored by gender

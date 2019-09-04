@@ -2,16 +2,18 @@
 
 #### Before class ####
 
-# share URL to hack.md
-# check installation of R and RStudio (install former before latter)
-# set up project ahead of time and have URL to Dropbox script ready
+# share URL to hack.md (show in web browser, URL is at top of page); 
+#   you can sign in and modify this page by signing in with GitHub
+# check that students have installed R and RStudio (install former before latter)
+# optional: set up your RStudio project ahead of time in Dropbox and share the URL to your week1.R,
+#   add link to this in hack.md
 
 #### Welcome ####
 
-# instructor introduction
-# overview of fredhutch.io
-# sign in sheet
-# overview course philosophy, how to stay engaged
+# instructor introduction: who you are, why you're teaching
+# overview of fredhutch.io: goal is to teach researchers reproducible methods
+# sign in sheet: linked on hack.md, tracked in hutch learning
+# overview course philosophy, stay engaged by following along with course material on your own computer
 # course objectives: overview of basic functionality of R (syntax, data manipulation, visualization)
 
 #### Objectives ####
@@ -26,7 +28,8 @@
 
 # ask about previous experience with R and RStudio
 # motivation for R and RStudio
-# RStudio makes working with R much easier
+#   large user community
+#   RStudio makes working with R much easier
 # create new project in new directory (recommended to place on Desktop or in Documents)
 # create new R script, append with .R
 # top left window: source (script), where commands are saved
@@ -39,6 +42,8 @@
 # we have access to RStudio server through http://rstudio.fhcrc.org/
 
 #### Using functions ####
+
+# explain the use of #### as a shortcut in RStudio
 
 # basic math
 4 + 5 # spaces are optional, but easier to read
@@ -76,6 +81,8 @@ weight_kg <- 100
 rm(weight_kg)
 remove(weight_lb)
 weight_lb
+
+#### BREAK ####
 
 ## Challenge: what is the value of each item at each step?
 mass <- 47.5            # mass?
@@ -185,6 +192,7 @@ more_heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72
 #### Wrapping up ####
 
 # review objectives
+# direct towards practice questions (linked in HackMD)
 # preview next week's objectives
 # closing RStudio projects:
 #   don't save .RData

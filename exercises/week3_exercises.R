@@ -9,6 +9,8 @@
 #   creating new columns by modifying existing data
 #   summarizing data based on data in other columns
 
+# Solutions available here: https://github.com/fredhutchio/R_intro/blob/master/solutions/week3_solutions.R
+
 #### In-class exercises ####
 
 ## Challenge: create a new object from clinical called race_disease that includes only the race, ethnicity, and disease columns

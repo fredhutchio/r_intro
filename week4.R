@@ -28,7 +28,7 @@ smoke_complete <- read.csv("data/smoke_complete.csv")
 # create directory for output
 dir.create("figures")
 
-# stupid plot
+# simple plot from base R
 plot(x=smoke_complete$age_at_diagnosis, y=smoke_complete$cigarettes_per_day)
 
 #### Intro to ggplot2 and scatterplots ####
@@ -36,73 +36,71 @@ plot(x=smoke_complete$age_at_diagnosis, y=smoke_complete$cigarettes_per_day)
 # create a simple ggplot
 # bind data to new plot
 # specify aesthetic: mapping data to plot
-# layers: ways (shapes) through which data are represented
-ggplot(data = smoke_complete, 
-       aes(x = age_at_diagnosis, y = cigarettes_per_day)) +
-  geom_point()
-
-# save plot to object
-smoke_plot <- ggplot(data = smoke_complete, 
-                        aes(x = age_at_diagnosis, y = cigarettes_per_day))
-# draw the plot
-smoke_plot +
-  geom_point()
+# layers: visual representation of plot, including ways (geometries/shapes) through which data are represented and themes (everything but data)
+ggplot(data = smoke_complete) + # bind data
+  geom_point(mapping = aes(x = age_at_diagnosis, y = cigarettes_per_day)) # map aesthetic with layer (geom)
 
 # building plots iteratively
-# add transparency
-smoke_plot +
-  geom_point(alpha=0.1)
+# add transparency (and remove argument labels, they are implied)
+ggplot(smoke_complete) +
+  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day), alpha = 0.1)
 
 # add color
-smoke_plot +
-  geom_point(alpha=0.1, color="green")
+ggplot(smoke_complete) +
+  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day), alpha = 0.1, color = "green")
 
 # color points by variable
-smoke_plot +
-  geom_point(alpha=0.1, aes(color = disease))
+ggplot(smoke_complete) +
+  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease), alpha = 0.1)
+# why don't we need parentheses around disease?
 
 # change background theme
-smoke_plot +
-  geom_point(alpha=0.1, aes(color = disease)) +
+ggplot(smoke_complete) +
+  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease), alpha = 0.1) +
   theme_bw()
 
 # add title and custom axis labels
-smoke_plot +
-  geom_point(alpha=0.1, aes(color = disease)) +
+ggplot(smoke_complete) +
+  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease), alpha = 0.1) +
   labs(title = "Age at diagnosis vs cigarettes per day",
        x="age (days)",
        y="cigarettes per day") +
   theme_bw()
 
-## Challenge: create a scatterplot showing age at diagnosis vs years smoked with points colored by gender
-
 # save plot to file
-ggsave("figures/awesomePlot.jpg")
+ggsave("figures/awesomePlot.jpg", width = 10, height = 10, dpi = 300)
+
+## Challenge: create a scatterplot showing age at diagnosis vs years smoked with points colored by gender and appropriate axis labels
 
 #### Box and whisker plots ####
 
 # creating a box and whisker plot
-ggplot(data=smoke_complete,
-       aes(x=vital_status, y=cigarettes_per_day)) +
-  geom_boxplot()
+ggplot(smoke_complete) +
+  geom_boxplot(aes(x=vital_status, y=cigarettes_per_day))
 
 # adding color
-ggplot(data=smoke_complete,
+ggplot(smoke_complete,
        aes(x=vital_status, y=cigarettes_per_day)) +
-  geom_boxplot(color="tomato")
+  geom_boxplot(aes(x=vital_status, y=cigarettes_per_day), color="tomato")
 
 # adding colored points to black box and whisker plot
-ggplot(data=smoke_complete,
-       aes(x=vital_status, y=cigarettes_per_day)) +
-  geom_boxplot() +
-  geom_jitter(alpha = 0.3, color = "blue")
+ggplot(smoke_complete) +
+  geom_boxplot(aes(x=vital_status, y=cigarettes_per_day)) +
+  geom_jitter(aes(x=vital_status, y=cigarettes_per_day), alpha = 0.3, color = "blue")
 
 # ggplot2 documentation: https://ggplot2.tidyverse.org
 # cheat sheet: https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf
 
-## Challenge: does the order of geom layers matter?
+## Challenge: Run this code in your head and predict what the output will look like. Then, run the code in R and check your predictions. What is the advantage of writing code like this?
+my_plot <- ggplot(smoke_complete, aes(x=vital_status, y=cigarettes_per_day)) 
+my_plot +
+  geom_boxplot() +
+  geom_jitter(alpha = 0.2, color = "purple")
+# note: this is how many ggplot tutorials show iterative plotting!
 
-## Challenge: visualize the same data as a violin plot in a color of your choice
+## Challenge: In the last plot, does the order of layers matter?
+
+#### BREAK ####
 
 #### Plotting time series data (line plots) ####
 
@@ -111,64 +109,64 @@ yearly_counts <- birth_reduced %>%
   count(year_of_birth, disease) 
 
 # plot all counts by year
-ggplot(data=yearly_counts, 
-       aes(x=year_of_birth, y=n)) +
-  geom_line()
+ggplot(yearly_counts) +
+  geom_line(aes(x=year_of_birth, y=n))
 
 # plot one line per cancer type
-ggplot(data=yearly_counts, 
-       aes(x=year_of_birth, y=n, 
-           group=disease)) +
-  geom_line()
+ggplot(yearly_counts) +
+  geom_line(aes(x=year_of_birth, y=n, 
+                group=disease))
 
 # color each line per cancer type
-ggplot(data=yearly_counts, 
-       aes(x=year_of_birth, y=n, 
-           group=disease, color = disease)) +
-  geom_line()
+ggplot(yearly_counts) +
+  geom_line(aes(x=year_of_birth, y=n, 
+                group=disease, color = disease)) # group isn't necessary if you are coloring by a category!
 
-## Challenge: create a plot of birth year and number of patients with two lines representing the number of patients of each gender 
+## Challenge: create a plot of birth year and number of patients with two lines representing each gender 
 
-## Challenge: how do you change the line type instead of color?
+## Challenge: how do you show differences in lines using dashes/dots instead of color?
 
 #### Faceting ####
 
-# count observations by disease, year of birth, and vital status
-yearly_vital_counts <- birth_reduced %>%
-  count(year_of_birth, disease, vital_status)
+# use previous scatterplot, but separate panels by disease
+ggplot(smoke_complete) +
+  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
+  facet_wrap(~ tumor_stage)
+# wraps panels to make a square/rectangular plot
 
-# plot each cancer type in separate panels with lines colored by vital status
-ggplot(data=yearly_vital_counts, 
-       aes(x=year_of_birth, y=n, color = vital_status)) +
-  geom_line() +
-  facet_wrap(~ disease)
+# add a variable by leaving color but changing panels to other categorical data
+ggplot(smoke_complete) +
+  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
+  facet_wrap(~ tumor_stage)
+# more categories, but wrapped to keep close to a square
 
-# plot each vital status in separate panels with lines colored by disease
-ggplot(data = yearly_vital_counts, 
-       aes(x = year_of_birth, y = n, color = disease)) +
-  geom_line() +
+# arrange plots via a formula: vital status in rows, disease in columns
+ggplot(smoke_complete) +
+  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
+  facet_grid(vital_status ~ disease)
+
+# switch rows and columns
+ggplot(smoke_complete) +
+  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
+  facet_grid(disease ~ vital_status)
+
+# control arrangement of plots, even when only using grid with one variable
+ggplot(smoke_complete) +
+  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
   facet_grid(vital_status ~ .)       
 
-# change arrangement of panels
-ggplot(data = yearly_vital_counts, 
-       aes(x = year_of_birth, y = n, color = disease)) +
-  geom_line() +
+# switch column for row
+ggplot(smoke_complete) +
+  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
   facet_grid(. ~ vital_status)  
-
-# plot diseases and vital statuses in different panels
-ggplot(data = yearly_vital_counts, 
-       aes(x = year_of_birth, y = n, color = disease)) +
-  geom_line() +
-  facet_grid(vital_status ~ disease)   
 
 ## Challenge: alter your last challenge plot of (birth year by number of patients) to show each gender in separate panels
 
-#### Customization ####
+#### Optional: Customization ####
 
-# rotate font
-ggplot(data=yearly_vital_counts, 
-       aes(x=year_of_birth, y=n, color = vital_status)) +
-  geom_line() +
+# modify axis text labels
+ggplot(smoke_complete) +
+  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
   facet_wrap(~ disease) + # facet plot
   labs(title = "Vital status by year of birth", # plot title
        x = "year of birth", y = " number of patients") + # axis labels
@@ -182,9 +180,7 @@ grey_theme <- theme(axis.text.x = element_text(colour = "grey20",
                     axis.text.y = element_text(colour = "grey20", size = 12))
 
 # apply theme changes and add axis labels
-ggplot(data=yearly_vital_counts, 
-       aes(x=year_of_birth, y=n, color = vital_status)) +
-  geom_line() +
+  geom_line(aes(x=year_of_birth, y=n, color = vital_status)) +
   facet_wrap(~ disease) + 
   labs(title = "Vital status by year of birth",
        x = "year of birth", y = " number of patients") +
@@ -198,7 +194,7 @@ ggplot(data=yearly_vital_counts,
 #### Wrapping up ####
 
 # review this class' objectives
+# direct towards practice questions (linked in HackMD)
 # review course objectives
-# preview other intermediate courses available
-# ask for other courses to offer
-# course evaluations
+# direct to additional resources available on HackMD
+# reminder about course evaluations and when HackMD page will be cleared
