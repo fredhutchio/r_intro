@@ -31,10 +31,16 @@ example2: https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/cli
 * [dplyr cheetsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf)
 * Instructor's script
   * [Weekday](XXX)
-  
+
 **Week 4: Data visualization with ggplot2**
 * [ggplot documentation](https://ggplot2.tidyverse.org)
 * [ggplot cheatsheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf)
 * Instructor's script
   * [Weekday](XXX)
-  
+
+**FAQs**
+- use of = vs <- as assignment operator: https://stackoverflow.com/questions/1741820/what-are-the-differences-between-and-in-r
+- dplyr cheatsheet: https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf
+- ggplot2 documentation: https://ggplot2.tidyverse.org
+- ggplot cheat sheet: https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf
+- color palettes: http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/
