@@ -10,8 +10,7 @@ This repository is adapted from content originally appearing in
 [R for data analysis and visualization of Ecological Data](https://datacarpentry.org/R-ecology-lesson/),
 Copyright (c) Data Carpentry. 
 
-Software requirements for this course can be found on [fredhutch.io's Software page](http://www.fredhutch.io/software/).
-
+**Required software**: Software requirements for this course can be found on [fredhutch.io's Software page](http://www.fredhutch.io/software/#r-and-rstudio). The HackMD (interactive page used for sharing links and information) for this course is here: https://hackmd.io/@k8hertweck/introR
 
 ## Schedule
 
@@ -29,8 +28,6 @@ download during the activities, as well as the intermediate data files for each 
 * `exercises/` includes a file for each week representing both the aggregated in-class exercises as well as additional 
 supplemental exercises for practice
 * `solutions/` includes the solutions for all files in `exercises/`
-* `resources.md` includes useful links mentioned during lessons; additional information about continued learning in R as well 
-as Hutch-specific resources can be found on the 
-[Data Science Wiki](https://sciwiki.fredhutch.org/bioinformatics/prog_overview/)
-* `hackmdio.txt` is an archive of the [interactive webpage](https://hackmd.io) used during lessons
+* `instructors.md` includes information for instructors to facilitate teaching each lesson
+* `hackmdio.md` is an archive of the [interactive webpage](https://hackmd.io) used during lessons
 * Information about use of R and RStudio at Fred Hutch is available on the [Data Science Wiki](https://sciwiki.fredhutch.org/scicomputing/software_R/)
