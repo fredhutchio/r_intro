@@ -25,6 +25,7 @@ Complete class notes [here](https://github.com/fredhutchio/R_intro)
 * Other example data files:
     * example1: https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.tsv
     * example2: https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.txt
+* [Working on categorical data in R without losing your mind](https://resources.rstudio.com/rstudio-conf-2019/working-with-categorical-data-in-r-without-losing-your-mind)
 * [Week 2 exercises](https://github.com/fredhutchio/R_intro/blob/master/exercises/week2_exercises.R)
 
 **Week 3: Data manipulation with dplyr**
