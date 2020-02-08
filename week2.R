@@ -37,8 +37,7 @@ dir.create("data")
 
 # download data from url
 download.file("https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.csv", "data/clinical.csv")
-# describe how to tell if you can use a URL to download data files
-# can't download using Dropbox URLs
+# getting the right URL for downloading data this way can be tricky: only raw data, not extra HTML!
 
 # reading in data and saving to object
 clinical <- read.csv("data/clinical.csv")
@@ -153,8 +152,13 @@ clinical$race <- race
 # replot with corrected names
 plot(clinical$race)
 
+# for more information, see link on working with categorical data in HackMD
+
 ## Challenge: replace "not reported" in ethnicity and race with NA
 # do a Google search to find additional strategies for renaming missing data
+# when regrouping after challenge, include a demo of looking at search results
+#   blog posts (e.g., RStats) may give good tutorials of common tasks
+#   Stack Overflow is great, upvotes and simple solutions are great to start
 
 #### Extra: creating a simple data frame without importing data ####
 
