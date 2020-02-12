@@ -59,7 +59,7 @@ round(3.14, digits = 1)
 # can switch order of arguments (but need to name value!)
 round(digits = 1, x = 3.14)
 
-## Challenge: what does the function ceiling do? What are its main arguments? How did you determine this?
+## Challenge: what does the function hist do? What are its main arguments? How did you determine this?
 
 # to wrap R source files: Tools -> Global Options -> Code, check box for "Soft-wrap R source files"
 
@@ -94,7 +94,7 @@ mass_index <- mass/width  # mass_index?
 #### Vectors ####
 
 # assign vector
-ages <- c(50, 55, 60, 65)
+ages <- c(50, 55, 60, 65) # c for combine/concatenate
 # recall vector
 ages
 # how many things are in object?
@@ -132,8 +132,8 @@ tricky <- c(1, 2, 3, "4")
 
 #### Working with vectors ####
 
-# add a value at the end of weights
-ages <- c(ages, 90) # c stands for concatenate
+# add a value at the end of vector
+ages <- c(ages, 90) # same combine function as creating vector
 # add value at the beginning
 ages <- c(30, ages)
 
@@ -149,7 +149,10 @@ ages[ages == 60]
 # can also include <= and >=
 # combining conditions: OR
 ages[ages < 50 | ages > 60]
-# can also combine condition with AND &
+# can also combine condition with AND &, but be careful about vernacular
+# OR means value must meet one or more conditions
+# AND means value must meet both conditions
+ages[ages < 50 & ages > 60] # not possible!
 
 ## Challenge: why does the following code return TRUE: "four" > "five"
 
@@ -172,11 +175,6 @@ is.na(heights)
 !is.na(heights)
 # extract elements which are not missing values
 heights[!is.na(heights)]
-
-# identify elements that are complete cases
-complete.cases(heights)
-# extract elements which are complete cases
-heights[complete.cases(heights)]
 
 # remove incomplete cases
 na.omit(heights) # what is different about this result?
