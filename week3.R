@@ -52,7 +52,9 @@ dir.create("data") # R will complain if this already exists
 download.file("https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.csv", "data/clinical.csv")
 
 # reading in data and saving to object
-clinical <- read.csv("data/clinical.csv")
+clinical <- read_csv("data/clinical.csv")
+# note differences with import last week!
+# tibble: opinionated table in tidyverse, easier to work with large data
 # recall object
 clinical
 str(clinical)

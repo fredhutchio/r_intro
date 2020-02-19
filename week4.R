@@ -22,8 +22,8 @@ library(tidyverse) # needs to happen every time R restarts
 ?ggplot
 
 # reading in data and saving to object
-birth_reduced <- read.csv("data/birth_reduced.csv")
-smoke_complete <- read.csv("data/smoke_complete.csv")
+birth_reduced <- read_csv("data/birth_reduced.csv")
+smoke_complete <- read_csv("data/smoke_complete.csv")
 
 # create directory for output
 dir.create("figures")
@@ -180,10 +180,11 @@ grey_theme <- theme(axis.text.x = element_text(colour = "grey20",
                     axis.text.y = element_text(colour = "grey20", size = 12))
 
 # apply theme changes and add axis labels
-  geom_line(aes(x=year_of_birth, y=n, color = vital_status)) +
-  facet_wrap(~ disease) + 
-  labs(title = "Vital status by year of birth",
-       x = "year of birth", y = " number of patients") +
+ggplot(smoke_complete) +
+  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
+  facet_wrap(~ disease) + # facet plot
+  labs(title = "Vital status by year of birth", # plot title
+       x = "year of birth", y = " number of patients") + # axis labels
   theme_bw() +
   grey_theme
 
