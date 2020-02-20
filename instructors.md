@@ -12,6 +12,7 @@
 ### Week 3
 
 ### Week 4
+- if you don't complete data filtering in Week 3, there are backup files in the GitHub repo that can be downloaded and imported
 
 ## FAQs
 - [use of = vs <- as assignment operator](https://stackoverflow.com/questions/1741820/what-are-the-differences-between-and-in-r)

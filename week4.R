@@ -21,6 +21,10 @@ library(tidyverse) # needs to happen every time R restarts
 # check ggplot2 installation
 ?ggplot
 
+# if data filtering wasn't completed last week, can import from backup files on GitHub
+download.file("https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/birth_reduced.csv", "data/birth_reduced.csv")
+download.file("https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/smoke_complete.csv", "data/smoke_complete.csv")
+
 # reading in data and saving to object
 birth_reduced <- read_csv("data/birth_reduced.csv")
 smoke_complete <- read_csv("data/smoke_complete.csv")
