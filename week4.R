@@ -131,34 +131,34 @@ ggplot(yearly_counts) +
 # use previous scatterplot, but separate panels by disease
 ggplot(smoke_complete) +
   geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
-  facet_wrap(~ tumor_stage)
+  facet_wrap(vars(tumor_stage))
 # wraps panels to make a square/rectangular plot
 
 # add a variable by leaving color but changing panels to other categorical data
 ggplot(smoke_complete) +
   geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
-  facet_wrap(~ tumor_stage)
+  facet_wrap(vars(tumor_stage))
 # more categories, but wrapped to keep close to a square
 
 # arrange plots via a formula: vital status in rows, disease in columns
 ggplot(smoke_complete) +
   geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
-  facet_grid(vital_status ~ disease)
+  facet_grid(vars(vital_status), vars(disease))
 
 # switch rows and columns
 ggplot(smoke_complete) +
   geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
-  facet_grid(disease ~ vital_status)
+  facet_grid(vars(disease), vars(vital_status))
 
 # control arrangement of plots, even when only using grid with one variable
 ggplot(smoke_complete) +
   geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
-  facet_grid(vital_status ~ .)       
+  facet_grid(rows= vars(vital_status))       
 
 # switch column for row
 ggplot(smoke_complete) +
   geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
-  facet_grid(. ~ vital_status)  
+  facet_grid(cols = vars(vital_status)) 
 
 ## Challenge: alter your last challenge plot of (birth year by number of patients) to show each gender in separate panels
 
@@ -167,7 +167,7 @@ ggplot(smoke_complete) +
 # modify axis text labels
 ggplot(smoke_complete) +
   geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
-  facet_wrap(~ disease) + # facet plot
+  facet_wrap(vars(disease)) + # facet plot
   labs(title = "Vital status by year of birth", # plot title
        x = "year of birth", y = " number of patients") + # axis labels
   theme_bw() + # add black and white theme
@@ -182,7 +182,7 @@ grey_theme <- theme(axis.text.x = element_text(colour = "grey20",
 # apply theme changes and add axis labels
 ggplot(smoke_complete) +
   geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
-  facet_wrap(~ disease) + # facet plot
+  facet_wrap(vars(disease)) + # facet plot
   labs(title = "Vital status by year of birth", # plot title
        x = "year of birth", y = " number of patients") + # axis labels
   theme_bw() +
