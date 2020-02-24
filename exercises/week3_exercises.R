@@ -30,3 +30,7 @@
 
 
 #### Extra exercises ####
+
+# How many hispanic or latino individuals in clinical are not also white? What are their races?
+
+# Create a new column for clinical called age_at_death that calculates this statistic (in years) from year_of_birth and year_of_death 

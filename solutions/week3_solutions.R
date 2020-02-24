@@ -54,3 +54,14 @@ tumor_reduced <- clinical %>%
   filter(tumor_stage %in% frequent_tumors$tumor_stage)
 
 #### Extra exercises ####
+
+# How many hispanic or latino individuals in clinical are not also white? What are their races?
+clinical %>%
+  filter(race != "white") %>% # only non-white individuals
+  filter(ethnicity == "hispanic or latino") %>% # only hispanic/latino
+  group_by(race) %>% # group by other races
+  tally() # count total for each race
+
+# Create a new column for clinical called age_at_death that calculates this statistic (in years) from year_of_birth and year_of_death 
+clinical <- clinical %>%
+  mutate(age = year_of_death - year_of_birth)
