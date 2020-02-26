@@ -42,6 +42,10 @@ library(tidyverse)
 ?select
 # help documentation should open up for select {dplyr},
 #   indicating package has loaded appropriately
+# can also look in "Packages" tab in lower right hand panel
+#   search for package
+#   if package is present, it's installed
+#   if box is checked, package is loaded
 # you may end up with errors later if required packages didn't install;
 #   tell instructor if you get an error saying a function isn't available
 
@@ -63,10 +67,10 @@ str(clinical)
 sel_columns <- select(clinical, tumor_stage, ethnicity, disease)
 # select range of columns
 sel_columns2 <- select(clinical, tumor_stage:vital_status)
+# additional useful ways for selecting columns: starts_with(), ends_with(), contains()
 # select rows conditionally
 filtered_rows <- filter(clinical, disease == "LUSC") # keep only lung cancer cases
-filtered_smoke <- filter(clinical, !is.na(years_smoked)) # remove missing data from years smoked
-# additional useful ways for selecting columns: starts_with(), ends_with(), contains()
+# can apply other filters (as discussed last week)
 
 ## Challenge: create a new object from clinical called race_disease that includes only the race, ethnicity, and disease columns
 
@@ -74,12 +78,10 @@ filtered_smoke <- filter(clinical, !is.na(years_smoked)) # remove missing data f
 
 #### Combining commands ####
 
-# use intermediate objects to combine commands (answer from previous challenge)
-race_disease <- select(clinical, race, ethnicity, disease)
-race_BRCA <- filter(race_disease, disease == "BRCA")
+# last challenge uses intermediate objects to combine commands: two step process
 
-# nest commands (same object as created above, but here only in two lines)
-race_BRCA <- select(filter(clinical, disease == "BRCA"), race, ethnicity, disease)
+# nest commands (same as created above, but here only in two lines)
+race_BRCA2 <- select(filter(clinical, disease == "BRCA"), race, ethnicity, disease)
 
 # combine commands using pipes (improves readability of complex commands)
 # same example as above
@@ -106,14 +108,8 @@ piped3 <- clinical %>%
 # convert days to years
 clinical_years <- clinical %>%
   mutate(years_to_death = days_to_death / 365)
-# convert days to year and months at same time, send to head for easier viewing
+# convert days to year and months at same time, and we don't always need to assign to object
 clinical %>%
-  mutate(years_to_death = days_to_death / 365,
-         months_to_death = days_to_death / 30) %>%
-  head()
-# filter out missing data with pipes
-clinical %>%
-  filter(!is.na(days_to_death)) %>%
   mutate(years_to_death = days_to_death / 365,
          months_to_death = days_to_death / 30) %>%
   head()
@@ -123,9 +119,6 @@ clinical %>%
 #### Split-apply-combine ####
 
 # frame the problem: we want to summarize data by gender
-
-# show how summarize works
-summarize(clinical, mean_days_to_death = mean(days_to_death, na.rm = TRUE))
 
 # show categories in gender
 unique(clinical$gender)
@@ -150,7 +143,7 @@ clinical %>%
 
 # remove NA
 clinical %>%
-  filter(!is.na(days_to_death)) %>%
+  filter(!is.na(gender)) %>%
   group_by(gender) %>%
   summarize(mean_days_to_death = mean(days_to_death))
 
@@ -159,7 +152,9 @@ clinical %>%
 smoke_complete <- clinical %>%
   filter(!is.na(age_at_diagnosis)) %>%
   filter(!is.na(cigarettes_per_day))
-write.csv(smoke_complete, "data/smoke_complete.csv", row.names = FALSE)
+write_csv(smoke_complete, "data/smoke_complete.csv")
+# there is also write.csv from base R
+#   base R by default includes row names (numbers) and quotes around cells
 
 ## Challenge: create a new object called birth_complete that contains no missing data for year of birth or vital status
 
@@ -171,10 +166,6 @@ birth_complete <- clinical %>%
 
 #### Filtering data based on number of cases of each type ####
 
-# check to see numbers of each cancer type
-table(birth_complete$disease)
-
-# remove cancers with fewer than 500 cases
 # counting number of records in each cancer
 cancer_counts <- clinical %>%
   count(disease) %>%
@@ -182,14 +173,13 @@ cancer_counts <- clinical %>%
 
 # get names of frequently occurring cancers
 frequent_cancers <- cancer_counts %>%
-  filter(n >= 500) %>%
-  select(disease) # last step not necessary
+  filter(n >= 500) 
 # extract data from cancers to keep
 birth_reduced <- birth_complete %>%
   filter(disease %in% frequent_cancers$disease)
 
 # save results to file in data/ named birth_reduced
-write.csv(birth_reduced, "data/birth_reduced.csv", row.names = FALSE)
+write_csv(birth_reduced, "data/birth_reduced.csv")
 
 ## Challenge: extract all tumor stages for which more than 200 cases (also check to see if there are any other missing/ambiguous data!)
 
