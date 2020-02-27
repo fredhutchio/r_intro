@@ -112,7 +112,7 @@ clinical_years <- clinical %>%
 clinical %>%
   mutate(years_to_death = days_to_death / 365,
          months_to_death = days_to_death / 30) %>%
-  head()
+  glimpse() # better option for tibble preview
 
 ## Challenge: extract only lung cancer patients (LUSC, from disease) and create a new column called total_cig representing an estimate of the total number of cigarettes smoked (use columns years smoked and cigarettes per day)
 
