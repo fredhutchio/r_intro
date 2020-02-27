@@ -127,25 +127,26 @@ clinical$tumor_stage # results in vector
 # can be ordered or unordered
 
 # create factor
-sex <- factor(c("male", "female", "female", "male"))
-levels(sex) # show levels
-nlevels(sex) # count levels
+test_data <- factor(c("placebo", "test_drug", "placebo", "known_drug"))
+levels(test_data) # show levels
+nlevels(test_data) # count levels
 # show current
-sex
+test_data
 # reorder (may be necessary if order matters)
-sex <- factor(sex, levels = c("male", "female"))
+test_data <- factor(test_data, levels = c("known_drug", "test_drug", "placebo"))
 # show reordered
-sex
+test_data
 
 # converting factors
-as.character(sex)
+as.numeric(test_data)
+# factors can also appear as numbers! not advisable, but useful to know if accidental
 
 # renaming factors
 plot(clinical$race) # plot data (may need to resize the window)
 race <- clinical$race # save data to object
 levels(race) # show levels of factor
 # rename factor
-levels(race)[2] <- "Asian"
+levels(race)[2] <- "Zsian"
 race # show revised data
 # replace race in data frame
 clinical$race <- race
