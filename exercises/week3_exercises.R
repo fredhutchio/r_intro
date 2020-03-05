@@ -21,7 +21,7 @@
 
 ## Challenge: extract only lung cancer patients (LUSC, from disease) and create a new column called total_cig representing an estimate of the total number of cigarettes smoked (use columns years smoked and cigarettes per day)
 
-## Challenge: create object called smoke_complete from clinical that contains no missing data for cigarettes per day or age at diagnosis 
+## Challenge: create object called smoke_complete from clinical that contains no missing data for cigarettes per day or age at diagnosis
 # Extra: how do you save resulting table to file?
 
 ## Challenge: create a new object called birth_complete that contains no missing data for year of birth or vital status
@@ -31,6 +31,10 @@
 
 #### Extra exercises ####
 
-# How many hispanic or latino individuals in clinical are not also white? What are their races?
+## How many hispanic or latino individuals in clinical are not also white? What are their races?
 
-# Create a new column for clinical called age_at_death that calculates this statistic (in years) from year_of_birth and year_of_death 
+## Create a new column for clinical called age_at_death that calculates this statistic (in years) from year_of_birth and year_of_death
+
+## dplyr includes several "helpers" that allows selection of columns meeting particular criteria (described on the first page of the dplyr cheatsheet near the top of the right hand column: https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf). Using one of these tools, extract all columns that include "diagnosis".
+
+## How many patients are hispanic or latino patients (column ethnicity), died after the year 2000 (year_of_death), and possess no missing data for cigarettes per day?

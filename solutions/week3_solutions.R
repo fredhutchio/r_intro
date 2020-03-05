@@ -28,7 +28,7 @@ clinical %>%
   filter(disease == "LUSC") %>%
   mutate(total_cig = years_smoked * cigarettes_per_day)
 
-## Challenge: create object called smoke_complete from clinical that contains no missing data for cigarettes per day or age at diagnosis 
+## Challenge: create object called smoke_complete from clinical that contains no missing data for cigarettes per day or age at diagnosis
 smoke_complete <- clinical %>%
   filter(!is.na(age_at_diagnosis)) %>%
   filter(!is.na(cigarettes_per_day))
@@ -55,13 +55,29 @@ tumor_reduced <- clinical %>%
 
 #### Extra exercises ####
 
-# How many hispanic or latino individuals in clinical are not also white? What are their races?
+## How many hispanic or latino individuals in clinical are not also white? What are their races?
 clinical %>%
   filter(race != "white") %>% # only non-white individuals
   filter(ethnicity == "hispanic or latino") %>% # only hispanic/latino
   group_by(race) %>% # group by other races
   tally() # count total for each race
 
-# Create a new column for clinical called age_at_death that calculates this statistic (in years) from year_of_birth and year_of_death 
+## Create a new column for clinical called age_at_death that calculates this statistic (in years) from year_of_birth and year_of_death
 clinical <- clinical %>%
   mutate(age = year_of_death - year_of_birth)
+
+## dplyr includes several "helpers" that allows selection of columns meeting particular criteria (described on the first page of the dplyr cheatsheet near the top of the right hand column: https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf). Using one of these tools, extract all columns that include "diagnosis".
+# preferred way
+clinical %>%
+  select(contains("diagnosis"))
+# also works, but only because in this example both columns end in "diagnosis"
+clinical %>%
+  select(ends_with("diagnosis"))
+
+## How many patients are hispanic or latino patients (column ethnicity), died after the year 2000 (year_of_death), and possess no missing data for cigarettes per day?
+clinical %>%
+  filter(ethnicity == "hispanic or latino") %>%
+  filter(year_of_death > 2000) %>%
+  filter(!is.na(cigarettes_per_day)) %>%
+  count()
+  
