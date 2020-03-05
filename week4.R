@@ -135,7 +135,7 @@ ggplot(yearly_counts) +
 # use previous scatterplot, but separate panels by disease
 ggplot(smoke_complete) +
   geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
-  facet_wrap(vars(tumor_stage))
+  facet_wrap(vars(disease))
 # wraps panels to make a square/rectangular plot
 
 # add a variable by leaving color but changing panels to other categorical data
