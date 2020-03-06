@@ -14,20 +14,20 @@ Copyright (c) Data Carpentry.
 
 ## Schedule
 
-* Week 1: R syntax, assigning objects, using functions
-* Week 2: Data types and structures; slicing and subsetting data
-* Week 3: Data manipulation with `dplyr`
-* Week 4: Data visualization in `ggplot2`
+* [Week 1](week1.md): R syntax, assigning objects, using functions
+* [Week 2](week2.md): Data types and structures; slicing and subsetting data
+* [Week 3](week3.md): Data manipulation with `dplyr`
+* [Week 4](week4.md): Data visualization in `ggplot2`
 
 ## Resources
 
 * Each week's materials are described in the R script prefaced with the number of the week. 
-* `0dataset.R` includes code used to derive the original data from the 
+* [`0dataset.R`](0dataset.R) includes code used to derive the original data from the 
 [National Cancer Institute's Genomic Data Commons](https://gdc.cancer.gov). `extra/` holds the original data files used for 
 download during the activities, as well as the intermediate data files for each cancer type directly downloaded from NCI-GDC
-* `exercises/` includes a file for each week representing both the aggregated in-class exercises as well as additional 
+* [`exercises/`](exercises/) includes a file for each week representing both the aggregated in-class exercises as well as additional 
 supplemental exercises for practice
-* `solutions/` includes the solutions for all files in `exercises/`
-* `instructors.md` includes information for instructors to facilitate teaching each lesson
-* `hackmdio.md` is an archive of the [interactive webpage](https://hackmd.io) used during lessons
+* [`solutions/`](solutions/) includes the solutions for all files in `exercises/`
+* [`instructors.md`](instructors.md) includes information for instructors to facilitate teaching each lesson
+* [`hackmdio.md`](hackio.md) is an archive of the [interactive webpage](https://hackmd.io) used during lessons
 * Information about use of R and RStudio at Fred Hutch is available on the [Data Science Wiki](https://sciwiki.fredhutch.org/scicomputing/software_R/)
