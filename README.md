@@ -14,9 +14,9 @@ Copyright (c) Data Carpentry.
 
 ## Schedule
 
-* [Week 1](week1.md): R syntax, assigning objects, using functions
-* [Week 2](week2.md): Data types and structures; slicing and subsetting data
-* [Week 3](week3.md): Data manipulation with `dplyr`
+* [Week 1](week1.R): R syntax, assigning objects, using functions
+* [Week 2](week2.R): Data types and structures; slicing and subsetting data
+* [Week 3](week3.R): Data manipulation with `dplyr`
 * [Week 4](week4.md): Data visualization in `ggplot2`
 
 ## Resources
