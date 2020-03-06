@@ -21,7 +21,7 @@ Copyright (c) Data Carpentry.
 
 ## Resources
 
-* Each week's materials are described in the R script prefaced with the number of the week. 
+* Each week's materials are described in the R markdown (`.Rmd`) and markdown (`.md`) files. The former should be edited to make changes to the material; the latter are automatically formatted to appear in GitHub. The directories for each week are also created for publishing on GitHub.
 * [`0dataset.R`](0dataset.R) includes code used to derive the original data from the 
 [National Cancer Institute's Genomic Data Commons](https://gdc.cancer.gov). `extra/` holds the original data files used for 
 download during the activities, as well as the intermediate data files for each cancer type directly downloaded from NCI-GDC

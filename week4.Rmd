@@ -1,5 +1,5 @@
 ---
-title: 'Week 4: Data Visualization'
+title: 'Introduction to R, Week 4: Data Visualization'
 output: github_document
 ---
 
@@ -203,7 +203,7 @@ The other arguments dictate the size (`width` and `height`) and resolution (`dpi
 
 **Challenge:**
 Create a scatterplot showing age at diagnosis vs years smoked with points colored by gender and appropriate axis labels 
-(solutions to Challenge exercises are available [here](https://github.com/fredhutchio/R_intro/blob/master/solutions/week4_solutions.R))
+(solutions [here](solutions/week4_solutions.R))
 
 ## Box and whisker plots
 
@@ -246,7 +246,8 @@ ggplot(smoke_complete) +
 
 **Challenge:** 
 Write code comments for each of the following lines of code. 
-What is the advantage of writing code like this?
+What is the advantage of writing code like this? 
+(solutions [here](solutions/week4_solutions.R))
 ```{r challenge}
 my_plot <- ggplot(smoke_complete, aes(x = vital_status, y = cigarettes_per_day)) 
 my_plot +
@@ -255,7 +256,8 @@ my_plot +
 ```
 
 **Challenge:** 
-Does the order of layers in the last plot matter? What happens if `jitter` is coded before `boxplot`?
+Does the order of layers in the last plot matter? What happens if `jitter` is coded before `boxplot`? 
+(solutions [here](solutions/week4_solutions.R))
 
 ## Time series data as line plots
 
@@ -302,10 +304,12 @@ Note that you don't have to include a separate argument for `group = disease` be
 
 **Challenge:** 
 Create a line plot for year of birth and number of patients with lines representing each gender.
-Hint: you'll need to manipulate the `birth_reduced` dataset first.
+Hint: you'll need to manipulate the `birth_reduced` dataset first. 
+(solutions [here](solutions/week4_solutions.R))
 
 **Challenge:** 
 How do you show differences in lines using dashes/dots instead of color?
+(solutions [here](solutions/week4_solutions.R))
 
 ## Faceting 
 
@@ -376,8 +380,8 @@ and manipulating data using tidyverse,
 you should be equipped to continue learning about R on your own and developing code to meet your research needs. 
 
 If you would like more practice, 
-the `exercises` directory contains additional tasks for practice.
-Answers to those and in-class questions are available in the `solutions` directory. 
+the [`exercises`](exercises/) directory contains additional tasks for practice.
+Answers to those and in-class questions are available in the [`solutions`](solutions/) directory. 
 
 If you are interested in learning more about ggplot:
 - Documentation for all `ggplot` features is available [here](https://ggplot2.tidyverse.org).
@@ -385,4 +389,4 @@ If you are interested in learning more about ggplot:
 
 This document is written in [R markdown](http://rmarkdown.rstudio.com), which is a method of formatting text, code, and output to create documents that are sharable with other people. 
 While this document is intended to serve as a reference for you to read while typing code into your own script,
-you may also be interested in modifying and running code in the original R markdown file (`week4.Rmd` in the GitHub repository).
+you may also be interested in modifying and running code in the original R markdown file ([`week4.Rmd`](week4.Rmd) in the GitHub repository).
