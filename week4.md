@@ -1,6 +1,8 @@
 Week 4: Data Visualization
 ================
 
+<!--week4.md is generated from week4.Rmd. Please edit that file -->
+
 ## Objectives
 
 So far in this course, we have:
@@ -10,9 +12,9 @@ So far in this course, we have:
   - loaded `tidyverse` and used its data science tools to manipulate and
     filter data
 
-This last session continues our explorations of tidyverse with a
-specific focus on data visualization. By the end of today’s session, you
-should be able to use `ggplot2` in R to:
+This last week’s material continues our explorations of tidyverse with a
+specific focus on data visualization. After completing this material,
+you should be able to use `ggplot2` in R to:
 
   - create and modify scatterplots and boxplots
   - represent time series data as line plots
@@ -24,22 +26,22 @@ should be able to use `ggplot2` in R to:
 Since we are continuing to work with data in `tidyverse`, we need to
 make sure all of our data and packages are available for use.
 
-Open your project in RStudio. Create a new script called `week4.R` and
-enter the following code with comments:
+Open your project in RStudio. Create a new script called `week4.R`, add
+a title, and enter the following code with comments:
 
 ``` r
 # load library
 library(tidyverse)
 ```
 
-    ## ── Attaching packages ──────────────────────────────────────────────────────── tidyverse 1.3.0 ──
+    ## ── Attaching packages ────────────────────────────────────────────── tidyverse 1.3.0 ──
 
     ## ✓ ggplot2 3.2.1     ✓ purrr   0.3.3
     ## ✓ tibble  2.1.3     ✓ dplyr   0.8.3
     ## ✓ tidyr   1.0.0     ✓ stringr 1.4.0
     ## ✓ readr   1.3.1     ✓ forcats 0.4.0
 
-    ## ── Conflicts ─────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+    ## ── Conflicts ───────────────────────────────────────────────── tidyverse_conflicts() ──
     ## x dplyr::filter() masks stats::filter()
     ## x dplyr::lag()    masks stats::lag()
 
@@ -97,22 +99,14 @@ file is not found, it is likely one of the following problems:
     materials from week 3 to filter the original clinical dataset and
     export these data.
 
-Once your data are imported appropriately, we can prepare for
-visualization:
-
-``` r
-# create directory for output
-dir.create("figures")
-```
-
-    ## Warning in dir.create("figures"): 'figures' already exists
+Once your data are imported appropriately, we can create a quick plot:
 
 ``` r
 # simple plot from base R from the smoke_complete dataset
 plot(x=smoke_complete$age_at_diagnosis, y=smoke_complete$cigarettes_per_day)
 ```
 
-![](week4_files/figure-gfm/fig_prep-1.png)<!-- -->
+![](week4_files/figure-gfm/base_plot-1.png)<!-- -->
 
 This plot is from base R. It gives you a general idea about the data,
 but isn’t very aesthetically pleasing. Our work today will focus on
@@ -260,18 +254,50 @@ ggplot(smoke_complete) +
 
 ![](week4_files/figure-gfm/title-1.png)<!-- -->
 
+Another common feature to customize involves the orientation and
+appearance of fonts. While this can be controlled by default themes like
+`theme_bw)`, you can also control different parts independently. For
+example, we can make a dramatic modification to all text in the plot:
+
+``` r
+ggplot(smoke_complete) +
+  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
+  theme(text = element_text(size = 16)) # increase all font size
+```
+
+![](week4_files/figure-gfm/text-1.png)<!-- -->
+
+Alternative, you can alter only one specific type of text:
+
+``` r
+ggplot(smoke_complete) +
+  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 0.5, vjust = 0.5)) # rotate and adjust x axis text
+```
+
+![](week4_files/figure-gfm/x_text-1.png)<!-- --> This rotates and
+adjusts the horizontal and vertical arrangement of the labels on only
+the x axis. Of course, you can also modify other text (y axis, axis
+labels, legend).
+
 After you’re satisfied with a plot, it’s likely you’d want to share it
 with other people or include in a manuscript or report.
+
+``` r
+# create directory for output
+dir.create("figures")
+```
 
 ``` r
 # save plot to file
 ggsave("figures/awesomePlot.jpg", width = 10, height = 10, dpi = 300)
 ```
 
-You can view your `figures/` directory to see the exported jpeg file.
-This command interprets the file format for export using the file suffix
-you specify. The other arguments dictate the size (`width` and `height`)
-and resolution (`dpi`).
+This automatically saves the last plot for which code was executed. You
+can view your `figures/` directory to see the exported jpeg file. This
+command interprets the file format for export using the file suffix you
+specify. The other arguments dictate the size (`width` and `height`) and
+resolution (`dpi`).
 
 **Challenge:** Create a scatterplot showing age at diagnosis vs years
 smoked with points colored by gender and appropriate axis labels
@@ -286,7 +312,7 @@ variable among categories.
 ``` r
 # creating a box and whisker plot
 ggplot(smoke_complete) +
-  geom_boxplot(aes(x=vital_status, y=cigarettes_per_day))
+  geom_boxplot(aes(x = vital_status, y = cigarettes_per_day))
 ```
 
 ![](week4_files/figure-gfm/box-1.png)<!-- -->
@@ -299,8 +325,8 @@ We can change the color similarly to scatterplots:
 ``` r
 # adding color
 ggplot(smoke_complete,
-       aes(x=vital_status, y=cigarettes_per_day)) +
-  geom_boxplot(aes(x=vital_status, y=cigarettes_per_day), color="tomato")
+       aes(x = vital_status, y = cigarettes_per_day)) +
+  geom_boxplot(aes(x = vital_status, y = cigarettes_per_day), color = "tomato")
 ```
 
 ![](week4_files/figure-gfm/box_color-1.png)<!-- -->
@@ -311,31 +337,204 @@ option would be to add colored points to a black box and whisker plot:
 ``` r
 # adding colored points to black box and whisker plot
 ggplot(smoke_complete) +
-  geom_boxplot(aes(x=vital_status, y=cigarettes_per_day)) +
-  geom_jitter(aes(x=vital_status, y=cigarettes_per_day), alpha = 0.3, color = "blue")
+  geom_boxplot(aes(x = vital_status, y = cigarettes_per_day)) +
+  geom_jitter(aes(x = vital_status, y = cigarettes_per_day), alpha = 0.3, color = "blue")
 ```
 
 ![](week4_files/figure-gfm/box_jitter-1.png)<!-- -->
 
-This plots the points on top of the original boxplot. Jitter references
+Jitter references a method of randomly offsetting points slightly to
+allow them to be seen and interpreted more easily.
 
-Option that eliminates duplicates
+This method, however, effectively duplicates some data points, since all
+points are shown with jitter and the boxplot shows outliers. You can use
+an option in `geom_boxplot` to suppress plotting of outliers:
+
+``` r
+# boxplot with both boxes and points
+ggplot(smoke_complete) +
+  geom_boxplot(aes(x = vital_status, y = cigarettes_per_day), outlier.shape = NA) +
+  geom_jitter(aes(x = vital_status, y = cigarettes_per_day), alpha = 0.3, color = "blue")
+```
+
+![](week4_files/figure-gfm/box_outlier-1.png)<!-- -->
 
 **Challenge:** Write code comments for each of the following lines of
 code. What is the advantage of writing code like
 this?
 
 ``` r
-my_plot <- ggplot(smoke_complete, aes(x=vital_status, y=cigarettes_per_day)) 
+my_plot <- ggplot(smoke_complete, aes(x = vital_status, y = cigarettes_per_day)) 
 my_plot +
-  geom_boxplot() +
+  geom_boxplot(outlier.shape = NA) +
   geom_jitter(alpha = 0.2, color = "purple")
 ```
 
 ![](week4_files/figure-gfm/challenge-1.png)<!-- -->
 
-Documentation for all `ggplot` features is available
-[here](https://ggplot2.tidyverse.org). RStudio also publishes a [ggplot
-cheat
+**Challenge:** Does the order of layers in the last plot matter? What
+happens if `jitter` is coded before `boxplot`?
+
+## Time series data as line plots
+
+So far we’ve been able to work with the data as it appears in our
+filtered dataset. Now that we’re moving on to time series plots (changes
+in variables over time), we need to manipulate the data. We’ll also be
+working with the `birth_reduced` dataset, which we created last week
+(primarily by removing all missing data for year of birth). We’d like to
+plot the number of individuals in the dataset born by year, so we need
+to first count our observations based on both disease and year of birth:
+
+``` r
+# count number of observations for each disease by year of birth
+yearly_counts <- birth_reduced %>%
+  count(year_of_birth, disease) 
+```
+
+We can plot these data as a single line:
+
+``` r
+# plot all counts by year
+ggplot(yearly_counts) +
+  geom_line(aes(x = year_of_birth, y = n))
+```
+
+![](week4_files/figure-gfm/time_plot-1.png)<!-- -->
+
+Here, `n` represents the number of patients born in each year, from the
+count table created above. The result isn’t very satisfying, because we
+also grouped by disease. We can improve this by plotting each disease on
+a separate line, which is more appropriate when there are multiple data
+points per year:
+
+``` r
+# plot one line per cancer type
+ggplot(yearly_counts) +
+  geom_line(aes(x = year_of_birth, y = n, 
+                group = disease))
+```
+
+![](week4_files/figure-gfm/time_disease-1.png)<!-- -->
+
+Moreover, we can color each line individually:
+
+``` r
+# color each line per cancer type
+ggplot(yearly_counts) +
+  geom_line(aes(x = year_of_birth, y = n, color = disease))
+```
+
+![](week4_files/figure-gfm/time_color-1.png)<!-- -->
+
+Note that you don’t have to include a separate argument for `group =
+disease` because grouping is assumed by `color = disease`.
+
+**Challenge:** Create a line plot for year of birth and number of
+patients with lines representing each gender. Hint: you’ll need to
+manipulate the `birth_reduced` dataset first.
+
+**Challenge:** How do you show differences in lines using dashes/dots
+instead of color?
+
+## Faceting
+
+So far we’ve been working on building single plots, which can show us
+two main variables (for the x and y axes) and additional variables using
+color (and potentially size/shape/etc). Scientific visualizations often
+need to compare among categories (e.g., control vs various treatments),
+which is generally clearer if those categories are presented in separate
+panels. ggplot provides this capacity through faceting.
+
+Let’s revisit the scatterplot we initially created, plotting age at
+diagnosis by cigarettes per day, with points colored by disease. We add
+an additional layer to create facets, or separate panels, for a given
+variable (in this case, the same variable being used to color points):
+
+``` r
+# use previous scatterplot, but separate panels by disease
+ggplot(smoke_complete) +
+  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
+  facet_wrap(vars(disease)) # wraps panels to make a square/rectangular plot
+```
+
+![](week4_files/figure-gfm/facet-1.png)<!-- -->
+
+`vars` is used for faceting in the same way that `aes()` is used for
+mapping: it is used to specify the variable to form facet groups.
+
+`facet_wrap` determines how many rows and columns of panels are needed
+to create the most square-shaped final plot possible. This becomes
+useful when there are many more
+categories:
+
+``` r
+# add a variable by leaving color but changing panels to other categorical data
+ggplot(smoke_complete) +
+  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
+  facet_wrap(vars(tumor_stage))
+```
+
+![](week4_files/figure-gfm/facet_wrap-1.png)<!-- -->
+
+In this case, we’re now visualizing an additional variable (tumor
+stage), in addition to the original three (age at diagnosis, cigarettes
+per day, and disease).
+
+If you want to control the specific layout of panels, you can use
+`facet_grid` instead of `facet_wrap`:
+
+``` r
+# scatterplots with panels for vital status in one row
+ggplot(smoke_complete) +
+  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
+  facet_grid(rows = vars(vital_status)) 
+```
+
+![](week4_files/figure-gfm/facet_grid-1.png)<!-- -->
+
+This method can also plot panels in columns.
+
+We may want to show interactions between two categorical variables, by
+arranging panels into rows according to one variable and columns
+according to another:
+
+``` r
+# add another variable using faceting
+ggplot(smoke_complete) +
+  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
+  facet_grid(rows = vars(vital_status), cols = vars(disease)) # arrange plots via variables in rows, columns
+```
+
+![](week4_files/figure-gfm/facet_both-1.png)<!-- -->
+
+Don’t forget to look at the help documentation (e.g., `?facet_grid`) to
+learn more about additional ways to customize your plots\!
+
+## Summary and additional resources
+
+This week’s material introduced you to ggplot as a tool for data
+visualization, allowing you to now create publication-quality images
+using R code. Combined with our previous explorations of the basic
+principles of R syntax, importing and extracting data with base R, and
+manipulating data using tidyverse, you should be equipped to continue
+learning about R on your own and developing code to meet your research
+needs.
+
+If you would like more practice, the `exercises` directory contains
+additional tasks for practice. Answers to those and in-class questions
+are available in the `solutions` directory.
+
+If you are interested in learning more about ggplot: - Documentation for
+all `ggplot` features is available
+[here](https://ggplot2.tidyverse.org). - RStudio also publishes a
+[ggplot cheat
 sheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
 that is really handy\!
+
+This document is written in [R markdown](http://rmarkdown.rstudio.com),
+which is a method of formatting text, code, and output to create
+documents that are sharable with other people. While this document is
+intended to serve as a reference for you to read while typing code into
+your own script, you may also be interested in modifying and running
+code in the original R markdown file (`week4.Rmd` in the GitHub
+repository).
