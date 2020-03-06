@@ -22,7 +22,6 @@
 
 ## Challenge: find way to change axes, like tick marks, labels, lines, etc (Google search!)
 
-## Challenge: improve one of the plots previously created today, by changing thickness of lines, name of legend, or color palette (http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/)
-
-
 #### Extra exercises ####
+
+## Challenge: improve one of the plots previously created today, by changing thickness of lines, name of legend, or color palette (http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/)

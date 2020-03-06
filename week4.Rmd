@@ -127,26 +127,30 @@ especially when points are overlapping.
 ```{r color}
 # change color of points
 ggplot(smoke_complete) +
-  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day), alpha = 0.1, color = "green")
+  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day), 
+             alpha = 0.1, color = "green")
 ```
 
 For more information on colors available, look [here](http://sape.inf.usi.ch/quick-reference/ggplot2/colour).
 
 We can also color points based on another (usually categorical) variable:
 ```{r var_color}
+# plot disease by color
 ggplot(smoke_complete) +
-  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease), alpha = 0.1)
+  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, 
+                 color = disease), 
+             alpha = 0.1)
 ```
+Note the location of `color=` with the other aesthetics,
+as well as the lack of quotation marks around `disease`.
 
-This automatically adds a legend as well.
-Why don't we need to include quotation marks around `disease`?
+Coloring by a variable automatically adds a legend as well.
 
 We can also change the general appearance of the plot (background colors and fonts):
 ```{r theme}
-# change background theme
 ggplot(smoke_complete) +
   geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease), alpha = 0.1) +
-  theme_bw()
+  theme_bw() # change background theme
 ```
 
 This adds another layer to our plot representing a black and white theme.
@@ -157,7 +161,6 @@ While the axes are currently sufficient,
 they aren't particularly attractive.
 We can add a title and replace the axis labels using `labs`:
 ```{r title}
-# add title and custom axis labels
 ggplot(smoke_complete) +
   geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease), alpha = 0.1) +
   labs(title = "Age at diagnosis vs cigarettes per day", # title
@@ -176,7 +179,7 @@ ggplot(smoke_complete) +
   theme(text = element_text(size = 16)) # increase all font size
 ```
 
-Alternative, you can alter only one specific type of text:
+Alternatively, you can alter only one specific type of text:
 ```{r x_text}
 ggplot(smoke_complete) +
   geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease)) +
@@ -198,8 +201,7 @@ ggsave("figures/awesomePlot.jpg", width = 10, height = 10, dpi = 300)
 
 This automatically saves the last plot for which code was executed. 
 You can view your `figures/` directory to see the exported jpeg file.
-This command interprets the file format for export using the file suffix you specify. 
-The other arguments dictate the size (`width` and `height`) and resolution (`dpi`).
+This command interprets the file format for export using the file suffix you specify. The other arguments dictate the size (`width` and `height`) and resolution (`dpi`).
 
 **Challenge:**
 Create a scatterplot showing age at diagnosis vs years smoked with points colored by gender and appropriate axis labels 
@@ -236,7 +238,6 @@ ggplot(smoke_complete) +
 Jitter references a method of randomly offsetting points slightly to allow them to be seen and interpreted more easily. 
 
 This method, however, effectively duplicates some data points, since all points are shown with jitter and the boxplot shows outliers. You can use an option in `geom_boxplot` to suppress plotting of outliers:
-
 ```{r box_outlier}
 # boxplot with both boxes and points
 ggplot(smoke_complete) +
@@ -369,6 +370,12 @@ ggplot(smoke_complete) +
 ```
 
 Don't forget to look at the help documentation (e.g., `?facet_grid`) to learn more about additional ways to customize your plots!
+
+**Challenge**: 
+Alter your last challenge plot of (birth year by number of patients) to show each gender in separate panels.
+
+**Challenge**: How do you change axis formatting, like tick marks and lines?
+Hint: You may want to use Google!
 
 ## Summary and additional resources
 
