@@ -1,0 +1,402 @@
+Introduction to R, Week 1: Functions and objects
+================
+
+<!--week1.md is generated from week1.Rmd. Please edit that file -->
+
+## Objectives
+
+Welcome to Introduction to R from fredhutch.io\! This course introduces
+you R by working through activities common in data science: importing,
+manipulating, and visualizing data.
+
+By the end of this week’s session, you should be able to:
+
+  - work within the RStudio interface to run and save R code in a
+    project
+  - understand basic R syntax to use functions and assign objects
+  - create and manipulate vectors and understand how R deals with
+    missing data
+
+## A brief orientation to RStudio
+
+motivation for R and RStudio
+
+  - large user community
+  - RStudio makes working with R much easier
+  - create new project in new directory (recommended to place on Desktop
+    or in Documents)
+  - create new R script, append with .R
+  - top left window: source (script), where commands are saved
+  - bottom left window: console, where commands are executed
+  - top right window: environment, showing what “things” are
+    “remembered” by R
+  - bottom right window: file browser, plots, packages, help
+  - many buttons and keyboard shortcuts available for working in RStudio
+  - workflow: testing commands in source, using keyboard shortcut to
+    send to console
+
+other keyboard shortcuts available in Help menu
+
+we have access to RStudio server through <http://rstudio.fhcrc.org/>
+
+## Using functions
+
+``` r
+# basic math
+4 + 5 
+```
+
+    ## [1] 9
+
+``` r
+# same thing works without spaces!
+4+5
+```
+
+    ## [1] 9
+
+Brief overview to style is [here](http://adv-r.had.co.nz/Style.html),
+more information is available in the [tidyverse style
+guide](https://style.tidyverse.org).
+
+``` r
+# using a function
+round(3.14)
+```
+
+    ## [1] 3
+
+``` r
+# finding help for a command
+args(round)
+```
+
+    ## function (x, digits = 0) 
+    ## NULL
+
+`?round`
+
+``` r
+# using a function with more arguments
+round(3.14, digits = 1)
+```
+
+    ## [1] 3.1
+
+``` r
+# can switch order of arguments (but need to name value!)
+round(digits = 1, x = 3.14)
+```
+
+    ## [1] 3.1
+
+**Challenge:** what does the function hist do? What are its main
+arguments? How did you determine this?
+
+To wrap R source files: Tools -\> Global Options -\> Code, check box for
+“Soft-wrap R source files”
+
+## Assigning objects
+
+``` r
+# assigning value to an object
+weight_kg <- 55 # <- is an assignment operator
+# recall object
+weight_kg
+```
+
+    ## [1] 55
+
+``` r
+# perform an operation on an object
+2.2 * weight_kg
+```
+
+    ## [1] 121
+
+``` r
+# assign a new value to object
+weight_kg <- 57.5
+```
+
+``` r
+# create new object from operation
+weight_lb <- 2.2 * weight_kg
+```
+
+``` r
+weight_kg <- 100
+```
+
+The order in which operations are executed matters\!
+
+``` r
+# remove object
+remove(weight_kg) # can also abbreviate to rm
+```
+
+**Challenge:** what is the value of each item at each step?
+
+``` r
+mass <- 47.5            # mass?
+width  <- 122             # width?
+mass <- mass * 2.0      # mass?
+width  <- width - 20        # width?
+mass_index <- mass/width  # mass_index?
+```
+
+## Vectors
+
+``` r
+# assign vector
+ages <- c(50, 55, 60, 65) # c for combine/concatenate
+# recall vector
+ages
+```
+
+    ## [1] 50 55 60 65
+
+``` r
+# how many things are in object?
+length(ages)
+```
+
+    ## [1] 4
+
+``` r
+# what type of object?
+class(ages)
+```
+
+    ## [1] "numeric"
+
+``` r
+# get overview of object
+str(ages)
+```
+
+    ##  num [1:4] 50 55 60 65
+
+``` r
+# performing functions with vectors
+mean(ages)
+```
+
+    ## [1] 57.5
+
+``` r
+range(ages)
+```
+
+    ## [1] 50 65
+
+``` r
+# vector of characters
+organs <- c("lung", "prostate", "breast")
+```
+
+**Challenge:**
+
+  - How many things are in organs?
+  - what type of data is organs?
+  - get overview of organs
+
+Data types in R
+
+  - “character” for strings, uses quotes
+  - “numeric” (or “double”)
+  - “integer” for integer numbers (e.g., 2L, the L indicates to R that
+    it’s an integer)
+  - “logical” for TRUE and FALSE (the boolean data type)
+  - “complex” to represent complex numbers with real and imaginary parts
+    (e.g., 1 + 4i)
+  - “raw” for bitstreams
+
+**Challenge:** what happens when each of the objects are created?
+
+``` r
+num_char <- c(1, 2, 3, "a")
+num_logical <- c(1, 2, 3, TRUE)
+char_logical <- c("a", "b", "c", TRUE)
+tricky <- c(1, 2, 3, "4")
+```
+
+## Working with vectors
+
+``` r
+# add a value at the end of vector
+ages <- c(ages, 90) # same combine function as creating vector
+```
+
+``` r
+# add value at the beginning
+ages <- c(30, ages)
+```
+
+``` r
+# subsetting vectors (index starts at 1)
+organs[2] # extracting single value
+```
+
+    ## [1] "prostate"
+
+``` r
+organs[c(1, 3)] # extracting multiple values
+```
+
+    ## [1] "lung"   "breast"
+
+``` r
+organs[-2] # excluding values
+```
+
+    ## [1] "lung"   "breast"
+
+``` r
+# conditional subsetting
+ages > 60 # identifies whether each part of vector meets condition
+```
+
+    ## [1] FALSE FALSE FALSE FALSE  TRUE  TRUE
+
+``` r
+ages[ages > 60] # extracts values which meet condition
+```
+
+    ## [1] 65 90
+
+``` r
+ages[ages == 60]
+```
+
+    ## [1] 60
+
+Can also include \<= and \>=
+
+``` r
+# combining conditions: OR
+ages[ages < 50 | ages > 60]
+```
+
+    ## [1] 30 65 90
+
+# can also combine condition with AND &, but be careful about vernacular
+
+# OR means value must meet one or more conditions
+
+# AND means value must meet both conditions
+
+``` r
+ages[ages < 50 & ages > 60] # not possible!
+```
+
+    ## numeric(0)
+
+**Challenge:** why does the following code return TRUE:
+
+``` r
+"four" > "five"
+```
+
+    ## [1] TRUE
+
+## Missing data
+
+``` r
+# create new vector with missing data indicated by NA
+heights <- c(2, 4, 4, NA, 6)
+```
+
+``` r
+# perform function on vector
+mean(heights) # what is wrong with this answer?
+```
+
+    ## [1] NA
+
+``` r
+max(heights)
+```
+
+    ## [1] NA
+
+``` r
+# add argument to remove NA
+mean(heights, na.rm = TRUE)
+```
+
+    ## [1] 4
+
+``` r
+max(heights, na.rm = TRUE)
+```
+
+    ## [1] 6
+
+Additional ways to remove missing data
+
+``` r
+# identify elements which are missing data
+is.na(heights)
+```
+
+    ## [1] FALSE FALSE FALSE  TRUE FALSE
+
+``` r
+# reverse the TRUE/FALSE
+!is.na(heights)
+```
+
+    ## [1]  TRUE  TRUE  TRUE FALSE  TRUE
+
+``` r
+# extract elements which are not missing values
+heights[!is.na(heights)]
+```
+
+    ## [1] 2 4 4 6
+
+``` r
+# remove incomplete cases
+na.omit(heights) # what is different about this result?
+```
+
+    ## [1] 2 4 4 6
+    ## attr(,"na.action")
+    ## [1] 4
+    ## attr(,"class")
+    ## [1] "omit"
+
+**Challenge:**
+
+``` r
+# create vector
+more_heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65, 64, 70, 63, 65)
+```
+
+  - remove NAs from `more_heights`
+  - calculate median
+  - identify how many elements from more\_heights are greater than 67
+    inches
+  - visualize data as a histogram (hint: function `hist`)
+
+## Wrapping up
+
+  - review objectives
+  - direct towards practice questions (linked in HackMD)
+  - preview next week’s objectives
+  - closing RStudio projects:
+  - don’t save .RData
+  - can change in Global Options
+
+If you would like more practice, the [`exercises`](exercises/) directory
+contains additional tasks for practice. Answers to those and in-class
+questions are available in the [`solutions`](solutions/) directory.
+
+This document is written in [R markdown](http://rmarkdown.rstudio.com),
+which is a method of formatting text, code, and output to create
+documents that are sharable with other people. While this document is
+intended to serve as a reference for you to read while typing code into
+your own script, you may also be interested in modifying and running
+code in the original R markdown file ([`week4.Rmd`](week4.Rmd) in the
+GitHub repository).
