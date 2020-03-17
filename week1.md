@@ -6,8 +6,18 @@ Introduction to R, Week 1: Functions and objects
 ## Objectives
 
 Welcome to Introduction to R from fredhutch.io\! This course introduces
-you R by working through activities common in data science: importing,
+you R by working through common tasks in data science: importing,
 manipulating, and visualizing data.
+
+R is a statistical and programming computer language widely used for a
+variety of applications. For more information about R and ways to use it
+at Fred Hutch, please see the [R and
+RStudio](https://sciwiki.fredhutch.org/scicomputing/software_R/) entry
+for the Fred Hutch Biomedical Data Science Wiki.
+
+Before proceeding with these training materials, please ensure you have
+installed both R and RStudio as described
+[here](http://www.fredhutch.io/software/#r-and-rstudio).
 
 By the end of this week’s session, you should be able to:
 
@@ -19,27 +29,82 @@ By the end of this week’s session, you should be able to:
 
 ## A brief orientation to RStudio
 
-motivation for R and RStudio
+[R](https://cran.r-project.org) is a statistical programming language,
+while [RStudio](https://rstudio.com) is an integrated development
+environment (IDE) that allows you to code in R more easily. RStudio
+possesses many features that you may find useful in your work. We’ll
+highlight a few of the most common and useful parts for our introductory
+course.
 
-  - large user community
-  - RStudio makes working with R much easier
-  - create new project in new directory (recommended to place on Desktop
-    or in Documents)
-  - create new R script, append with .R
-  - top left window: source (script), where commands are saved
-  - bottom left window: console, where commands are executed
-  - top right window: environment, showing what “things” are
-    “remembered” by R
-  - bottom right window: file browser, plots, packages, help
-  - many buttons and keyboard shortcuts available for working in RStudio
-  - workflow: testing commands in source, using keyboard shortcut to
-    send to console
+The first time you open RStudio, you’ll see three panels, or windows.
 
-other keyboard shortcuts available in Help menu
+1.  The panel on the left is the console, where you can run R code. The
+    text printed in this panel is basic information about R and the
+    version you’re running. You can test how the console can be used to
+    run code by entering `3 + 4` and then pressing enter. This instructs
+    your computer to read, interpret, and execute the command, then
+    print the result (`7`) to the screen, and show a right facing arrow
+    (`>`), indicating it is ready to accept additional code.
+2.  The panel on the top right is the environment. It’s empty right now,
+    but we’ll learn more about this later in this lesson.
+3.  The panel on the lower right shows the files present in your working
+    directory. Currently, that’s probably your `Home` directory, which
+    includes folders like `Documents` and `Downloads`.
 
-we have access to RStudio server through <http://rstudio.fhcrc.org/>
+You may notice that some of the panels possess additional tabs. We’ll
+explore some of these features in this class, but for more information:
+
+`Help -> Cheetsheets -> RStudio IDE cheat sheet`
+
+This PDF includes an overview of each of the things you see in RStudio,
+as well as explanations of how you can use them. It may be intimidating
+right now, but will come in handy as you gain experience with R.
+
+One of the ways that RStudio makes working in R easier is by allowing
+you to create R projects. You can think of a project as a discrete unit
+of work, such as a chapter of a thesis/dissertation, analysis for a
+manuscript, or a monthly report. We recommend organizing your code,
+data, and other associated files as projects, which allows you to keep
+all parts of an analysis together for easier access.
+
+We’ll be creating a project to use for the duration of this course.
+Create a new project in RStudio:
+
+  - `File -> New Project`
+  - Choose `New Directory`, then `New Project`
+  - name your project `intro_r` and save it somewhere on your computer
+    you’ll be able to find easily later (we recommend your Desktop or
+    Documents)
+  - Click `Create project`
+
+After your RStudio screen reloads, note two things:
+
+  - The file browser in the lower right panel will now show the contents
+    of a new folder, `intro_r`, that was created as a part of your
+    RStudio project.
+  - The console window will show the path, or location in your computer,
+    for your project directory. This is important later in class, when
+    this path will be required to locate data for analysis.
+
+Now we’re ready to create a new R script:
+
+  - `File -> New File -> R Script`
+  - Save the new file as `week1.R`. By default, RStudio will save this
+    in your project directory.
+
+This R script is a text file that we’ll use to save code we learn in
+this class. We’ll refer to this window as the script or source window.
+
+By convention, a script should include a title at the top, so type the
+following on the first line:
+
+`# Introduction to R: Week 1`
 
 ## Using functions
+
+Now that we have a project and new script set up, we’re ready to begin
+adding code. Skipping a line after the title, type the following on the
+next two lines:
 
 ``` r
 # basic math
@@ -48,33 +113,90 @@ we have access to RStudio server through <http://rstudio.fhcrc.org/>
 
     ## [1] 9
 
+The first line in that example is a code comment. It is not interpreted
+by R, but is a human-readable explanation of the code that follows. This
+is also how we included a title in our script. In R, anything to the
+right of one or more `#` symbols represents a comment.
+
+The code above is the same mathematical operation we executed earlier.
+If we wanted to re-run this command, we have two options:
+
+1.  Copy and paste the code into the Console
+2.  Use the `Run` button at the top of the script window
+3.  Use the keyboard shortcut: `Ctrl + Enter`
+
+The third option is the most efficient, especially as your coding skills
+progress. With your cursor on the line with `4 + 5`, hold down the
+`Control` key and press `Enter`. You’ll see the code and answer both
+appear in the Console. A few things to note about this keyboard
+shortcut:
+
+  - It doesn’t matter where your cursor is on the line of code; the
+    entire line will be executed with the keyboard shortcut.
+  - If there isn’t code on the line where your cursor is located,
+    RStudio will attempt to execute following lines.
+
+In practice, a script should represent code you are developing in R, and
+you should only save the code that you know functions. For this class,
+we’ll be including notes about things we learn as comments.
+
+> `Ctrl + Enter` is the only keyboard shortcut we emphasize in this
+> course, but there are many others available. You can view them on the
+> second page of the cheat sheet linked above, or by going to `Help ->
+> Keyboard Shortcuts Help`.
+
+If you were looking carefully, you may have noticed that the `+` in the
+previous code example had spaces on either side, separating it from the
+numbers. You may wonder whether spaces matter in how the code is
+interpreted. As with many questions in coding, the easiest way to assess
+whether removing the spaces matters is to simply try it:
+
 ``` r
-# same thing works without spaces!
+# same thing without spaces!
 4+5
 ```
 
     ## [1] 9
 
-Brief overview to style is [here](http://adv-r.had.co.nz/Style.html),
-more information is available in the [tidyverse style
-guide](https://style.tidyverse.org).
+Given the output, we can conclude that spaces do not matter in how the
+code functions. In this case, however, spaces represent a common
+convention in formatting R code, as it makes it easier for human eyes to
+read. In general, you should attempt to replicate the code presented
+here as closely as possible, and we’ll do our best to note when
+something is required as opposed to convention.
+
+> Code convention and style doesn’t make or break the ability of your
+> code to run, but it does affect whether other people can easily
+> understand your code. A brief overview of common code style is
+> available [here](http://adv-r.had.co.nz/Style.html), and more
+> information is available in the [tidyverse style
+> guide](https://style.tidyverse.org).
+
+So far, we’ve used R with mathematical symbols representing operations.
+R possesses the ability to perform much more complex tasks using
+functions, which is a pre-defined set of code that allows you to repeat
+particular actions.
+
+R includes functions for other types of math:
 
 ``` r
-# using a function
+# using a function: rounding numbers
 round(3.14)
 ```
 
     ## [1] 3
 
-``` r
-# finding help for a command
-args(round)
-```
+In this case, `round` is the function, and `3.14` is the number (data)
+being manipulated by the funcion. A word followed by parentheses is a
+common format for functions in R.
 
-    ## function (x, digits = 0) 
-    ## NULL
+> Syntax refers to the rules that dictate how combinations of words and
+> symbols are interpreted in a language (either programming or human).
 
-`?round`
+Additional options for modifying functions are called arguments, and are
+included with the data between parentheses. For the `round` function, a
+common modification would be the number of decimal points output. You
+can change this detail by adding a comma and then additional argument:
 
 ``` r
 # using a function with more arguments
@@ -83,18 +205,48 @@ round(3.14, digits = 1)
 
     ## [1] 3.1
 
+If you would like to learn more about how this function works, you can
+go to the bottom righthand panel and click on the `Help` tab. Enter the
+name of a function into the search box and hit `Enter`. Alternatively,
+execute the following in your console:
+
+`?round`
+
+This is a shortcut for performing the same task in the panel described
+above.
+
+R help documentation tends to be formatted very consistently. At the
+very top, you’ll see the name of the function. Below that, a short title
+indicates the purpose of the function, along with a more verbose
+“Description”. “Usage” tells you how to use the function in code, and
+“Arguments” details each of the optiond in “Usage”. The rest of the
+subheadings should be self-explanatory.
+
+In the example above, there is no label associated with `3.14`. In
+reality, `3.14` represents `x`, so the command can actually be written
+as `round(x = 3.14, digits = 1)`. Even if not explicitly stated, the
+computer assumes that `3.14` represents `x` if the number is the first
+thing that appears after the opening parenthesis.
+
+If you define both arguments explicitly, you can switch the order in
+which they appear:
+
 ``` r
-# can switch order of arguments (but need to name value!)
+# can switch order of arguments
 round(digits = 1, x = 3.14)
 ```
 
     ## [1] 3.1
 
-**Challenge:** what does the function hist do? What are its main
-arguments? How did you determine this?
+If you remove the labels (`round(1, 3.14)`), the answer is different,
+because R is assuming you mean `round(x = 1, digits = 3.14)`.
 
-To wrap R source files: Tools -\> Global Options -\> Code, check box for
-“Soft-wrap R source files”
+> You may notice that boxes pop up as you type. These represent
+> RStudio’s attempts to guess what you’re typing and share additional
+> options.
+
+**Challenge:** what does the function `hist` do? What are its main
+arguments? How did you determine this?
 
 ## Assigning objects
 
@@ -389,14 +541,22 @@ more_heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72
   - don’t save .RData
   - can change in Global Options
 
-If you would like more practice, the [`exercises`](exercises/) directory
-contains additional tasks for practice. Answers to those and in-class
-questions are available in the [`solutions`](solutions/) directory.
+## Errata
 
-This document is written in [R markdown](http://rmarkdown.rstudio.com),
-which is a method of formatting text, code, and output to create
-documents that are sharable with other people. While this document is
-intended to serve as a reference for you to read while typing code into
-your own script, you may also be interested in modifying and running
-code in the original R markdown file ([`week4.Rmd`](week4.Rmd) in the
-GitHub repository).
+**If you need to reopen your project after closing RStudio,** you should
+use the `File -> Open Project` and navigate to the location of your
+project directory. Alternatively, using your operating system’s file
+browser, double click on the `r_intro.Rrpoj` file.
+
+**If you would like more practice,** the [`exercises`](exercises/)
+directory contains additional tasks for practice. Answers to those and
+in-class questions are available in the [`solutions`](solutions/)
+directory.
+
+**This document is written in [R
+markdown](http://rmarkdown.rstudio.com),** which is a method of
+formatting text, code, and output to create documents that are sharable
+with other people. While this document is intended to serve as a
+reference for you to read while typing code into your own script, you
+may also be interested in modifying and running code in the original R
+markdown file ([`week4.Rmd`](week4.Rmd) in the GitHub repository).
