@@ -45,7 +45,7 @@ where you can run R code.
 The text printed in this panel is basic information about R and the version you're running. 
 You can test how the console can be used to run code by entering `3 + 4` and then pressing enter.
 This instructs your computer to read, interpret, and execute the command, 
-then print the result (`7`) to the screen,
+then print the result (`7`) to the Console,
 and show a right facing arrow (`>`), 
 indicating it is ready to accept additional code.
 2. The panel on the top right is the environment. 
@@ -248,38 +248,118 @@ because R is assuming you mean `round(x = 1, digits = 3.14)`.
 
 ## Assigning objects
 
+So far, we've been performing tasks with R that require us to input the data manually.
+One of the strengths of using a programming language is the ability to assign data to objects, or variables. 
+
+> Objects in R are referred to as variables in other programming languages. 
+> We'll use these terms synonymously for this course, 
+> though in other contexts there may be differences between them.
+> Please see the [R documentation on objects](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects) 
+> for more information.
+
+Like in math, a variable is a word used to represent a value (in this case, a number):
+
 ```{r}
 # assigning value to an object
-weight_kg <- 55 # <- is an assignment operator
+weight_kg <- 55
+```
+
+In the code above, 
+`<-` is the assignment operator:
+it instructs R to recognize `weight_kg` as representing the value 55.
+You can think of this code as referencing "55 goes into weight_kg."
+
+After executing the code above,
+you'll see the object appear in the Environment panel on the upper right hand side of the RStudio screen.
+The name of the object will appear on the left, 
+with the value assigned to it on the right.
+
+The name you assign to objects can be arbitrary,
+but we recommend using names that are relatively short and meaningful 
+in the context of the values they represent.
+It's useful to also know other general limitations on object names:
+- case sensitive
+- cannot start with numbers
+- avoid other common words in R (e.g., function names, like `mean`)
+- avoid dots (underscores are a good alternative, such as the example above)
+
+Extra information on object names is available in the [tidyverse style guide](https://style.tidyverse.org/syntax.html#object-names).
+
+Now that the object has been assigned,
+we can reference that object by executing its name:
+
+```{r}
 # recall object
 weight_kg
 ```
 
+Thus, the value `weight_kg` represents is printed to the Console.
+
+We can also perform operations on an object:
+
 ```{r}
-# perform an operation on an object
+# multiple an object (convert kg to lb)
 2.2 * weight_kg
 ```
 
-```{r}
-# assign a new value to object
-weight_kg <- 57.5
-```
+In that case, the answer is printed to the Console.
+You can also assign the output to a new object:
 
 ```{r}
-# create new object from operation
+# assign weight conversion to object
 weight_lb <- 2.2 * weight_kg
 ```
 
+After executing that line of code,
+you'll see `weight_lb` appear in the Environment panel, too.
+
+Now let's explore what happens if we assign a value to an existing object name:
+
 ```{r}
+# reassign new value to an object
 weight_kg <- 100
 ```
 
-The order in which operations are executed matters!
+Note that the value assigned to `weight_kg` as it appears in the Environment panel 
+changes after executing the code above.
+
+Has the value assigned to `weight_lb` also changed?
+You might expect this would be the case,
+since this value is derived from `weight_kg`.
+However, `weight_kg` remains the same as previously assigned.
+If you want the value for `weight_kg` to reflect the new value for `weight_kg`,
+you will need to again execute `weight_lb <- 2.2 * weight_kg`.
+This should help you understand an important concept in writing code:
+the order in which you execute lines of code matters!
+In the context of the material we cover in this class,
+we'll continue saving code in scripts so we have a record of both
+the relevant commands and the appropriate order for execution.
+
+> You can think of the names of objects like sticky notes.
+> You have the option to place the sticky note (name) on any value you choose.
+> You can pick up the sticky note and place it on another value,
+> but you need to explicitly tell R when you want values assigned to certain objects.
+
+At this point in the lesson,
+it's common to have accidentally created an object with a typo in the name.
+If this has happened to you, 
+it's useful to know how to remove the object to keep your environment up to date.
+Here, we'll practice removing an object with something everyone has available:
 
 ```{r}
 # remove object
-remove(weight_kg) # can also abbreviate to rm
+remove(weight_lb) 
 ```
+
+This removes the specified object from the environment,
+which you can confirm by its absence in the Environment panel.
+You can also abbreviate this command to `rm(weight_lb)`.
+
+> You can clear the entire environment using the button at the top of the Environment panel
+> with a picture of a broom. 
+> This may seem extreme, 
+> but don't worry! 
+> We can re-create all the work we've already done by executing each line of code again.
 
 **Challenge:** what is the value of each item at each step?
 ```{r}
@@ -338,7 +418,7 @@ Data types in R
 - "complex" to represent complex numbers with real and imaginary parts (e.g., 1 + 4i)
 - "raw" for bitstreams
 
-**Challenge:** what happens when each of the objects are created?
+**Challenge:** what happens when each of the following objects are created?
 
 ```{r}
 num_char <- c(1, 2, 3, "a")

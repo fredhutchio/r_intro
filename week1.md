@@ -250,17 +250,50 @@ arguments? How did you determine this?
 
 ## Assigning objects
 
+So far, we’ve been performing tasks with R that require us to input the
+data manually. One of the strengths of using a programming language is
+the ability to assign data to objects, or variables.
+
+> Objects in R are referred to as variables in other programming
+> languages. We’ll use these terms synonymously for this course, though
+> in other contexts there may be differences between them. Please see
+> the [R documentation on
+> objects](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects)
+> for more information.
+
+Like in math, a variable is a word used to represent a value (in this
+case, a number):
+
 ``` r
 # assigning value to an object
-weight_kg <- 55 # <- is an assignment operator
+weight_kg <- 55
+```
+
+In the code above, `<-` is the assignment operator: it instructs R to
+recognize `weight_kg` as representing the value 55. You can think of
+this code as referencing “55 going into weight\_kg.”
+
+> The name you assign to objects can be arbitarary, but we recommend
+> using names that are relatively short and meaningful in the context of
+> the values they represent. It’s useful to also know other limitations
+> on object names: - case sensitive - cannot start with numbers -
+
+Now that the object has been assigned, we can reference that object by
+executing its name:
+
+``` r
 # recall object
 weight_kg
 ```
 
     ## [1] 55
 
+Thus, the value `weight_kg` represents is printed to the screen.
+
+We can also perform operations on an object:
+
 ``` r
-# perform an operation on an object
+# multiple an object (convert kg to lb)
 2.2 * weight_kg
 ```
 
@@ -364,7 +397,8 @@ Data types in R
     (e.g., 1 + 4i)
   - “raw” for bitstreams
 
-**Challenge:** what happens when each of the objects are created?
+**Challenge:** what happens when each of the following objects are
+created?
 
 ``` r
 num_char <- c(1, 2, 3, "a")
