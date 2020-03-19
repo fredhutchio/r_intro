@@ -43,7 +43,7 @@ The first time you open RStudio, you’ll see three panels, or windows.
     version you’re running. You can test how the console can be used to
     run code by entering `3 + 4` and then pressing enter. This instructs
     your computer to read, interpret, and execute the command, then
-    print the result (`7`) to the screen, and show a right facing arrow
+    print the result (`7`) to the Console, and show a right facing arrow
     (`>`), indicating it is ready to accept additional code.
 2.  The panel on the top right is the environment. It’s empty right now,
     but we’ll learn more about this later in this lesson.
@@ -271,12 +271,23 @@ weight_kg <- 55
 
 In the code above, `<-` is the assignment operator: it instructs R to
 recognize `weight_kg` as representing the value 55. You can think of
-this code as referencing “55 going into weight\_kg.”
+this code as referencing “55 goes into weight\_kg.”
 
-> The name you assign to objects can be arbitarary, but we recommend
-> using names that are relatively short and meaningful in the context of
-> the values they represent. It’s useful to also know other limitations
-> on object names: - case sensitive - cannot start with numbers -
+After executing the code above, you’ll see the object appear in the
+Environment panel on the upper right hand side of the RStudio screen.
+The name of the object will appear on the left, with the value assigned
+to it on the right.
+
+The name you assign to objects can be arbitrary, but we recommend using
+names that are relatively short and meaningful in the context of the
+values they represent. It’s useful to also know other general
+limitations on object names: - case sensitive - cannot start with
+numbers - avoid other common words in R (e.g., function names, like
+`mean`) - avoid dots (underscores are a good alternative, such as the
+example above)
+
+Extra information on object names is available in the [tidyverse style
+guide](https://style.tidyverse.org/syntax.html#object-names).
 
 Now that the object has been assigned, we can reference that object by
 executing its name:
@@ -288,7 +299,7 @@ weight_kg
 
     ## [1] 55
 
-Thus, the value `weight_kg` represents is printed to the screen.
+Thus, the value `weight_kg` represents is printed to the Console.
 
 We can also perform operations on an object:
 
@@ -299,26 +310,64 @@ We can also perform operations on an object:
 
     ## [1] 121
 
-``` r
-# assign a new value to object
-weight_kg <- 57.5
-```
+In that case, the answer is printed to the Console. You can also assign
+the output to a new object:
 
 ``` r
-# create new object from operation
+# assign weight conversion to object
 weight_lb <- 2.2 * weight_kg
 ```
 
+After executing that line of code, you’ll see `weight_lb` appear in the
+Environment panel, too.
+
+Now let’s explore what happens if we assign a value to an existing
+object name:
+
 ``` r
+# reassign new value to an object
 weight_kg <- 100
 ```
 
-The order in which operations are executed matters\!
+Note that the value assigned to `weight_kg` as it appears in the
+Environment panel changes after executing the code above.
+
+Has the value assigned to `weight_lb` also changed? You might expect
+this would be the case, since this value is derived from `weight_kg`.
+However, `weight_kg` remains the same as previously assigned. If you
+want the value for `weight_kg` to reflect the new value for `weight_kg`,
+you will need to again execute `weight_lb <- 2.2 * weight_kg`. This
+should help you understand an important concept in writing code: the
+order in which you execute lines of code matters\! In the context of the
+material we cover in this class, we’ll continue saving code in scripts
+so we have a record of both the relevant commands and the appropriate
+order for execution.
+
+> You can think of the names of objects like sticky notes. You have the
+> option to place the sticky note (name) on any value you choose. You
+> can pick up the sticky note and place it on another value, but you
+> need to explicitly tell R when you want values assigned to certain
+> objects.
+
+At this point in the lesson, it’s common to have accidentally created an
+object with a typo in the name. If this has happened to you, it’s useful
+to know how to remove the object to keep your environment up to date.
+Here, we’ll practice removing an object with something everyone has
+available:
 
 ``` r
 # remove object
-remove(weight_kg) # can also abbreviate to rm
+remove(weight_lb) 
 ```
+
+This removes the specified object from the environment, which you can
+confirm by its absence in the Environment panel. You can also abbreviate
+this command to `rm(weight_lb)`.
+
+> You can clear the entire environment using the button at the top of
+> the Environment panel with a picture of a broom. This may seem
+> extreme, but don’t worry\! We can re-create all the work we’ve already
+> done by executing each line of code again.
 
 **Challenge:** what is the value of each item at each step?
 
@@ -332,14 +381,27 @@ mass_index <- mass/width  # mass_index?
 
 ## Vectors
 
+So far, we’ve worked with objects containing a single value. For most
+research purposes, however, it’s more realistic to work with a
+collection of values. We can do that in R by creating a vector with
+multiple values:
+
 ``` r
 # assign vector
-ages <- c(50, 55, 60, 65) # c for combine/concatenate
+ages <- c(50, 55, 60, 65) 
 # recall vector
 ages
 ```
 
     ## [1] 50 55 60 65
+
+The `c` function used above stands for “combine,” meaning all of the
+values in parentheses after it are included in the object. This is
+reflected in the Console, where recalling the value shows all four
+values, and the Environment window, where multiple values are shown on
+the right side.
+
+We can use functions to ask basic questions about our vector, including:
 
 ``` r
 # how many things are in object?
@@ -362,6 +424,15 @@ str(ages)
 
     ##  num [1:4] 50 55 60 65
 
+In the code above, we learn that there are four items (values) in our
+vector, and that the vector is composed of numeric data. `str` stands
+for “structure”, and shows us a general overview of the data, including
+a preview of the first few values (or all the values, as is the case in
+our small vector).
+
+Even more useful is the ability to use functions to perform more complex
+tasks for us, such as statistical summaries:
+
 ``` r
 # performing functions with vectors
 mean(ages)
@@ -375,30 +446,40 @@ range(ages)
 
     ## [1] 50 65
 
+Although we’ve focused on numbers as data so far, it’s also possible for
+data to be words instead:
+
 ``` r
-# vector of characters
+# vector of body parts
 organs <- c("lung", "prostate", "breast")
 ```
 
-**Challenge:**
+**Challenge:** Please answer the following questions about `organs`: -
+How many values are in `organs`? - What type of data is `organs`? - get
+overview of `organs`
 
-  - How many things are in organs?
-  - what type of data is organs?
-  - get overview of organs
+We’ve seen data as numbers and letters so far. In fact, R has all of the
+following basic data types:
 
-Data types in R
+  - **character**: sometimes referred to as string data, tend to be
+    surrounded by quotes
+  - **numeric**: real or decimal numbers, sometimes referred to as
+    “double”
+  - integer: a subset of numeric in which numbers are stored as integers
+  - **logical**: Boolean data (TRUE and FALSE)
+  - complex: complex numbers with real and imaginary parts (e.g., 1 +
+    4i)
+  - raw: bytes of data (machine readable, but not human readable)
 
-  - “character” for strings, uses quotes
-  - “numeric” (or “double”)
-  - “integer” for integer numbers (e.g., 2L, the L indicates to R that
-    it’s an integer)
-  - “logical” for TRUE and FALSE (the boolean data type)
-  - “complex” to represent complex numbers with real and imaginary parts
-    (e.g., 1 + 4i)
-  - “raw” for bitstreams
+The three data types listed in **bold** above are the focus of this
+class. R automatically interprets the type as you enter data. Most data
+analysis activities will not require you to understand specific details
+of the other data types.
 
-**Challenge:** what happens when each of the following objects are
-created?
+**Challenge:** R tends to handle interpreting data types in the
+background of most operations. The following code is designed to cause
+some unexpected results in R. What is unusual about each of the
+following objects?
 
 ``` r
 num_char <- c(1, 2, 3, "a")
@@ -407,78 +488,134 @@ char_logical <- c("a", "b", "c", TRUE)
 tricky <- c(1, 2, 3, "4")
 ```
 
-## Working with vectors
+## Manipulating vectors
+
+In the section above, we learned to create and assess vectors, and use
+functions to calculate statistics across the values. We can also modify
+a vector after it’s been created:
 
 ``` r
-# add a value at the end of vector
-ages <- c(ages, 90) # same combine function as creating vector
+# add a value to end of vector
+ages <- c(ages, 90) 
 ```
+
+The example above uses the same combine (`c`) function as when we
+initially created the vector. We can also use it to add values to the
+beginning of the vector:
 
 ``` r
 # add value at the beginning
 ages <- c(30, ages)
 ```
 
+If we wanted to extract, or subset, a portion of a vector:
+
 ``` r
-# subsetting vectors (index starts at 1)
-organs[2] # extracting single value
+# extracting second value
+organs[2] 
 ```
 
     ## [1] "prostate"
 
+In general, square brackets (`[ ]`) in R refer to a part of an object.
+The number 2 indicates the second value in the vector.
+
+> The index position of a value is the number associated with its
+> location in a collection. In the example above, note that R indexes
+> (or counts) starting with 1. This is different from many other
+> programming languages, like Python, which use 0-based indexing.
+
+In R, a minus sign (`-`) can be used to negate a value’s position, which
+excludes that value from the output:
+
 ``` r
-organs[c(1, 3)] # extracting multiple values
+# excluding second value
+organs[-2] 
 ```
 
     ## [1] "lung"   "breast"
 
+You may be tempted to try extracting multiple values at a time by
+separating the numbers with commas (e.g., `organs[2,3]`). This will
+result in a rather cryptic error, which we’ll talk more about next time.
+For now, remember that you can use the combine function to indicate
+multiple values for subsetting:
+
 ``` r
-organs[-2] # excluding values
+# extracting first and third values
+organs[c(1, 3)] 
 ```
 
     ## [1] "lung"   "breast"
 
+We’ll switch back to our numerical `ages` object to explore another
+common need when subsetting: extracting values based on a condition (or
+criteria). For numerical data, we’re often interested in extracting data
+that are in a certain range of values. It is tempting to try something
+like:
+
 ``` r
-# conditional subsetting
-ages > 60 # identifies whether each part of vector meets condition
+ages > 60 
 ```
 
     ## [1] FALSE FALSE FALSE FALSE  TRUE  TRUE
 
+The result, however, is less than satisfying: you receive either TRUE or
+FALSE for each data point, depending on whether it meets the condition
+or not.
+
+While that information isn’t quite what we expected, we can combine it
+with the subsetting syntax we learned earlier:
+
 ``` r
-ages[ages > 60] # extracts values which meet condition
+# extracts values which meet condition
+ages[ages > 60] 
 ```
 
     ## [1] 65 90
 
+If we read the code above from the inside out (a common strategy for R),
+the code above identifies which values meet the criteria, and the square
+brackets are used to extract this from the original vector.
+
+If you want to extract items exactly equal to a specific value, you need
+to use two equal signs:
+
 ``` r
+# extracts values numerically equivalent values
 ages[ages == 60]
 ```
 
     ## [1] 60
 
-Can also include \<= and \>=
+You can think of this as a way to differentiate mathematical equivalency
+from specification of parameters for arguments (such as `digits = 1` for
+`round()`, as we learned earlier). R also allows you to use \<= and \>=.
+
+Finally, it’s common to need to combine conditions while subsetting. For
+example, you may be interested in only values between 50 and 60:
 
 ``` r
-# combining conditions: OR
+# ages greater than 50 OR less than 60
 ages[ages < 50 | ages > 60]
 ```
 
     ## [1] 30 65 90
 
-# can also combine condition with AND &, but be careful about vernacular
+In the code above, the vertical pipe `|` is interpreted to mean “or,” so
+each data point can belong to either the category on the left of the
+pipe, the category on the right, or both. In other words, the vertical
+pipe means any single value being evaluated must meet one or both
+conditions.
 
-# OR means value must meet one or more conditions
+You can also combine conditions with `&`, but this means any single
+value must meet **both** conditions. Be careful when thinking about
+human language as opposed to programming languges. When speaking, we
+would say “extract all values between 50 and 60.” If you put that
+specifically into code, though, it would result in `ages < 50 & ages
+> 60`, which is mathematically impossible\!
 
-# AND means value must meet both conditions
-
-``` r
-ages[ages < 50 & ages > 60] # not possible!
-```
-
-    ## numeric(0)
-
-**Challenge:** why does the following code return TRUE:
+**Challenge:** What does the following code return, and why?
 
 ``` r
 "four" > "five"
