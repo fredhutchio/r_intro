@@ -55,6 +55,8 @@ library(tidyverse)
 dir.create("data") # R will complain if this already exists
 download.file("https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.csv", "data/clinical.csv")
 
+# To wrap R source files: Tools -> Global Options -> Code, check box for "Soft-wrap R source files"
+
 # reading in data and saving to object
 clinical <- read_csv("data/clinical.csv")
 # note differences with import last week!

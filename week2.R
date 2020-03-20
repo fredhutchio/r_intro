@@ -18,6 +18,9 @@
 #### Reading in data ####
 
 # review opening project in RStudio
+#`File -> Open Project` and navigate to the location of your project directory.
+#Alternatively, using your operating system's file browser,
+#double click on the `r_intro.Rrpoj` file.
 
 # project organization
 # remind that folders and directories are synonymous
