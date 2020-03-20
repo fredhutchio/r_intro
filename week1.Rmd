@@ -99,6 +99,8 @@ By default, RStudio will save this in your project directory.
 
 This R script is a text file that we'll use to save code we learn in this class.
 We'll refer to this window as the script or source window.
+Remember to save this file periodically to retain the record of the work you're doing,
+so you can re-execute the code later if necessary.
 
 By convention, 
 a script should include a title at the top,
@@ -116,6 +118,11 @@ type the following on the next two lines:
 # basic math
 4 + 5 
 ```
+
+The first of the two boxes above represents the code you execute.
+The second box (prefaced with `##`) shows the output you should expect.
+The `[1]` in the second box means there is one item (in this case, `9`)
+present in the output.
 
 The first line in that example is a code comment.
 It is not interpreted by R, 
@@ -159,7 +166,7 @@ As with many questions in coding,
 the easiest way to assess whether removing the spaces matters is to simply try it:
 
 ```{r}
-# same thing without spaces!
+# same code as above, without spaces
 4+5
 ```
 
@@ -278,6 +285,7 @@ The name you assign to objects can be arbitrary,
 but we recommend using names that are relatively short and meaningful 
 in the context of the values they represent.
 It's useful to also know other general limitations on object names:
+
 - case sensitive
 - cannot start with numbers
 - avoid other common words in R (e.g., function names, like `mean`)
@@ -427,7 +435,13 @@ it's also possible for data to be words instead:
 organs <- c("lung", "prostate", "breast")
 ```
 
+In this case,
+each word is encased in quotation marks,
+indicating these are character data,
+rather than object names.
+
 **Challenge:** Please answer the following questions about `organs`:
+
 - How many values are in `organs`?
 - What type of data is `organs`?
 - get overview of `organs`
@@ -571,11 +585,12 @@ must meet one or both conditions.
 
 You can also combine conditions with `&`,
 but this means any single value must meet **both** conditions.
-Be careful when thinking about human language as opposed to programming languges.
-When speaking, we would say "extract all values between 50 and 60."
-If you put that specifically into code, though, 
-it would result in `ages < 50 & ages > 60`,
-which is mathematically impossible! 
+
+> Be careful when thinking about human language as opposed to programming languges.
+> When speaking, 
+> we is reasonable to say "extract all values below 50 and above 60."
+> While this makes sense in context,
+> it is mathematically impossible for a value to be both less than 50 AND greater than 60.
 
 **Challenge:** What does the following code return, and why? 
 ```{r}
@@ -584,16 +599,34 @@ which is mathematically impossible!
 
 ## Missing data
 
+Most of the data we encounter has missing data.
+Programming languages interpret and handle missing data in different ways,
+so it's worth taking time to dig into how R approaches this issue.
+
+First, we'll create a new vector some values indicated as missing data:
+
 ```{r}
-# create new vector with missing data indicated by NA
+# create a vector with missing data
 heights <- c(2, 4, 4, NA, 6)
 ```
 
+In the vector above, `NA` represents a value where data are missing. 
+You may notice `NA` is not encased in quotation marks.
+This is because R interprets that set of characters specifically as missing data.
+
+Next, let's investigate how this vector responds to use in functions:
+
 ```{r}
-# perform function on vector
-mean(heights) # what is wrong with this answer?
+# calculate mean and max on vector with missing data
+mean(heights)
 max(heights)
 ```
+
+The answer isn't very satisfying;
+we're told the answer is missing data because of
+the presence of a single missing value in the vector.
+This is a slightly frustrating default behavior for some common statistical functions in R,
+but we can add an argument to ignore missing data and calculate across the remaining values:
 
 ```{r}
 # add argument to remove NA
@@ -601,54 +634,113 @@ mean(heights, na.rm = TRUE)
 max(heights, na.rm = TRUE)
 ```
 
-Additional ways to remove missing data
+In the code above, 
+the `na.rm` parameter controls whether missing data are removed.
+The default (which you can also reference in the help documentation)
+is for missing values to be included (`na.rm = FALSE`). 
+By switching to `na.rm = TRUE`,
+we're instructing R to remove missing data.
+
+The example above retains missing values in the dataset while performing calculations.
+There are certainly cases in which you may want 
+to specifically filter out the missing data from your dataset.
+
+The function `is.na` allows you to ask whether elements in a dataset are missing:
 
 ```{r}
 # identify elements which are missing data
 is.na(heights)
 ```
 
+If a resulting value is `TRUE`, 
+the value is missing.
+If `FALSE`, the data point is present.
+We can invert the resulting logical data using an exclamation point:
+
 ```{r}
 # reverse the TRUE/FALSE
 !is.na(heights)
 ```
+
+This means missing data are now listed as `FALSE`,
+with data present as `TRUE`.
+
+As with the conditional statements we learned earlier, 
+we can combine these results with our square bracket subsetting syntax 
+to extract only values that are present in the dataset:
 
 ```{r}
 # extract elements which are not missing values
 heights[!is.na(heights)]
 ```
 
+Alternatively, you can use a function specifically designed for excluding (omitting) missing data:
+
 ```{r}
 # remove incomplete cases
-na.omit(heights) # what is different about this result?
+na.omit(heights) 
 ```
 
-**Challenge:**
+You may notice that this output looks slightly different than the previous example. 
+This is because `na.omit` includes output about attributes, 
+or information about the data.
+The output vectors are the same for the last two code examples,
+even though the way they appear in the Console seems different.
+
+> If you aren't sure how to interpret the output in your console, 
+> sometimes it helps to assign the output to an object. 
+> You can then inspect the data type, structure, etc 
+> to ensure you're getting the answer you expected.
+
+**Challenge:** Complete the following tasks after creating this vector (Note: there are multiple solutions): 
 ```{r}
 # create vector
 more_heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65, 64, 70, 63, 65)
 ```
 
-- remove NAs from `more_heights`
-- calculate median
-- identify how many elements from more_heights are greater than 67 inches
-- visualize data as a histogram (hint: function `hist`)
+- Remove NAs 
+- Calculate the median
+- Identify how many elements in the vector are greater than 67 inches
+- Visualize the data as a histogram (hint: function `hist`)
 
 ## Wrapping up
 
-- review objectives
-- direct towards practice questions (linked in HackMD)
-- preview next week's objectives
-- closing RStudio projects:
--   don't save .RData
--   can change in Global Options
+In this session, 
+we spent some time getting to know the RStudio interface for writing and running R code,
+explored the basic principles of R syntax for functions and object assignment, 
+and worked with vectors to understand how R handles missing data.
 
-## Errata
+In the next session, 
+we'll learn to import spreadsheet-style data that are more similar to what you'd like handle for a research project, 
+and practice accessing different portions of the data.
+
+**When you are done working in RStudio,** 
+you should save any changes to your R script.
+When you close RStudio, 
+you will see a pop-up box asking if you want to save your workspace image.
+We do not recommend saving your project in this way,
+as it creates extra (hidden) files on your computer
+that can be unweildy in size and inadvertently retain sensitive data 
+(if you're working with PHI or other private data).
+If you've saved your R script, 
+you can recreate all the work you've accomplished.
+For more information on this topic, 
+please review [this explanation](https://www.stat.ubc.ca/~jenny/STAT545A/block01_basicsWorkspaceWorkingDirProject.html#workspace-.rdata).
+If you would like to prevent this box from popping up in the future,
+we recommend:
+
+- Go to `Tools -> Global Options` 
+(Global means for all projects; 
+you can also change this for each project using `Project Options`)
+- In the drop-down menu next to `Save workspace to ~/.Rdata on exit`
+select `Never`.
 
 **If you need to reopen your project after closing RStudio,**
 you should use the `File -> Open Project` and navigate to the location of your project directory.
 Alternatively, using your operating system's file browser,
 double click on the `r_intro.Rrpoj` file.
+
+## Errata
 
 **If you would like more practice,** 
 the [`exercises`](exercises/) directory contains additional tasks for practice.
