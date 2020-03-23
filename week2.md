@@ -58,58 +58,107 @@ The code above has two arguments, both encompassed in quotation marks:
 first, you indicate where the data can be found online. Second, you
 indicate where R should store a copy of the file on your own computer.
 
-Notice that the URL ends in `clinical.csv`. This means
+The output from that command may look alarming, but it represents
+information confirming it worked. You can click on the `data` folder to
+ensure the file is now present.
 
-getting the right URL for downloading data this way can be tricky: only
-raw data, not extra HTML\!
+Notice that the URL above ends in `clinical.csv`, which is also the name
+we used to save the file on our computers. If you click on the URL and
+view it in a web browser, the format isn’t particularly easy for us to
+understand. You can also view the file by clicking on it in the lower
+right hand panel, then selecting “View File.”
 
-  - columns: variables
-  - rows: observations
-  - one piece of info per cell
+> The option to “Import Dataset” you see after clicking on the file
+> references some additional tools present in RStudio that can assist
+> with various kinds of data import. Because this requires installing
+> additional software, complete exploration of these options is outside
+> the scop of this class. For more information, check out [this
+> article](https://support.rstudio.com/hc/en-us/articles/218611977-Importing-Data-with-RStudio).
 
-csv: comma separated values (other things besides commas can have
-separators too though)
+The data we’ve downloaded are in csv format, which stands for “comma
+separated values.” This means the data are organized into rows and
+columns, with columns separated by commas.
+
+These data are arranged in a tidy format, meaning each row represents an
+observation, and each column represents a variable (piece of data for
+each observation). Moreover, only one piece of data is entered in each
+cell.
+
+Now that the data are downloaded, we can import the data and assign to
+an object:
 
 ``` r
-# reading in data and saving to object
+# import data and assign to object
 clinical <- read.csv("data/clinical.csv")
 ```
 
-click on `clinical` object in environment, equivalent to executing
-`View(clinical)` in Console
+You should see `clinical` appear in the Environment window on the upper
+right panel in RStudio. If you click on `clinical` there, a new tab will
+appear next to your R script in the Source window.
 
-tab appears next to script in Source window
+> Clicking on the name of an object in the Environment window is a
+> shortcut for running `View(clinical)`; you’ll see this code appear in
+> the Console after clicking.
 
-About these data:
+Now that we have the data imported and assigned to an object, we can
+take some time to explore the data we’ll be using for the rest of this
+course:
 
-  - describe where data came from and give brief overview of metadata:
-    TCGA clinical data from different cancer types
-  - show script used to produce data
-  - note data in tab can’t be edited\!
-  - note missing data
+  - These data are clinical cancer data from the [National Cancer
+    Institute’s Genomic Data Commons](https://gdc.cancer.gov),
+    specifically from The Cancer Genome Atlas, or
+    [TCGA](https://www.cancer.gov/about-nci/organization/ccg/research/structural-genomics/tcga).
+  - Each row represents a patient, and each column represents
+    information about demographics (race, age at diagnosis, etc) and
+    disease (e.g., cancer type).
+  - The data were downloaded and aggregated using an R script, which you
+    can view in the [GitHub repository for this
+    course](https://github.com/fredhutchio/R_intro/blob/master/0dataset.R).
 
-Check out the help documentation for `read.csv` for more information on
-importing data in formats other than csv.
+The function we used to import the data is one of a family of commands
+used to import the data. Check out the help documentation for `read.csv`
+for more options for importing data.
 
-# read.csv is one of a family of commands to import data
+> You can also import data directly into R using `read.csv`, using
+> `clinical <-
+> read.csv("https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.csv")`.
+> For these lessons, we model downloading and importing in two steps, so
+> you retain a copy of the data on your computer. This reflects how
+> you’re likely to import your own data, as well as recommended
+> practice for retaining data used in an analysis (since data online may
+> be updated).
 
 **Challenge:** Download, inspect, and import the following data files.
+The URL for each sample dataset is included along with a name to assign
+to the object. (Hint: you can use the same function as above, but may
+need to update the `sep =` parameter)
 
-  - example1:
-    <https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.tsv>
-  - example2:
-    <https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.txt>
+  - URL:
+    <https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.tsv>,
+    object name: `example1`
+  - URL:
+    <https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.txt>,
+    object name: `example2`
 
-can also read into R straight from URL using read.csv, but better
-practice to download data file for reference
+Importing data can be tricky and frustrating, However, if you can’t get
+your data into R, you can’t do anything to analyze or visualize it. It’s
+worth understanding how to do it effectively to save you time and energy
+later.
 
 ## Data frames
 
-data frames: tabular/spreadsheet data table where columns are vectors
-all of same length columns contain single type of data (characters,
-integers, factors)
+Now that we have data imported and available, we can start to inspect
+the data more closely.
 
-inspect data frames
+These data have been interpreted by R to be a data frame, which is a
+data structure (way of organizing data) that is analogous to tabular or
+spreadsheet style data. By definition, a data frame is a table made of
+vectors (columns) of all the same length. As we learned in our last
+session, a vector needs to include all of the same type of data (e.g.,
+character, numeric). A data frame, however, can include vectors
+(columns) of different data types.
+
+To learn more about this data frame, we’ll first explore its dimensions:
 
 ``` r
 # assess size of data frame
@@ -118,9 +167,14 @@ dim(clinical)
 
     ## [1] 6832   20
 
+The output reflects the number of rows first (6832), then the number of
+columns (20).
+
+We can also preview the content by showing the first few rows:
+
 ``` r
-# preview content
-head(clinical) # show first few rows
+# preview first few rows
+head(clinical) 
 ```
 
     ##   primary_diagnosis tumor_stage age_at_diagnosis vital_status morphology
@@ -159,49 +213,42 @@ head(clinical) # show first few rows
     ## 5          2004        TCGA-18-3410    LUSC
     ## 6            NA        TCGA-18-3411    LUSC
 
+The default number of rows shown is six. You can specify a different
+number using the `n =` parameter, demonstrated below using `tail`, which
+shows the last few rows
+
 ``` r
-tail(clinical) # show last few rows
+# show last three rows
+tail(clinical, n = 3) 
 ```
 
     ##      primary_diagnosis  tumor_stage age_at_diagnosis vital_status morphology
-    ## 6827               C55 not reported            21908        alive     8950/3
-    ## 6828               C55 not reported            32871         dead     8950/3
-    ## 6829             C54.1 not reported            23323         dead     8950/3
     ## 6830             C54.1 not reported            27326         dead     8950/3
     ## 6831             C54.1 not reported            24781        alive     8950/3
     ## 6832             C54.1 not reported            20318        alive     8950/3
     ##      days_to_death state tissue_or_organ_of_origin days_to_birth
-    ## 6827            NA  live                     C55.9        -21908
-    ## 6828           167  live                     C55.9        -32871
-    ## 6829           442  live                     C54.1        -23323
     ## 6830           949  live                     C54.1        -27326
     ## 6831            NA  live                     C54.1        -24781
     ## 6832            NA  live                     C54.1        -20318
     ##      site_of_resection_or_biopsy days_to_last_follow_up cigarettes_per_day
-    ## 6827                       C55.9                     81                 NA
-    ## 6828                       C55.9                     NA                 NA
-    ## 6829                       C54.1                     NA                 NA
     ## 6830                       C54.1                     NA                 NA
     ## 6831                       C54.1                    587                 NA
     ## 6832                       C54.1                      0                 NA
     ##      years_smoked gender year_of_birth  race              ethnicity
-    ## 6827           NA female          1953 white not hispanic or latino
-    ## 6828           NA female          1917 white           not reported
-    ## 6829           NA female          1948 white not hispanic or latino
     ## 6830           NA female          1932 white not hispanic or latino
     ## 6831           NA female          1945 white not hispanic or latino
     ## 6832           NA female          1957 asian not hispanic or latino
     ##      year_of_death bcr_patient_barcode disease
-    ## 6827            NA        TCGA-NF-A4X2     UCS
-    ## 6828          2007        TCGA-NF-A5CP     UCS
-    ## 6829          2012        TCGA-NG-A4VU     UCS
     ## 6830          2008        TCGA-NG-A4VW     UCS
     ## 6831            NA        TCGA-QM-A5NM     UCS
     ## 6832            NA        TCGA-QN-A5NN     UCS
 
+We often need to reference the names of columns, so it’s useful to print
+only those to the screen:
+
 ``` r
-# view names
-names(clinical) # column names
+# view column names
+names(clinical) 
 ```
 
     ##  [1] "primary_diagnosis"           "tumor_stage"                
@@ -218,8 +265,12 @@ names(clinical) # column names
 It’s also possible to view row names using`rownames(clinical)`, but our
 data only possess numbers for row names so it’s not very informative.
 
+As we learned last time, we can use `str` to provide a general overview
+of the object:
+
 ``` r
-str(clinical) # structure of object
+# show overview of object
+str(clinical) 
 ```
 
     ## 'data.frame':    6832 obs. of  20 variables:
@@ -244,8 +295,22 @@ str(clinical) # structure of object
     ##  $ bcr_patient_barcode        : Factor w/ 6289 levels "TCGA-02-0001",..: 414 415 416 417 418 419 420 421 422 423 ...
     ##  $ disease                    : Factor w/ 15 levels "BLCA","BRCA",..: 7 7 7 7 7 7 7 7 7 7 ...
 
+The output provided includes:
+
+  - data structure: data frame
+  - dimensions: 6832 rows and 20 columns
+  - column-by-column information: each prefaced with a `$`, and includes
+    the column name, data type (num, int, Factor)
+
+> Factors are how character data are interpreted by R in data frames.
+> We’ll talk more about working with factors at the end of this
+> lesson.
+
+Finally, we can also examine basic summary statistics for each column:
+
 ``` r
-summary(clinical) # summary statistics by column
+# provide summary statistics for each column
+summary(clinical) 
 ```
 
     ##  primary_diagnosis       tumor_stage   age_at_diagnosis       vital_status 
@@ -297,8 +362,11 @@ summary(clinical) # summary statistics by column
     ##  Max.   :2014   (Other)     :6783     PRAD   : 500  
     ##  NA's   :5266   NA's        :  39     (Other):2533
 
-**Challenge**: What is the class, how many rows/columns, how many types
-of cancer (disease)?
+For numeric data (such as `year_of_death`), this output includes common
+statistics like median and mean, as well as the number of rows
+(patients) with missing data (as `NA`). For factors (character data,
+such as `disease`), you’re given a count of the number of times the top
+six most frequent factors (categories) occur in the data frame.
 
 ## Subsetting data frames
 
@@ -7239,34 +7307,3 @@ str(example\_df2)
 # preview next week’s objectives
 
 # install tools for next week: install.packages(“tidyverse”)
-
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax
-for authoring HTML, PDF, and MS Word documents. For more details on
-using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that
-includes both content as well as the output of any embedded R code
-chunks within the document. You can embed an R code chunk like this:
-
-``` r
-summary(cars)
-```
-
-    ##      speed           dist       
-    ##  Min.   : 4.0   Min.   :  2.00  
-    ##  1st Qu.:12.0   1st Qu.: 26.00  
-    ##  Median :15.0   Median : 36.00  
-    ##  Mean   :15.4   Mean   : 42.98  
-    ##  3rd Qu.:19.0   3rd Qu.: 56.00  
-    ##  Max.   :25.0   Max.   :120.00
-
-## Including Plots
-
-You can also embed plots, for example:
-
-![](week2_files/figure-gfm/pressure-1.png)<!-- -->
-
-Note that the `echo = FALSE` parameter was added to the code chunk to
-prevent printing of the R code that generated the plot.

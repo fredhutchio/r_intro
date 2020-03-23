@@ -115,61 +115,120 @@ a new tab will appear next to your R script in the Source window.
 > is a shortcut for running `View(clinical)`;
 > you'll see this code appear in the Console after clicking.
 
-About these data:
+Now that we have the data imported and assigned to an object,
+we can take some time to explore the data we'll be using for the rest of this course:
 
-- describe where data came from and give brief overview of metadata: TCGA clinical data from different cancer types
-- show script used to produce data
-- note data in tab can't be edited!
-- note missing data
+- These data are clinical cancer data from the [National Cancer Institute's Genomic Data Commons](https://gdc.cancer.gov),
+specifically from The Cancer Genome Atlas, or [TCGA](https://www.cancer.gov/about-nci/organization/ccg/research/structural-genomics/tcga).
+- Each row represents a patient, 
+and each column represents information about demographics (race, age at diagnosis, etc) 
+and disease (e.g., cancer type).
+- The data were downloaded and aggregated using an R script,
+which you can view in the [GitHub repository for this course](https://github.com/fredhutchio/R_intro/blob/master/0dataset.R).
 
-Check out the help documentation for `read.csv` for more information on importing data in formats other than csv.
+The function we used to import the data is one of a family of commands used to import the data. 
+Check out the help documentation for `read.csv` for more options for importing data.
 
-read.csv is one of a family of commands to import data
+> You can also import data directly into R using `read.csv`,
+> using `clinical <- read.csv("https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.csv")`.
+> For these lessons, we model downloading and importing in two steps, 
+> so you retain a copy of the data on your computer. 
+> This reflects how you're likely to import your own data,
+> as well as recommended practice for retaining data used in an analysis (since data online may be updated).
 
-**Challenge:** Download, inspect, and import the following data files.
+**Challenge:** Download, inspect, and import the following data files. 
+The URL for each sample dataset is included along with a name to assign to the object.
+(Hint: you can use the same function as above,
+but may need to update the `sep = ` parameter)
 
+- URL: https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.tsv, object name: `example1`
+- URL: https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.txt, object name: `example2`
 
-- example1: https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.tsv
-- example2: https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.txt
-
-can also read into R straight from URL using read.csv, but better practice to download data file for reference
+Importing data can be tricky and frustrating, 
+However, if you can't get your data into R, 
+you can't do anything to analyze or visualize it.
+It's worth understanding how to do it effectively to save you time and energy later.
 
 ## Data frames 
 
-data frames: tabular/spreadsheet data
-table where columns are vectors all of same length
-columns contain single type of data (characters, integers, factors)
+Now that we have data imported and available,
+we can start to inspect the data more closely. 
 
-inspect data frames
+These data have been interpreted by R to be a data frame,
+which is a data structure (way of organizing data) that is analogous to tabular or spreadsheet style data.
+By definition, a data frame is a table made of vectors (columns) of all the same length.
+As we learned in our last session,
+a vector needs to include all of the same type of data (e.g., character, numeric).
+A data frame, however, 
+can include vectors (columns) of different data types.
+
+To learn more about this data frame,
+we'll first explore its dimensions:
 
 ```{r}
 # assess size of data frame
 dim(clinical)
-# preview content
-head(clinical) # show first few rows
-tail(clinical) # show last few rows
 ```
+The output reflects the number of rows first (6832), 
+then the number of columns (20).
 
+We can also preview the content by showing the first few rows:
 
 ```{r}
-# view names
-names(clinical) # column names
+# preview first few rows
+head(clinical) 
+```
+
+The default number of rows shown is six.
+You can specify a different number using the `n = ` parameter,
+demonstrated below using `tail`, 
+which shows the last few rows
+
+```{r}
+# show last three rows
+tail(clinical, n = 3) 
+```
+
+We often need to reference the names of columns,
+so it's useful to print only those to the screen:
+
+```{r}
+# view column names
+names(clinical) 
 ```
 
 It's also possible to view row names using`rownames(clinical)`,
 but our data only possess numbers for row names so it's not very informative.
 
-```{r}
-str(clinical) # structure of object
-```
-
+As we learned last time, 
+we can use `str` to provide a general overview of the object:
 
 ```{r}
-summary(clinical) # summary statistics by column
+# show overview of object
+str(clinical) 
+```
+The output provided includes:
+
+- data structure: data frame
+- dimensions: 6832 rows and 20 columns
+- column-by-column information: each prefaced with a `$`, and includes the column name, data type (num, int, Factor)
+
+> Factors are how character data are interpreted by R in data frames.
+> We'll talk more about working with factors at the end of this lesson.
+
+Finally, we can also examine basic summary statistics for each column:
+
+```{r}
+# provide summary statistics for each column
+summary(clinical) 
 ```
 
-
-**Challenge**: What is the class, how many rows/columns, how many types of cancer (disease)?
+For numeric data (such as `year_of_death`),
+this output includes common statistics like median and mean,
+as well as the number of rows (patients) with missing data (as `NA`).
+For factors (character data, such as `disease`), 
+you're given a count of the number of times the top six most frequent factors (categories) 
+occur in the data frame.
 
 ## Subsetting data frames
 
