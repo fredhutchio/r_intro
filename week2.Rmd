@@ -11,60 +11,109 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Objectives
 
-Last week, 
-we got started
+In the last section, 
+we learned some fundamental principles of R and how to work in RStudio.
 
-This week,
-we'll continue by:
+In this session,
+we'll continue our introduction to R by working with a large dataset 
+that more closely resembles that which you may encounter while analyzing data for research. 
+By the end of this session, you should be able to:
 
-- importing data into R
-- working with data frames
-- subsetting data frames
-- manipulating factors
+- import spreadsheet-style data into R as a data frame
+- extract portions of data from a data frame
+- manipulate factors (categorical data)
 
-## Loading spreadsheet-style data
+## Importing spreadsheet-style data into R
 
-review opening project in RStudio
+Open RStudio, and we'll check to make sure you're ready to start work again.
+You can check to see if you're working in your project directory 
+by looking at the top of the Console. 
+You should see the path (location in your computer)
+for the project directory you created last time 
+(e.g., `~/Desktop/intro_r`).
 
-`File -> Open Project` and navigate to the location of your project directory.
+If you do not see the path to your project directory,
+go to `File -> Open Project` and navigate to the location of your project directory.
 Alternatively, using your operating system's file browser,
 double click on the `r_intro.Rrpoj` file.
 
-# project organization
-# tie into the strength of RStudio projects
-# directories for: data, figures, intermediate or results
+In the last session, we recommended organizing your work in 
+directories (folders) according to projects.
+While a thorough discussion of project organization is beyond the scope of this class,
+we will continue to model best practices by creating a directory to hold our data:
 
-```{r}
+```{r eval=FALSE}
 # make a directory
 dir.create("data")
 ```
 
-describe use of buttons to make new directories
+```{r include=FALSE}
+# code above not run, so this hidden code creates the directory if necessary
+if (!dir.exists("data")) {dir.create("data")}
+```
 
-overview of tidy data principles
+You should see the new directory appear in your project directory, 
+in the lower right panel in RStudio. 
+There is also a button in that panel you can use to create a new folder,
+but including the code to perform this task makes other people 
+(and yourself) able to reproduce your work more easily.
 
-- columns: variables
-- rows: observations
-- one piece of info per cell
-
-csv: comma separated values (other things besides commas can have separators too though)
+Now that we have a place to store our data,
+we can go ahead and download the dataset:
 
 ```{r}
 # download data from url
 download.file("https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.csv", "data/clinical.csv")
 ```
 
-getting the right URL for downloading data this way can be tricky: only raw data, not extra HTML!
+The code above has two arguments, 
+both encompassed in quotation marks:
+first, you indicate where the data can be found online. 
+Second, you indicate where R should store a copy of the file on your own computer.
+
+The output from that command may look alarming,
+but it represents information confirming it worked.
+You can click on the `data` folder to ensure the file is now present.
+
+Notice that the URL above ends in `clinical.csv`,
+which is also the name we used to save the file on our computers.
+If you click on the URL and view it in a web browser, 
+the format isn't particularly easy for us to understand.
+You can also view the file by clicking on it in the lower right hand panel,
+then selecting "View File."
+
+> The option to "Import Dataset" you see after clicking on the file 
+> references some additional tools present in RStudio 
+> that can assist with various kinds of data import.
+> Because this requires installing additional software, 
+> complete exploration of these options is outside the scop of this class.
+> For more information, check out [this article](https://support.rstudio.com/hc/en-us/articles/218611977-Importing-Data-with-RStudio).
+
+The data we've downloaded are in csv format, 
+which stands for "comma separated values."
+This means the data are organized into rows and columns,
+with columns separated by commas.
+
+These data are arranged in a tidy format,
+meaning each row represents an observation, 
+and each column represents a variable (piece of data for each observation).
+Moreover, only one piece of data is entered in each cell. 
+
+Now that the data are downloaded, 
+we can import the data and assign to an object:
 
 ```{r}
-# reading in data and saving to object
+# import data and assign to object
 clinical <- read.csv("data/clinical.csv")
 ```
 
-click on `clinical` object in environment, 
-equivalent to executing `View(clinical)` in Console
+You should see `clinical` appear in the Environment window on the upper right panel in RStudio.
+If you click on `clinical` there,
+a new tab will appear next to your R script in the Source window.
 
-tab appears next to script in Source window
+> Clicking on the name of an object in the Environment window 
+> is a shortcut for running `View(clinical)`;
+> you'll see this code appear in the Console after clicking.
 
 About these data:
 
@@ -75,9 +124,10 @@ About these data:
 
 Check out the help documentation for `read.csv` for more information on importing data in formats other than csv.
 
-# read.csv is one of a family of commands to import data
+read.csv is one of a family of commands to import data
 
-**Challenge:** download, inspect, and import the following data files (smaller set of data from same clinical set)
+**Challenge:** Download, inspect, and import the following data files.
+
 
 - example1: https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.tsv
 - example2: https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.txt
@@ -236,24 +286,3 @@ str(example_df2)
 # direct towards practice questions (linked in HackMD)
 # preview next week's objectives
 # install tools for next week: install.packages("tidyverse")
-
-
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
