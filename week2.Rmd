@@ -232,42 +232,89 @@ occur in the data frame.
 
 ## Subsetting data frames
 
+Now that our data are available for use, we can begin extracting relevant information from them.
+
+```{r}
+# extract first column and assign to a variable
+first_column <- clinical[1]
+```
+
+As discussed last time with vectors, 
+the square brackets (`[ ]`) are used to subset, 
+or reference part of, 
+a data frame.
+You can inspect the output object by clicking on it in the environment.
+It contains all of the rows for only the first column.
+
+When a single number is included in the square brackets, 
+R assumes you are referencing a column. 
+When you include two numbers in square brackets separated by a comma,
+R assumes the **first number references the row** and the **second number references the column** you desire.
+
+This means you can also reference the first column as follows:
 
 ```{r}
 # extract first column
-clinical[1]
+first_column_again <- clinical[ , 1]
 ```
 
-rows, columns
-
-```{r eval=FALSE, include=FALSE}
-# extract first column
-clinical[ , 1]
-```
-
+Leaving one field blank means you want the entire set in the output
+(in this case, all rows).
 
 **Challenge:** what is the difference in results between the last two lines of code?
 
-```{r}
+Similarly, we can also extract only the first row across all columns:
 
+```{r}
+# extract first row 
+first_row <- clinical[1, ]
+```
+
+We can also extract slices, or sections of rows and columns,
+such as a single cell:
+
+```{r}
+# extract cell from first row of first column
+single_cell <- clinical[1,1]
+```
+
+To extract a range of cells, 
+we use the same colon (`:`) syntax from last time:
+
+```{r}
+# extract a range of cells, rows 1 to 3, second column
+range_cells <- clinical[1:3, 2]
+```
+
+This works for ranges of columns as well.
+
+We can also exclude particular parts of the dataset using a minus sign:
+
+```{r}
+# exclude first column
+exclude_col <- clinical[ , -1] 
+```
+
+Combining what we know about R syntax,
+we can also exclude a range of cells using the `c` function:
+
+```{r}
+# exclude first 100 rows
+exclude_range <- clinical[-c(1:100), ] 
+```
+
+So far, we've been referencing parts of the dataset based on index position,
+or the number of row/column.
+Because we have included column names in our dataset,
+we can also reference columns using those names:
+
+```{r}
+# extract column by name
+name_col <- clinical["tumor_stage"]
 ```
 
 
-
-# extract first row, first column
-clinical[1,1]
-# extract single row 
-clinical[1, ]
-# extract a range of cells
-clinical[1:3, 2] # rows 1 to 3, second column
-# exclude certain data subsets
-clinical[ , -1] # exclude first column
-clinical[-c(1:100), ] # exclude first 100 rows
-# save extracted data to new object
-test_clinical <- clinical[1:20, ]
-
-# extract columns by name
-clinical["tumor_stage"] # result is data.frame
+ 
 clinical[ , "tumor_stage"] # results in vector
 clinical[["tumor_stage"]] # results in vector
 clinical$tumor_stage # results in vector
