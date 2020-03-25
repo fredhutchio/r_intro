@@ -447,32 +447,63 @@ names in our dataset, we can also reference columns using those names:
 
 ``` r
 # extract column by name
-name_col <- clinical["tumor_stage"]
+name_col1 <- clinical["tumor_stage"]
+name_col2 <- clinical[ , "tumor_stage"]
 ```
 
-clinical\[ , “tumor\_stage”\] \# results in vector
-clinical\[\[“tumor\_stage”\]\] \# results in vector
-clinical$tumor\_stage \# results in vector \# reference exploring
-different types of subsetting:
-<https://davetang.org/muse/2013/08/16/double-square-brackets-in-r/>
+Note the example above features quotation marks around the column name.
+Without the quotation marks, R will assume we’re attempting to reference
+an object.
 
-#### BREAK
+As we discussed with subsetting based on index above, the two objects
+created above differ in the data structure. `name_col1` is a data frame
+(with one column), while `name_col2` is a vector. Although this
+difference in the type of object may not matter for your analysis, it’s
+useful to understand that there are multiple ways to accomplish a task,
+each of which may make particular code work more easily.
 
-## Challenge: code as many different ways possible to extract the column days\_to\_death
+There are additional ways to extract columns, which use R specific for
+complex data objects, and may be useful to recognize as your R skills
+progress.
 
-## Challenge: extract the first 6 rows for only age at diagnosis and days to death
+The first is to use double square brackets:
 
-## Challenge: calculate the range and mean for cigarettes per day
+``` r
+# double square brackets syntax
+name_col3 <- clinical[["tumor_stage"]]
+```
 
-#### Factors
+You can think of this approach as digging deeply into a complex object
+to retrieve data.
 
-# factors represent categorical data
+The final approach is equivalent to the last example, but can be
+considered a shortcut since it requires fewer keystrokes (no quotation
+marks, and only one symbol):
 
-# predefined sets of values (levels), in alphabetical order
+``` r
+# dollar sign syntax
+name_col4 <- clinical$tumor_stage
+```
 
-# stored as integers with labels
+Both of the last two approaches above return vectors. For more
+information about these different ways of accessing parts of a data
+frame, see [this
+article](https://www.r-bloggers.com/r-accessors-explained/).
 
-# can be ordered or unordered
+**Challenge:** code as many different ways possible to extract the
+column days\_to\_death
+
+**Challenge:** extract the first 6 rows for only age at diagnosis and
+days to death
+
+**Challenge:** calculate the range and mean for cigarettes per day
+
+## Factors
+
+  - factors represent categorical data
+  - predefined sets of values (levels), in alphabetical order -stored as
+    integers with labels
+  - can be ordered or unordered
 
 # create factor
 
@@ -499,37 +530,70 @@ clinical\(race <- race # replot with corrected names plot(clinical\)race)
 
 # for more information, see link on working with categorical data in HackMD
 
-## Challenge: replace “not reported” in ethnicity and race with NA
+**Challenge:** In your clinical dataset, replace “not reported” in
+ethnicity with NA
 
-# do a Google search to find additional strategies for renaming missing data
+**Challenge:** What Google search helps you identify additional
+strategies for renaming missing data?
 
-# when regrouping after challenge, include a demo of looking at search results
+## Optional: Creating a data frame by hand
 
-# blog posts (e.g., RStats) may give good tutorials of common tasks
+This last section shows two different approaches to creating a data
+frame by hand (in other words, without importing the data from a
+spreadsheet). It isn’t particularly useful for most of your day-to-day
+work, and also not a method you want to use often, as this type of data
+entry can introduce errors. However, it’s frequently used in online
+tutorials, which can be confusing, and also helps illustrate how data
+frames are composed.
 
-# Stack Overflow is great, upvotes and simple solutions are great to start
+The first approach is to create separate vectors (columns), and then
+join them together in a second step:
 
-#### Extra: creating a simple data frame without importing data
-
+``` r
 # create individual vectors
+cancer <- c("lung", "prostate", "breast")
+metastasis <- c("yes", "no", "yes")
+cases <- c(30, 50, 100)
+# combine vectors
+example_df1 <- data.frame(cancer, metastasis, cases)
+str(example_df1)
+```
 
-cancer \<- c(“lung”, “prostate”, “breast”) metastasis \<- c(“yes”, “no”,
-“yes”) cases \<- c(30, 50, 100) \# combine vectors example\_df1 \<-
-data.frame(cancer, metastasis, cases) str(example\_df1)
+    ## 'data.frame':    3 obs. of  3 variables:
+    ##  $ cancer    : Factor w/ 3 levels "breast","lung",..: 2 3 1
+    ##  $ metastasis: Factor w/ 2 levels "no","yes": 2 1 2
+    ##  $ cases     : num  30 50 100
 
-# create vectors and combine at once
+The resulting data frame has column headers, identified from the names
+of the vectors combined together.
 
-example\_df2 \<- data.frame(cancer = c(“lung”, “prostate”, “breast”),
-metastasis = c(“yes”, “no”, “yes”), cases = c(30, 50, 100),
-stringsAsFactors = FALSE) \# determines whether character or factor
-str(example\_df2)
+The next way seems more complex, but represents the code above combined
+into one step:
+
+``` r
+# create vectors and combine into data frame simultaneously
+example_df2 <- data.frame(cancer = c("lung", "prostate", "breast"),
+                          metastasis = c("yes", "no", "yes"),
+                          cases = c(30, 50, 100), stringsAsFactors = FALSE)
+str(example_df2)
+```
+
+    ## 'data.frame':    3 obs. of  3 variables:
+    ##  $ cancer    : chr  "lung" "prostate" "breast"
+    ##  $ metastasis: chr  "yes" "no" "yes"
+    ##  $ cases     : num  30 50 100
+
+As we learned above, factors can be particularly difficult, so it’s
+useful to know that you can use `stringsAsFactors = FALSE` to import
+such data as character instead.
 
 #### Wrapping up
 
-# review objectives
+In this session, we learned to import data into R from a csv file,
+learned multiple ways to access parts of data frames, and manipulated
+factors.
 
-# direct towards practice questions (linked in HackMD)
-
-# preview next week’s objectives
-
-# install tools for next week: install.packages(“tidyverse”)
+In the next session, we’ll begin to explore a set of powerful, elegant
+data manipulation tools for data cleaning, transforming, and
+summarizing, and we’ll prepare some data to visualize in our final
+session.
