@@ -30,6 +30,12 @@ Open Project` and navigate to the location of your project directory.
 Alternatively, using your operating system’s file browser, double click
 on the `r_intro.Rrpoj` file.
 
+Create a new R script (`File -> New File -> R Script`) and save it in
+your project directory with the name `class2.R`. Place the following
+comment on the top line as a title:
+
+`# Introduction to R: Class 2`
+
 In the last session, we recommended organizing your work in directories
 (folders) according to projects. While a thorough discussion of project
 organization is beyond the scope of this class, we will continue to
