@@ -353,6 +353,8 @@ Both of the last two approaches above return vectors.
 For more information about these different ways of accessing parts of a data frame,
 see [this article](https://www.r-bloggers.com/r-accessors-explained/).
 
+The following challenges all use the `clinical` object:
+
 **Challenge:** code as many different ways possible to extract the column days_to_death
 
 **Challenge:** extract the first 6 rows for only age at diagnosis and days to death
@@ -361,39 +363,127 @@ see [this article](https://www.r-bloggers.com/r-accessors-explained/).
 
 ## Factors
 
-- factors represent categorical data
-- predefined sets of values (levels), in alphabetical order
--stored as integers with labels
-- can be ordered or unordered
+This section explores one of the trickier types of data you're likely to encounter:
+factors, which are how R interprets categorical data.
 
-# create factor
+When we imported our dataset into R,
+the `read.csv` function automatically assumed that all the character data
+in our dataset are factors, or categories. 
+Factors have predefined sets of values, called levels.
+We can explore what this means by first creating a factor vector:
+
+```{r}
+# create vector with factor data
 test_data <- factor(c("placebo", "test_drug", "placebo", "known_drug"))
-levels(test_data) # show levels
-nlevels(test_data) # count levels
-# show current
+# show factor
 test_data
-# reorder (may be necessary if order matters)
+```
+
+This vector includes four pieces of data 
+(often referred to as items or elements),
+which are printed as output above.
+The second line of the output shows information about the levels,
+or categories, of our vector.
+We can also access this information separately,
+which is useful if the data (vector) has a large number of elements:
+
+```{r}
+# show levels of factor
+levels(test_data) 
+```
+
+The levels in this test dataset are currently listed in alphabetical order,
+which is the default presentation in R.
+The order of factors dictates how they are presented in subsequent analyses,
+so there are definitely cases in which you may want the levels in a specific order. 
+In the case of `test_data`, 
+we may want to keep the two drug treatments together, 
+with placebo at the end:
+
+```{r}
+# reorder factors to put placebo at end
 test_data <- factor(test_data, levels = c("known_drug", "test_drug", "placebo"))
 # show reordered
 test_data
+```
 
-# converting factors
+This doesn't change the data itself,
+but does make it easier to manage the data later.
+
+Another useful aspect of factors is that they are stored as integers with labels.
+This means that you can easily convert them to numeric data:
+
+```{r}
+# converting factors to numeric
 as.numeric(test_data)
-# factors can also appear as numbers! not advisable, but useful to know if accidental
+```
 
-# renaming factors
-plot(clinical$race) # plot data (may need to resize the window)
-race <- clinical$race # save data to object
-levels(race) # show levels of factor
-# rename factor
-levels(race)[2] <- "Zsian"
-race # show revised data
+This can be handy for some types of statistical analyses, 
+and also illustrates the importance of ordering your levels appropriately.
+
+We can apply this knowledge to our clinical dataset,
+by first observing how the data are presented when creating a basic plot:
+
+```{r}
+# quick and dirty plot
+plot(clinical$race) 
+```
+
+The labels as presented by default are not particularly readable, 
+and also lack appropriate capitalization and formatting.
+While it is possible to modify only the plot labels,
+we would have to do that for all of our subsequent analyses.
+It is more efficient to modify the levels once:
+
+```{r}
+# assign race data to new object 
+race <- clinical$race 
+levels(race)
+```
+
+By assigning the data to a new object, 
+we can more easily perform manipulations without altering the original dataset.
+
+The output above shows the current levels for race.
+We can access each level using their position in this order,
+combined with our knowledge of square brackets for subsetting:
+
+```{r}
+levels(race)[1]
+```
+
+We can modify them to improve their formatting by assigning a new level
+(name) of our choosing:
+
+```{r}
+# correct factor levels
+levels(race)[1] <- "Am Indian"
+levels(race)[2] <- "Asian" # capitalize asian
+levels(race)[3] <- "black"
+levels(race)[4] <- "Pac Isl"
+levels(race)[5] <- "unknown"
+# show revised levels
+levels(race) 
+```
+
+Although we're not doing so here, 
+we could also reorder the levels 
+(as we did for `test_data`).
+
+Once we are satisfied with the resulting levels,
+we assign the modified factor back to the original dataset:
+
+```{r}
 # replace race in data frame
 clinical$race <- race
 # replot with corrected names
 plot(clinical$race)
+```
 
-# for more information, see link on working with categorical data in HackMD
+This section was a very brief introduction to factors,
+and it's likely you'll need more information when working with categorical data of your own.
+A good place to start would be [this article](https://peerj.com/preprints/3163/),
+and exploring some of the tools in the tidyverse (which we'll discuss in the next lesson).
 
 **Challenge:** In your clinical dataset, 
 replace "not reported" in ethnicity with NA
