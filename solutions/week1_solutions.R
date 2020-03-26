@@ -55,7 +55,7 @@ more_heights_clean <- na.omit(more_heights)
 median(more_heights, na.rm = TRUE)
 median(more_heights_clean)
 # identify how many elements from more_heights are greater than 67 inches
-length(length[more_heights > 67])
+length(more_heights[more_heights > 67])
 # visualize data as a histogram (hint: function hist)
 hist(more_heights_clean)
 
