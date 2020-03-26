@@ -1,7 +1,7 @@
-Week 4: Data Visualization
+Introduction to R, Class 4: Data Visualization
 ================
 
-<!--week4.md is generated from week4.Rmd. Please edit that file -->
+<!--class4.md is generated from class4.Rmd. Please edit that file -->
 
 ## Objectives
 
@@ -12,7 +12,7 @@ So far in this course, we have:
   - loaded `tidyverse` and used its data science tools to manipulate and
     filter data
 
-This last week’s material continues our explorations of tidyverse with a
+This last material continues our explorations of tidyverse with a
 specific focus on data visualization. After completing this material,
 you should be able to use `ggplot2` in R to:
 
@@ -26,7 +26,7 @@ you should be able to use `ggplot2` in R to:
 Since we are continuing to work with data in `tidyverse`, we need to
 make sure all of our data and packages are available for use.
 
-Open your project in RStudio. Create a new script called `week4.R`, add
+Open your project in RStudio. Create a new script called `class4.R`, add
 a title, and enter the following code with comments:
 
 ``` r
@@ -34,19 +34,19 @@ a title, and enter the following code with comments:
 library(tidyverse)
 ```
 
-    ## ── Attaching packages ────────────────────────────────────────────── tidyverse 1.3.0 ──
+    ## ── Attaching packages ────────────────────────────── tidyverse 1.3.0 ──
 
-    ## ✓ ggplot2 3.2.1     ✓ purrr   0.3.3
-    ## ✓ tibble  2.1.3     ✓ dplyr   0.8.3
-    ## ✓ tidyr   1.0.0     ✓ stringr 1.4.0
-    ## ✓ readr   1.3.1     ✓ forcats 0.4.0
+    ## ✓ ggplot2 3.3.0     ✓ purrr   0.3.3
+    ## ✓ tibble  2.1.3     ✓ dplyr   0.8.5
+    ## ✓ tidyr   1.0.2     ✓ stringr 1.4.0
+    ## ✓ readr   1.3.1     ✓ forcats 0.5.0
 
-    ## ── Conflicts ───────────────────────────────────────────────── tidyverse_conflicts() ──
+    ## ── Conflicts ───────────────────────────────── tidyverse_conflicts() ──
     ## x dplyr::filter() masks stats::filter()
     ## x dplyr::lag()    masks stats::lag()
 
 ``` r
-# read in first filtered data from last week
+# read in first filtered data from last class
 birth_reduced <- read_csv("data/birth_reduced.csv")
 ```
 
@@ -66,7 +66,7 @@ birth_reduced <- read_csv("data/birth_reduced.csv")
     ## See spec(...) for full column specifications.
 
 ``` r
-# read in second filtered data from last week
+# read in second filtered data from last class
 smoke_complete <- read_csv("data/smoke_complete.csv")
 ```
 
@@ -96,7 +96,7 @@ file is not found, it is likely one of the following problems:
     reexecute your code.
 2.  Make sure you have the two datasets (`birth_reduced.csv` and
     `smoke_complete.csv`) in your `data` directory. Please reference the
-    materials from week 3 to filter the original clinical dataset and
+    materials from class 3 to filter the original clinical dataset and
     export these data.
 
 Once your data are imported appropriately, we can create a quick plot:
@@ -201,7 +201,8 @@ when points are overlapping.
 ``` r
 # change color of points
 ggplot(smoke_complete) +
-  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day), alpha = 0.1, color = "green")
+  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day), 
+             alpha = 0.1, color = "green")
 ```
 
 ![](week4_files/figure-gfm/color-1.png)<!-- -->
@@ -213,23 +214,26 @@ We can also color points based on another (usually categorical)
 variable:
 
 ``` r
+# plot disease by color
 ggplot(smoke_complete) +
-  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease), alpha = 0.1)
+  geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, 
+                 color = disease), 
+             alpha = 0.1)
 ```
 
-![](week4_files/figure-gfm/var_color-1.png)<!-- -->
+![](week4_files/figure-gfm/var_color-1.png)<!-- --> Note the location of
+`color=` with the other aesthetics, as well as the lack of quotation
+marks around `disease`.
 
-This automatically adds a legend as well. Why don’t we need to include
-quotation marks around `disease`?
+Coloring by a variable automatically adds a legend as well.
 
 We can also change the general appearance of the plot (background colors
 and fonts):
 
 ``` r
-# change background theme
 ggplot(smoke_complete) +
   geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease), alpha = 0.1) +
-  theme_bw()
+  theme_bw() # change background theme
 ```
 
 ![](week4_files/figure-gfm/theme-1.png)<!-- -->
@@ -243,7 +247,6 @@ While the axes are currently sufficient, they aren’t particularly
 attractive. We can add a title and replace the axis labels using `labs`:
 
 ``` r
-# add title and custom axis labels
 ggplot(smoke_complete) +
   geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day, color = disease), alpha = 0.1) +
   labs(title = "Age at diagnosis vs cigarettes per day", # title
@@ -267,7 +270,7 @@ ggplot(smoke_complete) +
 
 ![](week4_files/figure-gfm/text-1.png)<!-- -->
 
-Alternative, you can alter only one specific type of text:
+Alternatively, you can alter only one specific type of text:
 
 ``` r
 ggplot(smoke_complete) +
@@ -301,8 +304,7 @@ resolution (`dpi`).
 
 **Challenge:** Create a scatterplot showing age at diagnosis vs years
 smoked with points colored by gender and appropriate axis labels
-(solutions to Challenge exercises are available
-[here](https://github.com/fredhutchio/R_intro/blob/master/solutions/week4_solutions.R))
+(solutions [here](solutions/class4_solutions.R))
 
 ## Box and whisker plots
 
@@ -360,8 +362,8 @@ ggplot(smoke_complete) +
 ![](week4_files/figure-gfm/box_outlier-1.png)<!-- -->
 
 **Challenge:** Write code comments for each of the following lines of
-code. What is the advantage of writing code like
-this?
+code. What is the advantage of writing code like this? (solutions
+[here](solutions/class4_solutions.R))
 
 ``` r
 my_plot <- ggplot(smoke_complete, aes(x = vital_status, y = cigarettes_per_day)) 
@@ -373,14 +375,15 @@ my_plot +
 ![](week4_files/figure-gfm/challenge-1.png)<!-- -->
 
 **Challenge:** Does the order of layers in the last plot matter? What
-happens if `jitter` is coded before `boxplot`?
+happens if `jitter` is coded before `boxplot`? (solutions
+[here](solutions/class4_solutions.R))
 
 ## Time series data as line plots
 
 So far we’ve been able to work with the data as it appears in our
 filtered dataset. Now that we’re moving on to time series plots (changes
 in variables over time), we need to manipulate the data. We’ll also be
-working with the `birth_reduced` dataset, which we created last week
+working with the `birth_reduced` dataset, which we created last class
 (primarily by removing all missing data for year of birth). We’d like to
 plot the number of individuals in the dataset born by year, so we need
 to first count our observations based on both disease and year of birth:
@@ -431,10 +434,11 @@ disease` because grouping is assumed by `color = disease`.
 
 **Challenge:** Create a line plot for year of birth and number of
 patients with lines representing each gender. Hint: you’ll need to
-manipulate the `birth_reduced` dataset first.
+manipulate the `birth_reduced` dataset first. (solutions
+[here](solutions/class4_solutions.R))
 
 **Challenge:** How do you show differences in lines using dashes/dots
-instead of color?
+instead of color? (solutions [here](solutions/class4_solutions.R))
 
 ## Faceting
 
@@ -510,19 +514,22 @@ ggplot(smoke_complete) +
 Don’t forget to look at the help documentation (e.g., `?facet_grid`) to
 learn more about additional ways to customize your plots\!
 
-## Summary and additional resources
+**Challenge**: Alter your last challenge plot of (birth year by number
+of patients) to show each gender in separate panels. (solutions
+[here](solutions/class4_solutions.R))
 
-This week’s material introduced you to ggplot as a tool for data
-visualization, allowing you to now create publication-quality images
-using R code. Combined with our previous explorations of the basic
-principles of R syntax, importing and extracting data with base R, and
-manipulating data using tidyverse, you should be equipped to continue
-learning about R on your own and developing code to meet your research
-needs.
+**Challenge**: How do you change axis formatting, like tick marks and
+lines? Hint: You may want to use Google\! (solutions
+[here](solutions/class4_solutions.R))
 
-If you would like more practice, the `exercises` directory contains
-additional tasks for practice. Answers to those and in-class questions
-are available in the `solutions` directory.
+## Wrapping up
+
+This material introduced you to ggplot as a tool for data visualization,
+allowing you to now create publication-quality images using R code.
+Combined with our previous explorations of the basic principles of R
+syntax, importing and extracting data with base R, and manipulating data
+using tidyverse, you should be equipped to continue learning about R on
+your own and developing code to meet your research needs.
 
 If you are interested in learning more about ggplot: - Documentation for
 all `ggplot` features is available
@@ -531,10 +538,17 @@ all `ggplot` features is available
 sheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
 that is really handy\!
 
-This document is written in [R markdown](http://rmarkdown.rstudio.com),
-which is a method of formatting text, code, and output to create
-documents that are sharable with other people. While this document is
-intended to serve as a reference for you to read while typing code into
-your own script, you may also be interested in modifying and running
-code in the original R markdown file (`week4.Rmd` in the GitHub
-repository).
+## Errata
+
+**If you would like more practice,** the [`exercises`](exercises/)
+directory contains additional tasks for practice. Answers to those and
+in-class questions are available in the [`solutions`](solutions/)
+directory.
+
+**This document is written in [R
+markdown](http://rmarkdown.rstudio.com),** which is a method of
+formatting text, code, and output to create documents that are sharable
+with other people. While this document is intended to serve as a
+reference for you to read while typing code into your own script, you
+may also be interested in modifying and running code in the original R
+markdown file ([`class4.Rmd`](class4.Rmd) in the GitHub repository).

@@ -1,9 +1,9 @@
 ---
-title: 'Introduction to R, Week 1: Functions and objects'
+title: 'Introduction to R, Class 1: Functions and objects'
 output: github_document
 ---
 
-<!--week1.md is generated from week1.Rmd. Please edit that file -->
+<!--class1.md is generated from class1.Rmd. Please edit that file -->
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -23,7 +23,7 @@ entry for the Fred Hutch Biomedical Data Science Wiki.
 Before proceeding with these training materials,
 please ensure you have installed both R and RStudio as described [here](http://www.fredhutch.io/software/#r-and-rstudio).
 
-By the end of this week's session, you should be able to:
+By the end of this session, you should be able to:
 
 - work within the RStudio interface to run and save R code in a project
 - understand basic R syntax to use functions and assign objects
@@ -94,7 +94,7 @@ when this path will be required to locate data for analysis.
 Now we're ready to create a new R script:
 
 - `File -> New File -> R Script`
-- Save the new file as `week1.R`. 
+- Save the new file as `class1.R`. 
 By default, RStudio will save this in your project directory.
 
 This R script is a text file that we'll use to save code we learn in this class.
@@ -106,7 +106,7 @@ By convention,
 a script should include a title at the top,
 so type the following on the first line:
 
-` # Introduction to R: Week 1`
+`# Introduction to R: Class 1`
 
 ## Using functions
 
@@ -252,6 +252,7 @@ because R is assuming you mean `round(x = 1, digits = 3.14)`.
 > These represent RStudio's attempts to guess what you're typing and share additional options.
 
 **Challenge:** what does the function `hist` do? What are its main arguments? How did you determine this?
+(solutions [here](solutions/class1_solutions.R))
 
 ## Assigning objects
 
@@ -370,6 +371,7 @@ You can also abbreviate this command to `rm(weight_lb)`.
 > We can re-create all the work we've already done by executing each line of code again.
 
 **Challenge:** what is the value of each item at each step?
+(solutions [here](solutions/class1_solutions.R))
 ```{r}
 mass <- 47.5            # mass?
 width  <- 122             # width?
@@ -446,6 +448,8 @@ rather than object names.
 - What type of data is `organs`?
 - get overview of `organs`
 
+(solutions [here](solutions/class1_solutions.R))
+
 We've seen data as numbers and letters so far.
 In fact, R has all of the following basic data types:
 
@@ -464,7 +468,7 @@ specific details of the other data types.
 **Challenge:** R tends to handle interpreting data types in the background of most operations.
 The following code is designed to cause some unexpected results in R.
 What is unusual about each of the following objects?
-
+(solutions [here](solutions/class1_solutions.R))
 ```{r}
 num_char <- c(1, 2, 3, "a")
 num_logical <- c(1, 2, 3, TRUE)
@@ -596,6 +600,7 @@ but this means any single value must meet **both** conditions.
 ```{r}
 "four" > "five"
 ```
+(solutions [here](solutions/class1_solutions.R))
 
 ## Missing data
 
@@ -692,7 +697,8 @@ even though the way they appear in the Console seems different.
 > You can then inspect the data type, structure, etc 
 > to ensure you're getting the answer you expected.
 
-**Challenge:** Complete the following tasks after creating this vector (Note: there are multiple solutions): 
+**Challenge:** Complete the following tasks after creating this vector (Note: there are multiple solutions):
+(solutions [here](solutions/class1_solutions.R))
 ```{r}
 # create vector
 more_heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65, 64, 70, 63, 65)
@@ -749,4 +755,4 @@ Answers to those and in-class questions are available in the [`solutions`](solut
 **This document is written in [R markdown](http://rmarkdown.rstudio.com),**
 which is a method of formatting text, code, and output to create documents that are sharable with other people. 
 While this document is intended to serve as a reference for you to read while typing code into your own script,
-you may also be interested in modifying and running code in the original R markdown file ([`week4.Rmd`](week4.Rmd) in the GitHub repository).
+you may also be interested in modifying and running code in the original R markdown file ([`class1.Rmd`](class1.Rmd) in the GitHub repository).

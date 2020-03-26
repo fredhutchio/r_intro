@@ -1,7 +1,7 @@
-Introduction to R, Week 2: Working with data
+Introduction to R, Class 2: Working with data
 ================
 
-<!--week2.md is generated from week2.Rmd. Please edit that file -->
+<!--class2.md is generated from class2.Rmd. Please edit that file -->
 
 ## Objectives
 
@@ -145,6 +145,8 @@ need to update the `sep =` parameter)
   - URL:
     <https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.txt>,
     object name: `example2`
+
+(solutions [here](solutions/class2_solutions.R))
 
 Importing data can be tricky and frustrating, However, if you can’t get
 your data into R, you can’t do anything to analyze or visualize it. It’s
@@ -405,7 +407,7 @@ Leaving one field blank means you want the entire set in the output (in
 this case, all rows).
 
 **Challenge:** what is the difference in results between the last two
-lines of code?
+lines of code? (solutions [here](solutions/class2_solutions.R))
 
 Similarly, we can also extract only the first row across all columns:
 
@@ -499,12 +501,13 @@ article](https://www.r-bloggers.com/r-accessors-explained/).
 The following challenges all use the `clinical` object:
 
 **Challenge:** code as many different ways possible to extract the
-column days\_to\_death
+column days\_to\_death (solutions [here](solutions/class2_solutions.R))
 
 **Challenge:** extract the first 6 rows for only age at diagnosis and
-days to death
+days to death (solutions [here](solutions/class2_solutions.R))
 
 **Challenge:** calculate the range and mean for cigarettes per day
+(solutions [here](solutions/class2_solutions.R))
 
 ## Factors
 
@@ -654,10 +657,11 @@ article](https://peerj.com/preprints/3163/), and exploring some of the
 tools in the tidyverse (which we’ll discuss in the next lesson).
 
 **Challenge:** In your clinical dataset, replace “not reported” in
-ethnicity with NA
+ethnicity with NA (solutions [here](solutions/class2_solutions.R))
 
 **Challenge:** What Google search helps you identify additional
-strategies for renaming missing data?
+strategies for renaming missing data? (solutions
+[here](solutions/class2_solutions.R))
 
 ## Optional: Creating a data frame by hand
 
@@ -710,7 +714,7 @@ As we learned above, factors can be particularly difficult, so it’s
 useful to know that you can use `stringsAsFactors = FALSE` to import
 such data as character instead.
 
-#### Wrapping up
+## Wrapping up
 
 In this session, we learned to import data into R from a csv file,
 learned multiple ways to access parts of data frames, and manipulated
@@ -720,3 +724,18 @@ In the next session, we’ll begin to explore a set of powerful, elegant
 data manipulation tools for data cleaning, transforming, and
 summarizing, and we’ll prepare some data to visualize in our final
 session.
+
+## Errata
+
+**If you would like more practice,** the [`exercises`](exercises/)
+directory contains additional tasks for practice. Answers to those and
+in-class questions are available in the [`solutions`](solutions/)
+directory.
+
+**This document is written in [R
+markdown](http://rmarkdown.rstudio.com),** which is a method of
+formatting text, code, and output to create documents that are sharable
+with other people. While this document is intended to serve as a
+reference for you to read while typing code into your own script, you
+may also be interested in modifying and running code in the original R
+markdown file ([`class2.Rmd`](class2.Rmd) in the GitHub repository).

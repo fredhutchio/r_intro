@@ -1,7 +1,7 @@
-Introduction to R, Week 3: Data manipulation with tidyverse
+Introduction to R, Class 3: Data manipulation with tidyverse
 ================
 
-<!--week3.md is generated from week3.Rmd. Please edit that file -->
+<!--class3.md is generated from class3.Rmd. Please edit that file -->
 
 ## Objectives
 
@@ -241,10 +241,12 @@ The syntax here is similar to `select`, and the conditional filters can
 be applied in similarly to base R functions.
 
 **Challenge:** create a new object from clinical called race\_disease
-that includes only the race, ethnicity, and disease columns
+that includes only the race, ethnicity, and disease columns (solutions
+[here](solutions/class3_solutions.R))
 
 **Challenge:** create a new object from race\_disease called race\_BRCA
-that includes only BRCA (disease)
+that includes only BRCA (disease) (solutions
+[here](solutions/class3_solutions.R))
 
 ## Combining commands
 
@@ -326,7 +328,7 @@ line.
 **Challenge:** Use pipes to extract the columns `gender`,
 `years_smoked`, and `year_of_birth` from the object `clinical` for only
 living patients (vital\_status) who have smoked fewer than 1
-`cigarettes_per_day`
+`cigarettes_per_day` (solutions [here](solutions/class3_solutions.R))
 
 ## Mutate
 
@@ -400,7 +402,7 @@ the two new columns created.
 **Challenge:** extract only lung cancer patients (LUSC, from disease)
 and create a new column called total\_cig representing an estimate of
 the total number of cigarettes smoked (use columns years smoked and
-cigarettes per day)
+cigarettes per day) (solutions [here](solutions/class3_solutions.R))
 
 ## Split-apply-combine
 
@@ -487,9 +489,10 @@ clinical %>%
 
 **Challenge:** create object called smoke\_complete from clinical that
 contains no missing data for cigarettes per day or age at diagnosis
+(solutions [here](solutions/class3_solutions.R))
 
 **Challenge:** how do you save resulting table to file? How would you
-find this answer?
+find this answer? (solutions [here](solutions/class3_solutions.R))
 
 The solution to the challenges above represent the first of two datasets
 we’ll be using for data visualization in our next class. Make sure
@@ -510,7 +513,8 @@ cells with character data as well as row names (sequential numbers,
 unless otherwise specified).
 
 **Challenge:** create a new object called birth\_complete that contains
-no missing data for year of birth or vital status
+no missing data for year of birth or vital status (solutions
+[here](solutions/class3_solutions.R))
 
 This challenge begins filtering the second of our two datasets for next
 time. Make sure you include the filter to remove missing data that’s
@@ -579,6 +583,7 @@ write_csv(birth_reduced, "data/birth_reduced.csv")
 
 **Challenge:** extract all tumor stages with more than 200 cases (Hint:
 also check to see if there are any other missing/ambiguous data\!)
+(solutions [here](solutions/class3_solutions.R))
 
 ## Wrapping up
 
@@ -593,3 +598,18 @@ cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformatio
 In the next session, we’ll wrap up the course by creating
 publication-quality images using `ggplot2`, a data visualization package
 in `tidyverse`, and the two datasets we filtered in the sections above.
+
+## Errata
+
+**If you would like more practice,** the [`exercises`](exercises/)
+directory contains additional tasks for practice. Answers to those and
+in-class questions are available in the [`solutions`](solutions/)
+directory.
+
+**This document is written in [R
+markdown](http://rmarkdown.rstudio.com),** which is a method of
+formatting text, code, and output to create documents that are sharable
+with other people. While this document is intended to serve as a
+reference for you to read while typing code into your own script, you
+may also be interested in modifying and running code in the original R
+markdown file ([`class3.Rmd`](class3.Rmd) in the GitHub repository).

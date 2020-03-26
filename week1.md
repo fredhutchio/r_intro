@@ -1,7 +1,7 @@
-Introduction to R, Week 1: Functions and objects
+Introduction to R, Class 1: Functions and objects
 ================
 
-<!--week1.md is generated from week1.Rmd. Please edit that file -->
+<!--class1.md is generated from class1.Rmd. Please edit that file -->
 
 ## Objectives
 
@@ -19,7 +19,7 @@ Before proceeding with these training materials, please ensure you have
 installed both R and RStudio as described
 [here](http://www.fredhutch.io/software/#r-and-rstudio).
 
-By the end of this week’s session, you should be able to:
+By the end of this session, you should be able to:
 
   - work within the RStudio interface to run and save R code in a
     project
@@ -89,7 +89,7 @@ After your RStudio screen reloads, note two things:
 Now we’re ready to create a new R script:
 
   - `File -> New File -> R Script`
-  - Save the new file as `week1.R`. By default, RStudio will save this
+  - Save the new file as `class1.R`. By default, RStudio will save this
     in your project directory.
 
 This R script is a text file that we’ll use to save code we learn in
@@ -100,7 +100,7 @@ you’re doing, so you can re-execute the code later if necessary.
 By convention, a script should include a title at the top, so type the
 following on the first line:
 
-`# Introduction to R: Week 1`
+`# Introduction to R: Class 1`
 
 ## Using functions
 
@@ -253,7 +253,8 @@ because R is assuming you mean `round(x = 1, digits = 3.14)`.
 > options.
 
 **Challenge:** what does the function `hist` do? What are its main
-arguments? How did you determine this?
+arguments? How did you determine this? (solutions
+[here](solutions/class1_solutions.R))
 
 ## Assigning objects
 
@@ -379,7 +380,8 @@ this command to `rm(weight_lb)`.
 > extreme, but don’t worry\! We can re-create all the work we’ve already
 > done by executing each line of code again.
 
-**Challenge:** what is the value of each item at each step?
+**Challenge:** what is the value of each item at each step? (solutions
+[here](solutions/class1_solutions.R))
 
 ``` r
 mass <- 47.5            # mass?
@@ -473,6 +475,8 @@ are character data, rather than object names.
   - What type of data is `organs`?
   - get overview of `organs`
 
+(solutions [here](solutions/class1_solutions.R))
+
 We’ve seen data as numbers and letters so far. In fact, R has all of the
 following basic data types:
 
@@ -494,7 +498,7 @@ of the other data types.
 **Challenge:** R tends to handle interpreting data types in the
 background of most operations. The following code is designed to cause
 some unexpected results in R. What is unusual about each of the
-following objects?
+following objects? (solutions [here](solutions/class1_solutions.R))
 
 ``` r
 num_char <- c(1, 2, 3, "a")
@@ -640,6 +644,8 @@ value must meet **both** conditions.
 
     ## [1] TRUE
 
+(solutions [here](solutions/class1_solutions.R))
+
 ## Missing data
 
 Most of the data we encounter has missing data. Programming languages
@@ -762,7 +768,8 @@ the Console seems different.
 > answer you expected.
 
 **Challenge:** Complete the following tasks after creating this vector
-(Note: there are multiple solutions):
+(Note: there are multiple solutions): (solutions
+[here](solutions/class1_solutions.R))
 
 ``` r
 # create vector
@@ -820,4 +827,4 @@ formatting text, code, and output to create documents that are sharable
 with other people. While this document is intended to serve as a
 reference for you to read while typing code into your own script, you
 may also be interested in modifying and running code in the original R
-markdown file ([`week4.Rmd`](week4.Rmd) in the GitHub repository).
+markdown file ([`class1.Rmd`](class1.Rmd) in the GitHub repository).
