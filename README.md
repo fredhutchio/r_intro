@@ -2,7 +2,7 @@
 
 ## Description
 
-Description: This four-week course is designed to introduce attendees to R statistical programming and its broad applications. 
+Description: This four-class course is designed to introduce attendees to R statistical programming and its broad applications. 
 Each two hour session will include brief tutorials interspersed with challenge exercises, and assumes attendees have no prior 
 computer coding experience. At the end of this course, you will be able to use R to import, manipulate, and visualize data.
 
@@ -14,18 +14,18 @@ Copyright (c) Data Carpentry.
 
 ## Schedule
 
-* [Week 1](week1.R): R syntax, assigning objects, using functions
-* [Week 2](week2.R): Data types and structures; slicing and subsetting data
-* [Week 3](week3.R): Data manipulation with `dplyr`
-* [Week 4](week4.md): Data visualization in `ggplot2`
+* [Class 1](class1.R): R syntax, assigning objects, using functions
+* [Class 2](class2.R): Data types and structures; slicing and subsetting data
+* [Class 3](class3.R): Data manipulation with `dplyr`
+* [Class 4](class4.md): Data visualization in `ggplot2`
 
 ## Resources
 
-* Each week's materials are described in the R markdown (`.Rmd`) and markdown (`.md`) files. The former should be edited to make changes to the material; the latter are automatically formatted to appear in GitHub. The directories for each week are also created for publishing on GitHub.
+* Each class' materials are described in the R markdown (`.Rmd`) and markdown (`.md`) files. The former should be edited to make changes to the material; the latter are automatically formatted to appear in GitHub. The directories for each class are also created for publishing on GitHub.
 * [`0dataset.R`](0dataset.R) includes code used to derive the original data from the 
 [National Cancer Institute's Genomic Data Commons](https://gdc.cancer.gov). `extra/` holds the original data files used for 
 download during the activities, as well as the intermediate data files for each cancer type directly downloaded from NCI-GDC
-* [`exercises/`](exercises/) includes a file for each week representing both the aggregated in-class exercises as well as additional 
+* [`exercises/`](exercises/) includes a file for each class representing both the aggregated in-class exercises as well as additional 
 supplemental exercises for practice
 * [`solutions/`](solutions/) includes the solutions for all files in `exercises/`
 * [`instructors.md`](instructors.md) includes information for instructors to facilitate teaching each lesson
