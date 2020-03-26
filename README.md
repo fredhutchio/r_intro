@@ -14,9 +14,9 @@ Copyright (c) Data Carpentry.
 
 ## Schedule
 
-* [Class 1](class1.R): R syntax, assigning objects, using functions
-* [Class 2](class2.R): Data types and structures; slicing and subsetting data
-* [Class 3](class3.R): Data manipulation with `dplyr`
+* [Class 1](class1.md): R syntax, assigning objects, using functions
+* [Class 2](class2.md): Data types and structures; slicing and subsetting data
+* [Class 3](class3.md): Data manipulation with `dplyr`
 * [Class 4](class4.md): Data visualization in `ggplot2`
 
 ## Resources
