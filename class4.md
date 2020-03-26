@@ -106,7 +106,7 @@ Once your data are imported appropriately, we can create a quick plot:
 plot(x=smoke_complete$age_at_diagnosis, y=smoke_complete$cigarettes_per_day)
 ```
 
-![](week4_files/figure-gfm/base_plot-1.png)<!-- -->
+![](class4_files/figure-gfm/base_plot-1.png)<!-- -->
 
 This plot is from base R. It gives you a general idea about the data,
 but isn’t very aesthetically pleasing. Our work today will focus on
@@ -128,7 +128,7 @@ variables.
 ggplot(data = smoke_complete) # bind data to plot
 ```
 
-![](week4_files/figure-gfm/data_bind-1.png)<!-- -->
+![](class4_files/figure-gfm/data_bind-1.png)<!-- -->
 
 The last line of code creates an empty plot, since we didn’t include any
 instructions for how to present the data.
@@ -143,7 +143,7 @@ ggplot(data = smoke_complete, aes(x = age_at_diagnosis,
                            y = cigarettes_per_day)) # specify aesthetics (axes)
 ```
 
-![](week4_files/figure-gfm/aesthetic-1.png)<!-- -->
+![](class4_files/figure-gfm/aesthetic-1.png)<!-- -->
 
 This adds labels to the axis, but no data appear because we haven’t
 specified how they should be represented
@@ -160,7 +160,7 @@ ggplot(data = smoke_complete,
   geom_point() # add a layer of geometry
 ```
 
-![](week4_files/figure-gfm/geom-1.png)<!-- -->
+![](class4_files/figure-gfm/geom-1.png)<!-- -->
 
 The plus sign (`+`) is used here to connect parts of `ggplot` code
 together. The line breaks and indentation used here represents the
@@ -177,7 +177,7 @@ ggplot(smoke_complete) +
   geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day)) 
 ```
 
-![](week4_files/figure-gfm/abb-1.png)<!-- -->
+![](class4_files/figure-gfm/abb-1.png)<!-- -->
 
 This plot is identical to the previous plot, despite the differences in
 code.
@@ -193,7 +193,7 @@ ggplot(smoke_complete) +
   geom_point(aes(x = age_at_diagnosis, y = cigarettes_per_day), alpha = 0.1)
 ```
 
-![](week4_files/figure-gfm/alpha-1.png)<!-- -->
+![](class4_files/figure-gfm/alpha-1.png)<!-- -->
 
 Transparency is useful to help see the distribution of data, especially
 when points are overlapping.
@@ -205,7 +205,7 @@ ggplot(smoke_complete) +
              alpha = 0.1, color = "green")
 ```
 
-![](week4_files/figure-gfm/color-1.png)<!-- -->
+![](class4_files/figure-gfm/color-1.png)<!-- -->
 
 For more information on colors available, look
 [here](http://sape.inf.usi.ch/quick-reference/ggplot2/colour).
@@ -221,8 +221,8 @@ ggplot(smoke_complete) +
              alpha = 0.1)
 ```
 
-![](week4_files/figure-gfm/var_color-1.png)<!-- --> Note the location of
-`color=` with the other aesthetics, as well as the lack of quotation
+![](class4_files/figure-gfm/var_color-1.png)<!-- --> Note the location
+of `color=` with the other aesthetics, as well as the lack of quotation
 marks around `disease`.
 
 Coloring by a variable automatically adds a legend as well.
@@ -236,7 +236,7 @@ ggplot(smoke_complete) +
   theme_bw() # change background theme
 ```
 
-![](week4_files/figure-gfm/theme-1.png)<!-- -->
+![](class4_files/figure-gfm/theme-1.png)<!-- -->
 
 This adds another layer to our plot representing a black and white
 theme. A complete list of pre-set themes is available
@@ -255,7 +255,7 @@ ggplot(smoke_complete) +
   theme_bw()
 ```
 
-![](week4_files/figure-gfm/title-1.png)<!-- -->
+![](class4_files/figure-gfm/title-1.png)<!-- -->
 
 Another common feature to customize involves the orientation and
 appearance of fonts. While this can be controlled by default themes like
@@ -268,7 +268,7 @@ ggplot(smoke_complete) +
   theme(text = element_text(size = 16)) # increase all font size
 ```
 
-![](week4_files/figure-gfm/text-1.png)<!-- -->
+![](class4_files/figure-gfm/text-1.png)<!-- -->
 
 Alternatively, you can alter only one specific type of text:
 
@@ -278,7 +278,7 @@ ggplot(smoke_complete) +
   theme(axis.text.x = element_text(angle = 90, hjust = 0.5, vjust = 0.5)) # rotate and adjust x axis text
 ```
 
-![](week4_files/figure-gfm/x_text-1.png)<!-- --> This rotates and
+![](class4_files/figure-gfm/x_text-1.png)<!-- --> This rotates and
 adjusts the horizontal and vertical arrangement of the labels on only
 the x axis. Of course, you can also modify other text (y axis, axis
 labels, legend).
@@ -317,7 +317,7 @@ ggplot(smoke_complete) +
   geom_boxplot(aes(x = vital_status, y = cigarettes_per_day))
 ```
 
-![](week4_files/figure-gfm/box-1.png)<!-- -->
+![](class4_files/figure-gfm/box-1.png)<!-- -->
 
 The main differences from the scatterplots we created earlier are the
 `geom` type and the variables plotted.
@@ -331,7 +331,7 @@ ggplot(smoke_complete,
   geom_boxplot(aes(x = vital_status, y = cigarettes_per_day), color = "tomato")
 ```
 
-![](week4_files/figure-gfm/box_color-1.png)<!-- -->
+![](class4_files/figure-gfm/box_color-1.png)<!-- -->
 
 It seems weird to change the color of the entire box, though. A better
 option would be to add colored points to a black box and whisker plot:
@@ -343,7 +343,7 @@ ggplot(smoke_complete) +
   geom_jitter(aes(x = vital_status, y = cigarettes_per_day), alpha = 0.3, color = "blue")
 ```
 
-![](week4_files/figure-gfm/box_jitter-1.png)<!-- -->
+![](class4_files/figure-gfm/box_jitter-1.png)<!-- -->
 
 Jitter references a method of randomly offsetting points slightly to
 allow them to be seen and interpreted more easily.
@@ -359,7 +359,7 @@ ggplot(smoke_complete) +
   geom_jitter(aes(x = vital_status, y = cigarettes_per_day), alpha = 0.3, color = "blue")
 ```
 
-![](week4_files/figure-gfm/box_outlier-1.png)<!-- -->
+![](class4_files/figure-gfm/box_outlier-1.png)<!-- -->
 
 **Challenge:** Write code comments for each of the following lines of
 code. What is the advantage of writing code like this? (solutions
@@ -372,7 +372,7 @@ my_plot +
   geom_jitter(alpha = 0.2, color = "purple")
 ```
 
-![](week4_files/figure-gfm/challenge-1.png)<!-- -->
+![](class4_files/figure-gfm/challenge-1.png)<!-- -->
 
 **Challenge:** Does the order of layers in the last plot matter? What
 happens if `jitter` is coded before `boxplot`? (solutions
@@ -402,7 +402,7 @@ ggplot(yearly_counts) +
   geom_line(aes(x = year_of_birth, y = n))
 ```
 
-![](week4_files/figure-gfm/time_plot-1.png)<!-- -->
+![](class4_files/figure-gfm/time_plot-1.png)<!-- -->
 
 Here, `n` represents the number of patients born in each year, from the
 count table created above. The result isn’t very satisfying, because we
@@ -417,7 +417,7 @@ ggplot(yearly_counts) +
                 group = disease))
 ```
 
-![](week4_files/figure-gfm/time_disease-1.png)<!-- -->
+![](class4_files/figure-gfm/time_disease-1.png)<!-- -->
 
 Moreover, we can color each line individually:
 
@@ -427,7 +427,7 @@ ggplot(yearly_counts) +
   geom_line(aes(x = year_of_birth, y = n, color = disease))
 ```
 
-![](week4_files/figure-gfm/time_color-1.png)<!-- -->
+![](class4_files/figure-gfm/time_color-1.png)<!-- -->
 
 Note that you don’t have to include a separate argument for `group =
 disease` because grouping is assumed by `color = disease`.
@@ -461,7 +461,7 @@ ggplot(smoke_complete) +
   facet_wrap(vars(disease)) # wraps panels to make a square/rectangular plot
 ```
 
-![](week4_files/figure-gfm/facet-1.png)<!-- -->
+![](class4_files/figure-gfm/facet-1.png)<!-- -->
 
 `vars` is used for faceting in the same way that `aes()` is used for
 mapping: it is used to specify the variable to form facet groups.
@@ -478,7 +478,7 @@ ggplot(smoke_complete) +
   facet_wrap(vars(tumor_stage))
 ```
 
-![](week4_files/figure-gfm/facet_wrap-1.png)<!-- -->
+![](class4_files/figure-gfm/facet_wrap-1.png)<!-- -->
 
 In this case, we’re now visualizing an additional variable (tumor
 stage), in addition to the original three (age at diagnosis, cigarettes
@@ -494,7 +494,7 @@ ggplot(smoke_complete) +
   facet_grid(rows = vars(vital_status)) 
 ```
 
-![](week4_files/figure-gfm/facet_grid-1.png)<!-- -->
+![](class4_files/figure-gfm/facet_grid-1.png)<!-- -->
 
 This method can also plot panels in columns.
 
@@ -509,7 +509,7 @@ ggplot(smoke_complete) +
   facet_grid(rows = vars(vital_status), cols = vars(disease)) # arrange plots via variables in rows, columns
 ```
 
-![](week4_files/figure-gfm/facet_both-1.png)<!-- -->
+![](class4_files/figure-gfm/facet_both-1.png)<!-- -->
 
 Don’t forget to look at the help documentation (e.g., `?facet_grid`) to
 learn more about additional ways to customize your plots\!

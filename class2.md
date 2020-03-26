@@ -585,7 +585,7 @@ how the data are presented when creating a basic plot:
 plot(clinical$race) 
 ```
 
-![](week2_files/figure-gfm/unnamed-chunk-25-1.png)<!-- -->
+![](class2_files/figure-gfm/unnamed-chunk-25-1.png)<!-- -->
 
 The labels as presented by default are not particularly readable, and
 also lack appropriate capitalization and formatting. While it is
@@ -648,7 +648,7 @@ clinical$race <- race
 plot(clinical$race)
 ```
 
-![](week2_files/figure-gfm/unnamed-chunk-29-1.png)<!-- -->
+![](class2_files/figure-gfm/unnamed-chunk-29-1.png)<!-- -->
 
 This section was a very brief introduction to factors, and it’s likely
 you’ll need more information when working with categorical data of your
