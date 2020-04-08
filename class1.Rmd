@@ -577,7 +577,7 @@ it's common to need to combine conditions while subsetting.
 For example, you may be interested in only values between 50 and 60:
 
 ```{r}
-# ages greater than 50 OR less than 60
+# ages less than 50 OR greater than 60
 ages[ages < 50 | ages > 60]
 ```
 
@@ -588,13 +588,20 @@ In other words, the vertical pipe means any single value being evaluated
 must meet one or both conditions.
 
 You can also combine conditions with `&`,
-but this means any single value must meet **both** conditions.
+but this means any single value must meet **both** conditions:
+
+```{r}
+# ages greater than 50 OR less than 60
+ages[ages > 50 & ages < 60]
+```
 
 > Be careful when thinking about human language as opposed to programming languges.
 > When speaking, 
 > we is reasonable to say "extract all values below 50 and above 60."
 > While this makes sense in context,
 > it is mathematically impossible for a value to be both less than 50 AND greater than 60.
+
+**Challenge:** Is it possible to apply more than two conditions at once?
 
 **Challenge:** What does the following code return, and why? 
 ```{r}
