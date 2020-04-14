@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Cleans project directory (delete after running)
+# Cleans project directory
 
 mv supplemental/class*.R .
 rm *.md *.Rmd 0dataset.R convert.R .gitignore
