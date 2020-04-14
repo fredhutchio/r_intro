@@ -119,7 +119,7 @@ course:
     disease (e.g., cancer type).
   - The data were downloaded and aggregated using an R script, which you
     can view in the [GitHub repository for this
-    course](https://github.com/fredhutchio/R_intro/blob/master/0dataset.R).
+    course](https://github.com/fredhutchio/R_intro/blob/master/extra/clinical_data.R).
 
 The function we used to import the data is one of a family of commands
 used to import the data. Check out the help documentation for `read.csv`
