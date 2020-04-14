@@ -5,7 +5,7 @@ output: github_document
 
 <!--class2.md is generated from class2.Rmd. Please edit that file -->
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, purl=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -53,7 +53,7 @@ we will continue to model best practices by creating a directory to hold our dat
 dir.create("data")
 ```
 
-```{r include=FALSE}
+```{r include=FALSE, purl=FALSE}
 # code above not run, so this hidden code creates the directory if necessary
 if (!dir.exists("data")) {dir.create("data")}
 ```

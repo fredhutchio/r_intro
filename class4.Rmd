@@ -5,7 +5,7 @@ output: github_document
 
 <!--class4.md is generated from class4.Rmd. Please edit that file -->
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, purl=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
