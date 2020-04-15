@@ -326,8 +326,7 @@ We can change the color similarly to scatterplots:
 
 ``` r
 # adding color
-ggplot(smoke_complete,
-       aes(x = vital_status, y = cigarettes_per_day)) +
+ggplot(smoke_complete) +
   geom_boxplot(aes(x = vital_status, y = cigarettes_per_day), color = "tomato")
 ```
 
