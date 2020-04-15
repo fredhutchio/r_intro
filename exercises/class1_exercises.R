@@ -1,4 +1,4 @@
-#### Intro to R: week 1 exercises ####
+#### Intro to R: class 1 exercises ####
 
 # Introduction to R and RStudio
 
@@ -9,7 +9,7 @@
 #   working with vectors
 #   dealing with missing data
 
-# Solutions available here: https://github.com/fredhutchio/R_intro/blob/master/solutions/week1_solutions.R
+# Solutions available here: https://github.com/fredhutchio/R_intro/blob/master/solutions/class1_solutions.R
 
 #### In-class exercises ####
 

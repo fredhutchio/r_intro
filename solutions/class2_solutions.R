@@ -1,4 +1,4 @@
-#### Intro to R: week 2 exercises ####
+#### Intro to R: class 2 exercises ####
 
 # Working with dataframes
 
@@ -64,7 +64,7 @@ levels(ethnicity)
 
 #### Extra exercises ####
 
-## Using the same clinical object from week 2, write code to accomplish the following tasks:
+## Using the same clinical object from class 2, write code to accomplish the following tasks:
 
 # extract the last 100 rows for only disease and race and save to an object called disease_race
 # show index positions of column names

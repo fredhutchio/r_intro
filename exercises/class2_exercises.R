@@ -1,4 +1,4 @@
-#### Intro to R: week 2 exercises ####
+#### Intro to R: class 2 exercises ####
 
 # Working with dataframes
 
@@ -8,7 +8,7 @@
 #   subsetting data frames
 #   manipulating factors
 
-# Solutions available here: https://github.com/fredhutchio/R_intro/blob/master/solutions/week2_solutions.R
+# Solutions available here: https://github.com/fredhutchio/R_intro/blob/master/solutions/class2_solutions.R
 
 #### In-class exercises ####
 
@@ -33,7 +33,7 @@ clinical[1]
 
 #### Extra exercises ####
 
-## Using the same clinical object from week 2, write code to accomplish the following tasks:
+## Using the same clinical object from class 2, write code to accomplish the following tasks:
 
 # extract the last 100 rows for only disease and race and save to an object called disease_race
 

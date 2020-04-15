@@ -1,6 +1,6 @@
 # Practice exercises
 
-This directory includes files containing practice exercises for each week of class.
+This directory includes files containing practice exercises for each class.
 Each file includes exercises presented in class as well as additional
 challenges to help reinforce your skills.
 

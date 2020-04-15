@@ -1,4 +1,4 @@
-#### Intro to R: week 4 exercises ####
+#### Intro to R: class 4 exercises ####
 
 # Data visualization with ggplot2
 

@@ -1,4 +1,4 @@
-#### Intro to R: week 4 exercises ####
+#### Intro to R: class 4 exercises ####
 
 # Data visualization with ggplot2
 
@@ -8,7 +8,7 @@
 #   splitting into multiple panels
 #   customizing plots
 
-# Solutions available here: https://github.com/fredhutchio/R_intro/blob/master/solutions/week4_solutions.R
+# Solutions available here: https://github.com/fredhutchio/R_intro/blob/master/solutions/class4_solutions.R
 
 #### In-class exercises ####
 

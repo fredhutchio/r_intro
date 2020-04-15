@@ -1,4 +1,4 @@
-#### Intro to R: week 1 exercises ####
+#### Intro to R: class 1 exercises ####
 
 # Introduction to R and RStudio
 

@@ -1,4 +1,4 @@
-#### Intro to R: week 3 exercises ####
+#### Intro to R: class 3 exercises ####
 
 # Data parsing with dplyr
 

@@ -1,4 +1,4 @@
-#### Intro to R: week 3 exercises ####
+#### Intro to R: class 3 exercises ####
 
 # Data parsing with dplyr
 
@@ -9,7 +9,7 @@
 #   creating new columns by modifying existing data
 #   summarizing data based on data in other columns
 
-# Solutions available here: https://github.com/fredhutchio/R_intro/blob/master/solutions/week3_solutions.R
+# Solutions available here: https://github.com/fredhutchio/R_intro/blob/master/solutions/class3_solutions.R
 
 #### In-class exercises ####
 
