@@ -2,15 +2,18 @@
 
 ## Description
 
-Description: This four-class course is designed to introduce attendees to R statistical programming and its broad applications. 
+This four-class course is designed to introduce attendees to R statistical programming and its broad applications. 
 Each two hour session will include brief tutorials interspersed with challenge exercises, and assumes attendees have no prior 
-computer coding experience. At the end of this course, you will be able to use R to import, manipulate, and visualize data.
+computer coding experience. 
+At the end of this course, you will be able to use R to import, manipulate, and visualize data.
+Please see each set of class materials for specific learning objectives.
 
 This repository is adapted from content originally appearing in 
 [R for data analysis and visualization of Ecological Data](https://datacarpentry.org/R-ecology-lesson/),
 Copyright (c) Data Carpentry. 
+See links at the bottom of each lesson for specific episodes from Carpentries material that have been modified.
 
---Required software--: Software requirements for this course can be found on [fredhutch.io's Software page](http://www.fredhutch.io/software/#r-and-rstudio). The HackMD (interactive page used for sharing links and information) for this course is here: https://hackmd.io/@k8hertweck/introR
+**Required software**: Software requirements for this course can be found on [fredhutch.io's Software page](http://www.fredhutch.io/software/#r-and-rstudio). The HackMD (interactive page used for sharing links and information) for this course is here: https://hackmd.io/@k8hertweck/introR
 
 ## Schedule
 
