@@ -251,8 +251,10 @@ because R is assuming you mean `round(x = 1, digits = 3.14)`.
 > You may notice that boxes pop up as you type. 
 > These represent RStudio's attempts to guess what you're typing and share additional options.
 
-**Challenge:** what does the function `hist` do? What are its main arguments? How did you determine this?
-(solutions [here](solutions/class1_solutions.R))
+> #### Challenge-hist
+> What does the function `hist` do? 
+> What are its main arguments? 
+> How did you determine this?
 
 ## Assigning objects
 
@@ -370,8 +372,9 @@ You can also abbreviate this command to `rm(weight_lb)`.
 > but don't worry! 
 > We can re-create all the work we've already done by executing each line of code again.
 
-**Challenge:** what is the value of each item at each step?
-(solutions [here](solutions/class1_solutions.R))
+> #### Challenge-values
+> For the code chunk below,
+> what is the value of each item at each step?
 ```{r}
 mass <- 47.5            # mass?
 width  <- 122             # width?
@@ -442,13 +445,11 @@ each word is encased in quotation marks,
 indicating these are character data,
 rather than object names.
 
-**Challenge:** Please answer the following questions about `organs`:
-
-- How many values are in `organs`?
-- What type of data is `organs`?
-- get overview of `organs`
-
-(solutions [here](solutions/class1_solutions.R))
+> #### Challenge-organs
+> Please answer the following questions about `organs`:
+> - How many values are in `organs`?
+> - What type of data is `organs`?
+> - How can you see an overview of `organs`?
 
 We've seen data as numbers and letters so far.
 In fact, R has all of the following basic data types:
@@ -465,10 +466,10 @@ R automatically interprets the type as you enter data.
 Most data analysis activities will not require you to understand 
 specific details of the other data types.
 
-**Challenge:** R tends to handle interpreting data types in the background of most operations.
-The following code is designed to cause some unexpected results in R.
-What is unusual about each of the following objects?
-(solutions [here](solutions/class1_solutions.R))
+> #### Challenge-dtypes
+> R tends to handle interpreting data types in the background of most operations.
+> The following code is designed to cause some unexpected results in R.
+> What is unusual about each of the following objects?
 ```{r}
 num_char <- c(1, 2, 3, "a")
 num_logical <- c(1, 2, 3, TRUE)
@@ -601,13 +602,12 @@ ages[ages > 50 & ages < 60]
 > While this makes sense in context,
 > it is mathematically impossible for a value to be both less than 50 AND greater than 60.
 
-**Challenge:** Is it possible to apply more than two conditions at once?
+> #### Challenge-compare
+> Why does the following code return the answer it
 
-**Challenge:** What does the following code return, and why? 
 ```{r}
 "four" > "five"
 ```
-(solutions [here](solutions/class1_solutions.R))
 
 ## Missing data
 
@@ -704,17 +704,17 @@ even though the way they appear in the Console seems different.
 > You can then inspect the data type, structure, etc 
 > to ensure you're getting the answer you expected.
 
-**Challenge:** Complete the following tasks after creating this vector (Note: there are multiple solutions):
-(solutions [here](solutions/class1_solutions.R))
+> #### Challenge-analyze
+Complete the following tasks after executing the code chunk below. 
+(Note: there are multiple solutions):
+> - Remove NAs 
+> - Calculate the median
+> - Identify how many elements in the vector are greater than 67 inches
+> - Visualize the data as a histogram (hint: function `hist`)
 ```{r}
 # create vector
 more_heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65, 64, 70, 63, 65)
 ```
-
-- Remove NAs 
-- Calculate the median
-- Identify how many elements in the vector are greater than 67 inches
-- Visualize the data as a histogram (hint: function `hist`)
 
 ## Wrapping up
 
@@ -733,7 +733,7 @@ When you close RStudio,
 you will see a pop-up box asking if you want to save your workspace image.
 We do not recommend saving your project in this way,
 as it creates extra (hidden) files on your computer
-that can be unweildy in size and inadvertently retain sensitive data 
+that can be unwieldy in size and inadvertently retain sensitive data 
 (if you're working with PHI or other private data).
 If you've saved your R script, 
 you can recreate all the work you've accomplished.
@@ -753,13 +753,33 @@ you should use the `File -> Open Project` and navigate to the location of your p
 Alternatively, using your operating system's file browser,
 double click on the `r_intro.Rrpoj` file.
 
-## Errata
-
-**If you would like more practice,** 
-the [`exercises`](exercises/) directory contains additional tasks for practice.
-Answers to those and in-class questions are available in the [`solutions`](solutions/) directory. 
-
 **This document is written in [R markdown](http://rmarkdown.rstudio.com),**
 which is a method of formatting text, code, and output to create documents that are sharable with other people. 
 While this document is intended to serve as a reference for you to read while typing code into your own script,
 you may also be interested in modifying and running code in the original R markdown file ([`class1.Rmd`](class1.Rmd) in the GitHub repository).
+
+## Extra exercises
+
+Answers to all challenge exercises are available [here](solutions/). 
+
+#### Challenge-objects
+
+- Create an object called agge that contains your age in years
+- Reassign the object to a new object called age (e.g., correct the typo)
+- Remove the previous object from your environment
+- Calculate your age in days
+
+#### Challenge-num
+
+- create a object representing a vector that contains the names of buildings on Fred Hutch's campus: https://www.fredhutch.org/en/contact-us/visit-us.html
+- add Seattle, Washington to the beginning of the vector, and Steam Plant to the end of the vector
+- subset the vector to show only the building in which you work
+
+#### Challenge-char
+
+The following vector represents the number of vacation days possessed by various employees:
+```{r}
+vacation_days <- c(5, 7, 20, 1, 0, 0, 12, 4, 2, 2, 2, 4, 5, 6, 7, 10, 4)
+```
+- How many employees are represented in the vector?
+- How many employees have at least one work week's worth of vacation available to them?
