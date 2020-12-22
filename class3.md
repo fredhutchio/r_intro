@@ -62,14 +62,14 @@ Once you have the software installed, you’ll need to load it:
 library(tidyverse)
 ```
 
-    ## ── Attaching packages ────────────────────────────── tidyverse 1.3.0 ──
+    ## ── Attaching packages ─────────────────────────────────────────────────────── tidyverse 1.3.0 ──
 
-    ## ✓ ggplot2 3.3.0     ✓ purrr   0.3.3
-    ## ✓ tibble  2.1.3     ✓ dplyr   0.8.5
-    ## ✓ tidyr   1.0.2     ✓ stringr 1.4.0
+    ## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
+    ## ✓ tibble  3.0.3     ✓ dplyr   1.0.1
+    ## ✓ tidyr   1.1.1     ✓ stringr 1.4.0
     ## ✓ readr   1.3.1     ✓ forcats 0.5.0
 
-    ## ── Conflicts ───────────────────────────────── tidyverse_conflicts() ──
+    ## ── Conflicts ────────────────────────────────────────────────────────── tidyverse_conflicts() ──
     ## x dplyr::filter() masks stats::filter()
     ## x dplyr::lag()    masks stats::lag()
 
@@ -143,27 +143,27 @@ We can explore these differences further:
 str(clinical)
 ```
 
-    ## Classes 'spec_tbl_df', 'tbl_df', 'tbl' and 'data.frame': 6832 obs. of  20 variables:
-    ##  $ primary_diagnosis          : chr  "C34.1" "C34.1" "C34.3" "C34.1" ...
-    ##  $ tumor_stage                : chr  "stage ia" "stage ib" "stage ib" "stage ia" ...
-    ##  $ age_at_diagnosis           : num  24477 26615 28171 27154 29827 ...
-    ##  $ vital_status               : chr  "dead" "dead" "dead" "alive" ...
-    ##  $ morphology                 : chr  "8070/3" "8070/3" "8070/3" "8083/3" ...
-    ##  $ days_to_death              : num  371 136 2304 NA 146 ...
-    ##  $ state                      : chr  "live" "live" "live" "live" ...
-    ##  $ tissue_or_organ_of_origin  : chr  "C34.1" "C34.1" "C34.3" "C34.1" ...
-    ##  $ days_to_birth              : num  -24477 -26615 -28171 -27154 -29827 ...
-    ##  $ site_of_resection_or_biopsy: chr  "C34.1" "C34.1" "C34.3" "C34.1" ...
-    ##  $ days_to_last_follow_up     : num  NA NA 2099 3747 NA ...
-    ##  $ cigarettes_per_day         : num  10.96 2.19 1.64 1.1 NA ...
-    ##  $ years_smoked               : num  NA NA NA NA NA NA NA NA NA NA ...
-    ##  $ gender                     : chr  "male" "male" "female" "male" ...
-    ##  $ year_of_birth              : num  1936 1931 1927 1930 1923 ...
-    ##  $ race                       : chr  "white" "asian" "white" "white" ...
-    ##  $ ethnicity                  : chr  "not hispanic or latino" "not hispanic or latino" "not hispanic or latino" "not hispanic or latino" ...
-    ##  $ year_of_death              : num  2004 2003 NA NA 2004 ...
-    ##  $ bcr_patient_barcode        : chr  "TCGA-18-3406" "TCGA-18-3407" "TCGA-18-3408" "TCGA-18-3409" ...
-    ##  $ disease                    : chr  "LUSC" "LUSC" "LUSC" "LUSC" ...
+    ## tibble [6,832 × 20] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+    ##  $ primary_diagnosis          : chr [1:6832] "C34.1" "C34.1" "C34.3" "C34.1" ...
+    ##  $ tumor_stage                : chr [1:6832] "stage ia" "stage ib" "stage ib" "stage ia" ...
+    ##  $ age_at_diagnosis           : num [1:6832] 24477 26615 28171 27154 29827 ...
+    ##  $ vital_status               : chr [1:6832] "dead" "dead" "dead" "alive" ...
+    ##  $ morphology                 : chr [1:6832] "8070/3" "8070/3" "8070/3" "8083/3" ...
+    ##  $ days_to_death              : num [1:6832] 371 136 2304 NA 146 ...
+    ##  $ state                      : chr [1:6832] "live" "live" "live" "live" ...
+    ##  $ tissue_or_organ_of_origin  : chr [1:6832] "C34.1" "C34.1" "C34.3" "C34.1" ...
+    ##  $ days_to_birth              : num [1:6832] -24477 -26615 -28171 -27154 -29827 ...
+    ##  $ site_of_resection_or_biopsy: chr [1:6832] "C34.1" "C34.1" "C34.3" "C34.1" ...
+    ##  $ days_to_last_follow_up     : num [1:6832] NA NA 2099 3747 NA ...
+    ##  $ cigarettes_per_day         : num [1:6832] 10.96 2.19 1.64 1.1 NA ...
+    ##  $ years_smoked               : num [1:6832] NA NA NA NA NA NA NA NA NA NA ...
+    ##  $ gender                     : chr [1:6832] "male" "male" "female" "male" ...
+    ##  $ year_of_birth              : num [1:6832] 1936 1931 1927 1930 1923 ...
+    ##  $ race                       : chr [1:6832] "white" "asian" "white" "white" ...
+    ##  $ ethnicity                  : chr [1:6832] "not hispanic or latino" "not hispanic or latino" "not hispanic or latino" "not hispanic or latino" ...
+    ##  $ year_of_death              : num [1:6832] 2004 2003 NA NA 2004 ...
+    ##  $ bcr_patient_barcode        : chr [1:6832] "TCGA-18-3406" "TCGA-18-3407" "TCGA-18-3408" "TCGA-18-3409" ...
+    ##  $ disease                    : chr [1:6832] "LUSC" "LUSC" "LUSC" "LUSC" ...
     ##  - attr(*, "spec")=
     ##   .. cols(
     ##   ..   primary_diagnosis = col_character(),
@@ -240,13 +240,15 @@ filtered_rows <- filter(clinical, disease == "LUSC")
 The syntax here is similar to `select`, and the conditional filters can
 be applied in similarly to base R functions.
 
-**Challenge:** create a new object from clinical called race\_disease
-that includes only the race, ethnicity, and disease columns (solutions
-[here](solutions/class3_solutions.R))
+> #### Challenge-columns
+> 
+> Create a new object from clinical called race\_disease that includes
+> only the race, \> ethnicity, and disease columns.
 
-**Challenge:** create a new object from race\_disease called race\_BRCA
-that includes only BRCA (disease) (solutions
-[here](solutions/class3_solutions.R))
+> #### Challenge-rows
+> 
+> Create a new object from race\_disease called race\_BRCA that includes
+> only BRCA (from `disease`).
 
 ## Combining commands
 
@@ -325,10 +327,11 @@ does matter\! The output from the second line does not include the
 `year_of_birth` column, so R is unable to apply the filter in the third
 line.
 
-**Challenge:** Use pipes to extract the columns `gender`,
-`years_smoked`, and `year_of_birth` from the object `clinical` for only
-living patients (vital\_status) who have smoked fewer than 1
-`cigarettes_per_day` (solutions [here](solutions/class3_solutions.R))
+> #### Challenge-pipes
+> 
+> Use pipes to extract the columns `gender`, `years_smoked`, and
+> `year_of_birth` from the object `clinical` for only living patients
+> (vital\_status) who have smoked fewer than 1 `cigarettes_per_day`.
 
 ## Mutate
 
@@ -356,8 +359,7 @@ column at the end of the table.
 > `transmute`, which drops the existing columns used to calculcate the
 > new columns.
 
-We can use `mutate` to perform multiple conversions at
-once:
+We can use `mutate` to perform multiple conversions at once:
 
 ``` r
 # convert days to year and months at same time, and we don't always need to assign to object
@@ -367,8 +369,8 @@ clinical %>%
   glimpse() # preview data output
 ```
 
-    ## Observations: 6,832
-    ## Variables: 22
+    ## Rows: 6,832
+    ## Columns: 22
     ## $ primary_diagnosis           <chr> "C34.1", "C34.1", "C34.3", "C34.1", "C34.…
     ## $ tumor_stage                 <chr> "stage ia", "stage ib", "stage ib", "stag…
     ## $ age_at_diagnosis            <dbl> 24477, 26615, 28171, 27154, 29827, 23370,…
@@ -399,10 +401,12 @@ Console. Because this is a large dataset, that type of output can be
 unweildy. `glimpse` allows us to see a preview of the data, including
 the two new columns created.
 
-**Challenge:** extract only lung cancer patients (LUSC, from disease)
-and create a new column called total\_cig representing an estimate of
-the total number of cigarettes smoked (use columns years smoked and
-cigarettes per day) (solutions [here](solutions/class3_solutions.R))
+> #### Challenge-lung
+> 
+> Extract only lung cancer patients (LUSC, from disease) and create a
+> new column called `total_cig` representing an estimate of the total
+> number of cigarettes smoked (use columns `years_smoked` and
+> `cigarettes_per_day`).
 
 ## Split-apply-combine
 
@@ -455,6 +459,8 @@ clinical %>%
   summarize(mean_days_to_death = mean(days_to_death, na.rm = TRUE))
 ```
 
+    ## `summarise()` ungrouping output (override with `.groups` argument)
+
     ## # A tibble: 3 x 2
     ##   gender mean_days_to_death
     ##   <chr>               <dbl>
@@ -481,18 +487,23 @@ clinical %>%
   summarize(mean_days_to_death = mean(days_to_death))
 ```
 
+    ## `summarise()` ungrouping output (override with `.groups` argument)
+
     ## # A tibble: 2 x 2
     ##   gender mean_days_to_death
     ##   <chr>               <dbl>
     ## 1 female                 NA
     ## 2 male                   NA
 
-**Challenge:** create object called smoke\_complete from clinical that
-contains no missing data for cigarettes per day or age at diagnosis
-(solutions [here](solutions/class3_solutions.R))
+> #### Challenge-smoke-complete
+> 
+> Create object called smoke\_complete from clinical that contains no
+> missing data for cigarettes per day or age at diagnosis.
 
-**Challenge:** how do you save resulting table to file? How would you
-find this answer? (solutions [here](solutions/class3_solutions.R))
+> #### Challenge-save
+> 
+> How do you save resulting table to file? How would you find this
+> answer?
 
 The solution to the challenges above represent the first of two datasets
 we’ll be using for data visualization in our next class. Make sure
@@ -512,9 +523,10 @@ performs a similar task, but by default includes quotation marks around
 cells with character data as well as row names (sequential numbers,
 unless otherwise specified).
 
-**Challenge:** create a new object called birth\_complete that contains
-no missing data for year of birth or vital status (solutions
-[here](solutions/class3_solutions.R))
+> #### Challenge-birth-complete
+> 
+> Create a new object called birth\_complete that contains no missing
+> data for year of birth or vital status.
 
 This challenge begins filtering the second of our two datasets for next
 time. Make sure you include the filter to remove missing data that’s
@@ -581,9 +593,10 @@ Finally, we’ll write the final output to a file:
 write_csv(birth_reduced, "data/birth_reduced.csv")
 ```
 
-**Challenge:** extract all tumor stages with more than 200 cases (Hint:
-also check to see if there are any other missing/ambiguous data\!)
-(solutions [here](solutions/class3_solutions.R))
+> #### Challenge-tumor
+> 
+> Extract all tumor stages with more than 200 cases (Hint: also check to
+> see if there are any other missing/ambiguous data\!)
 
 ## Wrapping up
 
@@ -599,13 +612,6 @@ In the next session, we’ll wrap up the course by creating
 publication-quality images using `ggplot2`, a data visualization package
 in `tidyverse`, and the two datasets we filtered in the sections above.
 
-## Errata
-
-**If you would like more practice,** the [`exercises`](exercises/)
-directory contains additional tasks for practice. Answers to those and
-in-class questions are available in the [`solutions`](solutions/)
-directory.
-
 **This document is written in [R
 markdown](http://rmarkdown.rstudio.com),** which is a method of
 formatting text, code, and output to create documents that are sharable
@@ -613,3 +619,34 @@ with other people. While this document is intended to serve as a
 reference for you to read while typing code into your own script, you
 may also be interested in modifying and running code in the original R
 markdown file ([`class3.Rmd`](class3.Rmd) in the GitHub repository).
+
+## Extra exercises
+
+Answers to all challenge exercises are available [here](solutions/).
+
+The following exercises all use the same `clinical` data from this
+class.
+
+#### Challenge-ethnicity
+
+How many hispanic or latino individuals in clinical are not also white?
+What are their races?
+
+#### Challenge-years
+
+Create a new column for clinical called `age_at_death` that calculates
+this statistic (in years) from `year_of_birth` and `year_of_death`.
+
+#### Challenge-helpers
+
+`dplyr` includes several “helpers” that allows selection of columns
+meeting particular criteria (described on the first page of the dplyr
+cheatsheet near the top of the right hand column:
+<https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf>).
+Using one of these tools, extract all columns that include “diagnosis”.
+
+#### Challenge-combine
+
+How many patients are hispanic or latino patients (column ethnicity),
+died after the year 2000 (year\_of\_death), and possess no missing data
+for cigarettes per day?

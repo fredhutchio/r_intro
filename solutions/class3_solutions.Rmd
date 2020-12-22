@@ -9,6 +9,11 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r include=FALSE}
+library(tidyverse)
+clinical <- read.csv("../data/clinical.csv")
+```
+
 #### Challenge-columns
 ```{r}
 race_disease <- select(clinical, race, ethnicity, disease)
@@ -24,14 +29,16 @@ race_BRCA <- filter(race_disease, disease == "BRCA")
 clinical %>%
   filter(vital_status == "alive") %>%
   filter(cigarettes_per_day < 1) %>%
-  select(gender, years_smoked, year_of_birth)
+  select(gender, years_smoked, year_of_birth) %>%
+  head() # output only the first few lines
 ```
 
 #### Challenge-lung 
 ```{r}
 clinical %>%
   filter(disease == "LUSC") %>%
-  mutate(total_cig = years_smoked * cigarettes_per_day)
+  mutate(total_cig = years_smoked * cigarettes_per_day * 365) %>%
+  head() # output only the first few lines
 ```
 
 #### Challenge-smoke-complete
@@ -42,12 +49,12 @@ smoke_complete <- clinical %>%
 ```
 
 #### Challenge-save
-```{r}
+```{r eval=FALSE}
 write.csv(smoke_complete, "data/smoke_complete.csv", row.names = FALSE)
 ```
 Google search for "save file R".
 
-## Challenge-birth-complete
+#### Challenge-birth-complete
 ```{r}
 birth_complete <- clinical %>%
   filter(!is.na(year_of_birth)) %>%
@@ -55,7 +62,7 @@ birth_complete <- clinical %>%
   filter(vital_status != "not reported")
 ```
 
-## Challenge-tumor
+#### Challenge-tumor
 ```{r}
 # counting number of records for each tumor stage
 tumor_counts <- clinical %>%
@@ -89,10 +96,12 @@ clinical <- clinical %>%
 ```{r}
 # preferred way
 clinical %>%
-  select(contains("diagnosis"))
+  select(contains("diagnosis")) %>%
+  head() # output only the first few lines
 # also works, but only because in this example both columns end in "diagnosis"
 clinical %>%
-  select(ends_with("diagnosis"))
+  select(ends_with("diagnosis")) %>%
+  head() # output only the first few lines
 ```
 
 #### Challenge-combine
