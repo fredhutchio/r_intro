@@ -5,16 +5,14 @@ Introduction to R, Class 1: Solutions
 
 #### Challenge-hist
 
-What does the function `hist` do? - creates a histogram
+The function `hist` creates a histogram.
 
-What are its main arguments? - x: vector of values for which the
-histogram is desired - breaks: breakpoints for cells - …
+Its main arguments are: - x: vector of values for which the histogram is
+desired - breaks: breakpoints for cells - …
 
-How did you determine this? - `?hist`
+This can be determined using `?hist`
 
 #### Challenge-values
-
-For the code chunk below, what is the value of each item at each step?
 
 ``` r
 mass <- 47.5              # mass = 47.5
@@ -25,10 +23,6 @@ mass_index <- mass/width  # mass_index = 0.9313725 (uses second assigned values 
 ```
 
 #### Challenge-organs
-
-Please answer the following questions about `organs`: - How many values
-are in `organs`? - What type of data is `organs`? - How can you see an
-overview of `organs`?
 
 ``` r
 # creating vector
@@ -54,10 +48,6 @@ str(organs)
     ##  chr [1:3] "lung" "prostate" "breast"
 
 #### Challenge-dtypes
-
-R tends to handle interpreting data types in the background of most
-operations. The following code is designed to cause some unexpected
-results in R. What is unusual about each of the following objects?
 
 ``` r
 num_char <- c(1, 2, 3, "a")
@@ -89,23 +79,10 @@ class(tricky) # data are character
 
 #### Challenge-compare
 
-What does the following code return, and why?
-
-``` r
-"four" > "five"
-```
-
-    ## [1] TRUE
-
 R interprets these as character data, and five comes before four
 alphabetically, which is used to assess the logic statement
 
 #### Challenge-analyze
-
-Complete the following tasks after executing the code chunk below.
-(Note: there are multiple solutions): \> - Remove NAs \> - Calculate the
-median \> - Identify how many elements in the vector are greater than 67
-inches \> - Visualize the data as a histogram (hint: function `hist`)
 
 ``` r
 # create vector
@@ -136,7 +113,7 @@ length(more_heights[more_heights > 67])
 hist(more_heights_clean)
 ```
 
-![](class1_solutions_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](class1_solutions_files/figure-gfm/hist-1.png)<!-- -->
 
 ## Extra exercises
 
@@ -168,7 +145,7 @@ buildings[2] # for Arnold
 
     ## [1] "Arnold"
 
-\#\#\#\#Challenge-char
+#### Challenge-char
 
 ``` r
 # the following vector represents the number of vacation days possessed by various employees
