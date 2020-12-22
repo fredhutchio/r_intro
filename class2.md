@@ -134,19 +134,16 @@ for more options for importing data.
 > practice for retaining data used in an analysis (since data online may
 > be updated).
 
-**Challenge:** Download, inspect, and import the following data files.
-The URL for each sample dataset is included along with a name to assign
-to the object. (Hint: you can use the same function as above, but may
-need to update the `sep =` parameter)
-
-  - URL:
-    <https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.tsv>,
-    object name: `example1`
-  - URL:
-    <https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.txt>,
-    object name: `example2`
-
-(solutions [here](solutions/class2_solutions.R))
+> #### Challenge-data
+> 
+> Download, inspect, and import the following data files. The URL for
+> each sample dataset is included along with a name to assign to the
+> object. (Hint: you can use the same function as above, but may need to
+> update the `sep =` parameter) - URL:
+> <https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.tsv>,
+> object name: `example1` - URL:
+> <https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.txt>,
+> object name: `example2`
 
 Importing data can be tricky and frustrating, However, if you can’t get
 your data into R, you can’t do anything to analyze or visualize it. It’s
@@ -282,26 +279,26 @@ str(clinical)
 ```
 
     ## 'data.frame':    6832 obs. of  20 variables:
-    ##  $ primary_diagnosis          : Factor w/ 103 levels "C07","C16.0",..: 21 21 24 21 24 21 24 24 21 21 ...
-    ##  $ tumor_stage                : Factor w/ 18 levels "i/ii nos","not reported",..: 5 6 6 5 9 12 6 15 6 9 ...
+    ##  $ primary_diagnosis          : chr  "C34.1" "C34.1" "C34.3" "C34.1" ...
+    ##  $ tumor_stage                : chr  "stage ia" "stage ib" "stage ib" "stage ia" ...
     ##  $ age_at_diagnosis           : int  24477 26615 28171 27154 29827 23370 19025 26938 28430 30435 ...
-    ##  $ vital_status               : Factor w/ 3 levels "alive","dead",..: 2 2 2 1 2 1 2 2 2 2 ...
-    ##  $ morphology                 : Factor w/ 83 levels "8010/3","8013/3",..: 7 7 7 11 7 7 7 7 7 7 ...
+    ##  $ vital_status               : chr  "dead" "dead" "dead" "alive" ...
+    ##  $ morphology                 : chr  "8070/3" "8070/3" "8070/3" "8083/3" ...
     ##  $ days_to_death              : int  371 136 2304 NA 146 NA 345 716 2803 973 ...
-    ##  $ state                      : Factor w/ 1 level "live": 1 1 1 1 1 1 1 1 1 1 ...
-    ##  $ tissue_or_organ_of_origin  : Factor w/ 94 levels "C07.9","C16.0",..: 23 23 25 23 25 23 25 25 23 23 ...
+    ##  $ state                      : chr  "live" "live" "live" "live" ...
+    ##  $ tissue_or_organ_of_origin  : chr  "C34.1" "C34.1" "C34.3" "C34.1" ...
     ##  $ days_to_birth              : int  -24477 -26615 -28171 -27154 -29827 -23370 -19025 -26938 -28430 -30435 ...
-    ##  $ site_of_resection_or_biopsy: Factor w/ 94 levels "C07.9","C16.0",..: 23 23 25 23 25 23 25 25 23 23 ...
+    ##  $ site_of_resection_or_biopsy: chr  "C34.1" "C34.1" "C34.3" "C34.1" ...
     ##  $ days_to_last_follow_up     : int  NA NA 2099 3747 NA 3576 NA NA 1810 956 ...
     ##  $ cigarettes_per_day         : num  10.96 2.19 1.64 1.1 NA ...
     ##  $ years_smoked               : int  NA NA NA NA NA NA NA NA NA NA ...
-    ##  $ gender                     : Factor w/ 2 levels "female","male": 2 2 1 2 2 1 2 2 2 2 ...
+    ##  $ gender                     : chr  "male" "male" "female" "male" ...
     ##  $ year_of_birth              : int  1936 1931 1927 1930 1923 1942 1953 1932 1929 1923 ...
-    ##  $ race                       : Factor w/ 6 levels "american indian or alaska native",..: 6 2 6 6 5 5 6 2 5 5 ...
-    ##  $ ethnicity                  : Factor w/ 3 levels "hispanic or latino",..: 2 2 2 2 3 3 2 2 3 3 ...
+    ##  $ race                       : chr  "white" "asian" "white" "white" ...
+    ##  $ ethnicity                  : chr  "not hispanic or latino" "not hispanic or latino" "not hispanic or latino" "not hispanic or latino" ...
     ##  $ year_of_death              : int  2004 2003 NA NA 2004 NA 2005 2006 NA NA ...
-    ##  $ bcr_patient_barcode        : Factor w/ 6289 levels "TCGA-02-0001",..: 414 415 416 417 418 419 420 421 422 423 ...
-    ##  $ disease                    : Factor w/ 15 levels "BLCA","BRCA",..: 7 7 7 7 7 7 7 7 7 7 ...
+    ##  $ bcr_patient_barcode        : chr  "TCGA-18-3406" "TCGA-18-3407" "TCGA-18-3408" "TCGA-18-3409" ...
+    ##  $ disease                    : chr  "LUSC" "LUSC" "LUSC" "LUSC" ...
 
 The output provided includes:
 
@@ -321,54 +318,54 @@ Finally, we can also examine basic summary statistics for each column:
 summary(clinical) 
 ```
 
-    ##  primary_diagnosis       tumor_stage   age_at_diagnosis       vital_status 
-    ##  C50.9  :1087      not reported:2753   Min.   : 3982    alive       :4586  
-    ##  C71.9  : 652      stage iia   : 724   1st Qu.:19191    dead        :2205  
-    ##  C54.1  : 568      stage iib   : 543   Median :22842    not reported:   2  
-    ##  C34.1  : 523      stage iiia  : 391   Mean   :22320    NA's        :  39  
-    ##  C61    : 499      stage ib    : 382   3rd Qu.:26002                       
-    ##  (Other):3464      (Other)     :2000   Max.   :32872                       
-    ##  NA's   :  39      NA's        :  39   NA's   :114                         
-    ##    morphology   days_to_death      state      tissue_or_organ_of_origin
-    ##  8070/3 :1108   Min.   :    0.0   live:6793   C50.9  :1088             
-    ##  8140/3 : 996   1st Qu.:  274.0   NA's:  39   C71.9  : 652             
-    ##  8500/3 : 787   Median :  524.0               C54.1  : 568             
-    ##  9440/3 : 596   Mean   :  878.2               C34.1  : 525             
-    ##  8720/3 : 420   3rd Qu.: 1044.5               C61.9  : 500             
-    ##  (Other):2886   Max.   :10870.0               (Other):3460             
-    ##  NA's   :  39   NA's   :4645                  NA's   :  39             
-    ##  days_to_birth    site_of_resection_or_biopsy days_to_last_follow_up
-    ##  Min.   :-32872   C50.9  :1088                Min.   :  -64.0       
-    ##  1st Qu.:-26002   C71.9  : 652                1st Qu.:  345.0       
-    ##  Median :-22842   C54.1  : 568                Median :  650.0       
-    ##  Mean   :-22320   C34.1  : 525                Mean   :  976.8       
-    ##  3rd Qu.:-19191   C61.9  : 500                3rd Qu.: 1259.0       
-    ##  Max.   : -3982   (Other):3460                Max.   :11252.0       
-    ##  NA's   :114      NA's   :  39                NA's   :1118          
-    ##  cigarettes_per_day  years_smoked      gender     year_of_birth 
-    ##  Min.   : 0.008     Min.   : 8.00   female:3535   Min.   :1902  
-    ##  1st Qu.: 1.370     1st Qu.:30.75   male  :3258   1st Qu.:1937  
-    ##  Median : 2.192     Median :40.00   NA's  :  39   Median :1947  
-    ##  Mean   : 2.599     Mean   :39.96                 Mean   :1948  
-    ##  3rd Qu.: 3.288     3rd Qu.:50.00                 3rd Qu.:1957  
-    ##  Max.   :40.000     Max.   :63.00                 Max.   :1993  
-    ##  NA's   :5661       NA's   :6384                  NA's   :170   
-    ##                                         race                       ethnicity   
-    ##  american indian or alaska native         :  15   hispanic or latino    : 180  
-    ##  asian                                    : 316   not hispanic or latino:4866  
-    ##  black or african american                : 581   not reported          :1747  
-    ##  native hawaiian or other pacific islander:  12   NA's                  :  39  
-    ##  not reported                             :1116                                
-    ##  white                                    :4753                                
-    ##  NA's                                     :  39                                
-    ##  year_of_death    bcr_patient_barcode    disease    
-    ##  Min.   :1990   TCGA-18-3406:   2     BRCA   :1098  
-    ##  1st Qu.:2004   TCGA-18-3407:   2     LUSC   :1008  
-    ##  Median :2007   TCGA-18-3408:   2     GBM    : 617  
-    ##  Mean   :2006   TCGA-18-3409:   2     UCEC   : 560  
-    ##  3rd Qu.:2010   TCGA-18-3410:   2     LGG    : 516  
-    ##  Max.   :2014   (Other)     :6783     PRAD   : 500  
-    ##  NA's   :5266   NA's        :  39     (Other):2533
+    ##  primary_diagnosis  tumor_stage        age_at_diagnosis vital_status      
+    ##  Length:6832        Length:6832        Min.   : 3982    Length:6832       
+    ##  Class :character   Class :character   1st Qu.:19191    Class :character  
+    ##  Mode  :character   Mode  :character   Median :22842    Mode  :character  
+    ##                                        Mean   :22320                      
+    ##                                        3rd Qu.:26002                      
+    ##                                        Max.   :32872                      
+    ##                                        NA's   :114                        
+    ##   morphology        days_to_death        state          
+    ##  Length:6832        Min.   :    0.0   Length:6832       
+    ##  Class :character   1st Qu.:  274.0   Class :character  
+    ##  Mode  :character   Median :  524.0   Mode  :character  
+    ##                     Mean   :  878.2                     
+    ##                     3rd Qu.: 1044.5                     
+    ##                     Max.   :10870.0                     
+    ##                     NA's   :4645                        
+    ##  tissue_or_organ_of_origin days_to_birth    site_of_resection_or_biopsy
+    ##  Length:6832               Min.   :-32872   Length:6832                
+    ##  Class :character          1st Qu.:-26002   Class :character           
+    ##  Mode  :character          Median :-22842   Mode  :character           
+    ##                            Mean   :-22320                              
+    ##                            3rd Qu.:-19191                              
+    ##                            Max.   : -3982                              
+    ##                            NA's   :114                                 
+    ##  days_to_last_follow_up cigarettes_per_day  years_smoked      gender         
+    ##  Min.   :  -64.0        Min.   : 0.008     Min.   : 8.00   Length:6832       
+    ##  1st Qu.:  345.0        1st Qu.: 1.370     1st Qu.:30.75   Class :character  
+    ##  Median :  650.0        Median : 2.192     Median :40.00   Mode  :character  
+    ##  Mean   :  976.8        Mean   : 2.599     Mean   :39.96                     
+    ##  3rd Qu.: 1259.0        3rd Qu.: 3.288     3rd Qu.:50.00                     
+    ##  Max.   :11252.0        Max.   :40.000     Max.   :63.00                     
+    ##  NA's   :1118           NA's   :5661       NA's   :6384                      
+    ##  year_of_birth      race            ethnicity         year_of_death 
+    ##  Min.   :1902   Length:6832        Length:6832        Min.   :1990  
+    ##  1st Qu.:1937   Class :character   Class :character   1st Qu.:2004  
+    ##  Median :1947   Mode  :character   Mode  :character   Median :2007  
+    ##  Mean   :1948                                         Mean   :2006  
+    ##  3rd Qu.:1957                                         3rd Qu.:2010  
+    ##  Max.   :1993                                         Max.   :2014  
+    ##  NA's   :170                                          NA's   :5266  
+    ##  bcr_patient_barcode   disease         
+    ##  Length:6832         Length:6832       
+    ##  Class :character    Class :character  
+    ##  Mode  :character    Mode  :character  
+    ##                                        
+    ##                                        
+    ##                                        
+    ## 
 
 For numeric data (such as `year_of_death`), this output includes common
 statistics like median and mean, as well as the number of rows
@@ -406,8 +403,9 @@ first_column_again <- clinical[ , 1]
 Leaving one field blank means you want the entire set in the output (in
 this case, all rows).
 
-**Challenge:** what is the difference in results between the last two
-lines of code? (solutions [here](solutions/class2_solutions.R))
+> #### Challenge-extract
+> 
+> What is the difference in results between the last two lines of code?
 
 Similarly, we can also extract only the first row across all columns:
 
@@ -500,25 +498,39 @@ article](https://www.r-bloggers.com/r-accessors-explained/).
 
 The following challenges all use the `clinical` object:
 
-**Challenge:** code as many different ways possible to extract the
-column days\_to\_death (solutions [here](solutions/class2_solutions.R))
+> #### Challenge-days
+> 
+> Code as many different ways possible to extract the column
+> `days_to_death`.
 
-**Challenge:** extract the first 6 rows for only age at diagnosis and
-days to death (solutions [here](solutions/class2_solutions.R))
+> #### Challenge-rows
+> 
+> Extract the first 6 rows for only `age_at_diagnosis` and
+> `days_to_death`.
 
-**Challenge:** calculate the range and mean for cigarettes per day
-(solutions [here](solutions/class2_solutions.R))
+> #### Challenge-calculate
+> 
+> Calculate the range and mean for `cigarettes_per_day`.
 
 ## Factors
+
+**Note:** This section was written with a previous version of R that
+automatically interprets all character data as factors (this is not true
+of more recent versions of R). To execute the code in this section,
+please first import your data again, using the following modified
+command:
+
+``` r
+clinical <- read.csv("data/clinical.csv", stringsAsFactors = TRUE)
+```
 
 This section explores one of the trickier types of data you’re likely to
 encounter: factors, which are how R interprets categorical data.
 
-When we imported our dataset into R, the `read.csv` function
-automatically assumed that all the character data in our dataset are
-factors, or categories. Factors have predefined sets of values, called
-levels. We can explore what this means by first creating a factor
-vector:
+When we imported our dataset into R, the `read.csv` function assumed
+that all the character data in our dataset are factors, or categories.
+Factors have predefined sets of values, called levels. We can explore
+what this means by first creating a factor vector:
 
 ``` r
 # create vector with factor data
@@ -582,10 +594,10 @@ how the data are presented when creating a basic plot:
 
 ``` r
 # quick and dirty plot
-plot(clinical$race) 
+plot(clinical$race)
 ```
 
-![](class2_files/figure-gfm/unnamed-chunk-25-1.png)<!-- -->
+![](class2_files/figure-gfm/race-plot-1.png)<!-- -->
 
 The labels as presented by default are not particularly readable, and
 also lack appropriate capitalization and formatting. While it is
@@ -648,7 +660,7 @@ clinical$race <- race
 plot(clinical$race)
 ```
 
-![](class2_files/figure-gfm/unnamed-chunk-29-1.png)<!-- -->
+![](class2_files/figure-gfm/better-race-plot-1.png)<!-- -->
 
 This section was a very brief introduction to factors, and it’s likely
 you’ll need more information when working with categorical data of your
@@ -656,12 +668,14 @@ own. A good place to start would be [this
 article](https://peerj.com/preprints/3163/), and exploring some of the
 tools in the tidyverse (which we’ll discuss in the next lesson).
 
-**Challenge:** In your clinical dataset, replace “not reported” in
-ethnicity with NA (solutions [here](solutions/class2_solutions.R))
+> #### Challenge-not-reported
+> 
+> In your clinical dataset, replace “not reported” in ethnicity with NA
 
-**Challenge:** What Google search helps you identify additional
-strategies for renaming missing data? (solutions
-[here](solutions/class2_solutions.R))
+> #### Challenge-remove
+> 
+> What Google search helps you identify additional strategies for
+> renaming missing data?
 
 ## Optional: Creating a data frame by hand
 
@@ -687,8 +701,8 @@ str(example_df1)
 ```
 
     ## 'data.frame':    3 obs. of  3 variables:
-    ##  $ cancer    : Factor w/ 3 levels "breast","lung",..: 2 3 1
-    ##  $ metastasis: Factor w/ 2 levels "no","yes": 2 1 2
+    ##  $ cancer    : chr  "lung" "prostate" "breast"
+    ##  $ metastasis: chr  "yes" "no" "yes"
     ##  $ cases     : num  30 50 100
 
 The resulting data frame has column headers, identified from the names
@@ -725,13 +739,6 @@ data manipulation tools for data cleaning, transforming, and
 summarizing, and we’ll prepare some data to visualize in our final
 session.
 
-## Errata
-
-**If you would like more practice,** the [`exercises`](exercises/)
-directory contains additional tasks for practice. Answers to those and
-in-class questions are available in the [`solutions`](solutions/)
-directory.
-
 **This document is written in [R
 markdown](http://rmarkdown.rstudio.com),** which is a method of
 formatting text, code, and output to create documents that are sharable
@@ -739,3 +746,24 @@ with other people. While this document is intended to serve as a
 reference for you to read while typing code into your own script, you
 may also be interested in modifying and running code in the original R
 markdown file ([`class2.Rmd`](class2.Rmd) in the GitHub repository).
+
+## Extra exercises
+
+Answers to all challenge exercises are available [here](solutions/).
+
+The following exercises all use the same `clinical` data from this
+class.
+
+#### Challenge-disease-race
+
+Extract the last 100 rows for only `disease` and `rac`e and save to an
+object called `disease_race`.
+
+#### Challenge-min-max
+
+Calculate the minimum and maximum for `days_to_death`.
+
+#### Challenge-factors
+
+Change all of the factors of race to shorter names for each category,
+and appropriately indicate missing data.
