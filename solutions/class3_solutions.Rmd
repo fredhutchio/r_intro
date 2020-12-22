@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r include=FALSE}
 library(tidyverse)
-clinical <- read.csv("../data/clinical.csv")
+clinical <- read_csv("../data/clinical.csv")
 ```
 
 #### Challenge-columns
