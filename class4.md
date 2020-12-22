@@ -34,14 +34,14 @@ a title, and enter the following code with comments:
 library(tidyverse)
 ```
 
-    ## ── Attaching packages ────────────────────────────── tidyverse 1.3.0 ──
+    ## ── Attaching packages ─────────────────────────────────────────────────────── tidyverse 1.3.0 ──
 
-    ## ✓ ggplot2 3.3.0     ✓ purrr   0.3.3
-    ## ✓ tibble  2.1.3     ✓ dplyr   0.8.5
-    ## ✓ tidyr   1.0.2     ✓ stringr 1.4.0
+    ## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
+    ## ✓ tibble  3.0.3     ✓ dplyr   1.0.1
+    ## ✓ tidyr   1.1.1     ✓ stringr 1.4.0
     ## ✓ readr   1.3.1     ✓ forcats 0.5.0
 
-    ## ── Conflicts ───────────────────────────────── tidyverse_conflicts() ──
+    ## ── Conflicts ────────────────────────────────────────────────────────── tidyverse_conflicts() ──
     ## x dplyr::filter() masks stats::filter()
     ## x dplyr::lag()    masks stats::lag()
 
@@ -302,9 +302,10 @@ command interprets the file format for export using the file suffix you
 specify. The other arguments dictate the size (`width` and `height`) and
 resolution (`dpi`).
 
-**Challenge:** Create a scatterplot showing age at diagnosis vs years
-smoked with points colored by gender and appropriate axis labels
-(solutions [here](solutions/class4_solutions.R))
+> #### Challenge-scatterplot
+> 
+> Create a scatterplot showing age at diagnosis vs years smoked with
+> points colored by gender and appropriate axis labels.
 
 ## Box and whisker plots
 
@@ -360,9 +361,10 @@ ggplot(smoke_complete) +
 
 ![](class4_files/figure-gfm/box_outlier-1.png)<!-- -->
 
-**Challenge:** Write code comments for each of the following lines of
-code. What is the advantage of writing code like this? (solutions
-[here](solutions/class4_solutions.R))
+> #### Challenge-comments
+> 
+> Write code comments for each of the following lines of code. What is
+> the advantage of writing code like this?
 
 ``` r
 my_plot <- ggplot(smoke_complete, aes(x = vital_status, y = cigarettes_per_day)) 
@@ -371,11 +373,12 @@ my_plot +
   geom_jitter(alpha = 0.2, color = "purple")
 ```
 
-![](class4_files/figure-gfm/challenge-1.png)<!-- -->
+![](class4_files/figure-gfm/comments-1.png)<!-- -->
 
-**Challenge:** Does the order of layers in the last plot matter? What
-happens if `jitter` is coded before `boxplot`? (solutions
-[here](solutions/class4_solutions.R))
+> #### Challenge-order
+> 
+> Does the order of layers in the last plot matter? What happens if
+> `jitter` is coded before `boxplot`?
 
 ## Time series data as line plots
 
@@ -431,13 +434,16 @@ ggplot(yearly_counts) +
 Note that you don’t have to include a separate argument for `group =
 disease` because grouping is assumed by `color = disease`.
 
-**Challenge:** Create a line plot for year of birth and number of
-patients with lines representing each gender. Hint: you’ll need to
-manipulate the `birth_reduced` dataset first. (solutions
-[here](solutions/class4_solutions.R))
+> #### Challenge-line
+> 
+> Create a line plot for year of birth and number of patients with lines
+> representing each gender. Hint: you’ll need to manipulate the
+> `birth_reduced` dataset first.
 
-**Challenge:** How do you show differences in lines using dashes/dots
-instead of color? (solutions [here](solutions/class4_solutions.R))
+> #### Challenge-dash
+> 
+> How do you show differences in lines using dashes/dots instead of
+> color?
 
 ## Faceting
 
@@ -467,8 +473,7 @@ mapping: it is used to specify the variable to form facet groups.
 
 `facet_wrap` determines how many rows and columns of panels are needed
 to create the most square-shaped final plot possible. This becomes
-useful when there are many more
-categories:
+useful when there are many more categories:
 
 ``` r
 # add a variable by leaving color but changing panels to other categorical data
@@ -513,13 +518,15 @@ ggplot(smoke_complete) +
 Don’t forget to look at the help documentation (e.g., `?facet_grid`) to
 learn more about additional ways to customize your plots\!
 
-**Challenge**: Alter your last challenge plot of (birth year by number
-of patients) to show each gender in separate panels. (solutions
-[here](solutions/class4_solutions.R))
+> #### Challenge-panels
+> 
+> Alter your last challenge plot of (birth year by number of patients)
+> to show each gender in separate panels.
 
-**Challenge**: How do you change axis formatting, like tick marks and
-lines? Hint: You may want to use Google\! (solutions
-[here](solutions/class4_solutions.R))
+> #### Challenge-axis
+> 
+> How do you change axis formatting, like tick marks and lines? Hint:
+> You may want to use Google\!
 
 ## Wrapping up
 
@@ -537,13 +544,6 @@ all `ggplot` features is available
 sheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf)
 that is really handy\!
 
-## Errata
-
-**If you would like more practice,** the [`exercises`](exercises/)
-directory contains additional tasks for practice. Answers to those and
-in-class questions are available in the [`solutions`](solutions/)
-directory.
-
 **This document is written in [R
 markdown](http://rmarkdown.rstudio.com),** which is a method of
 formatting text, code, and output to create documents that are sharable
@@ -551,3 +551,13 @@ with other people. While this document is intended to serve as a
 reference for you to read while typing code into your own script, you
 may also be interested in modifying and running code in the original R
 markdown file ([`class4.Rmd`](class4.Rmd) in the GitHub repository).
+
+## Extra exercises
+
+Answers to all challenge exercises are available [here](solutions/).
+
+#### Challenge-improve
+
+Improve one of the plots previously created today, by changing thickness
+of lines, name of legend, or color palette
+(<http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/>)

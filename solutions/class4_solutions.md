@@ -1,31 +1,24 @@
----
-title: 'Introduction to R, Class 4: Solutions'
-output: github_document
----
-  
-<!--class4_solutions.md is generated from class4_solutions.Rmd. Please edit that file -->
-  
-  ```{r setup, include=FALSE, purl=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+Introduction to R, Class 4: Solutions
+================
 
-```{r include=FALSE}
-library(tidyverse)
-clinical <- read_csv("../data/clinical.csv")
-smoke_complete <- read_csv("../data/smoke_complete.csv")
-birth_reduced <- read_csv("../data/birth_reduced.csv")
-```
+<!--class4_solutions.md is generated from class4_solutions.Rmd. Please edit that file -->
 
 ## Challenge-scatterplot
-```{r scatterplot}
+
+``` r
 ggplot(data=smoke_complete,
        aes(x=age_at_diagnosis, 
            y=years_smoked, color=gender)) +
   geom_point()
 ```
 
+    ## Warning: Removed 730 rows containing missing values (geom_point).
+
+![](class4_solutions_files/figure-gfm/scatterplot-1.png)<!-- -->
+
 #### Challenge-comments
-```{r comments}
+
+``` r
 # assign data and aesthetics to object
 my_plot <- ggplot(smoke_complete, aes(x = vital_status, y = cigarettes_per_day))
 # start with data/aesthetics object
@@ -36,17 +29,24 @@ my_plot +
   geom_jitter(alpha = 0.2, color = "purple")
 ```
 
+![](class4_solutions_files/figure-gfm/comments-1.png)<!-- -->
+
 #### Challenge-order
+
 Yes, the order matters.
-```{r order}
+
+``` r
 ggplot(data=smoke_complete,
        aes(x=vital_status, y=cigarettes_per_day)) +
   geom_jitter(alpha=0.3, color="tomato") +
   geom_boxplot()
 ```
 
+![](class4_solutions_files/figure-gfm/order-1.png)<!-- -->
+
 #### Challenge-line
-```{r line}
+
+``` r
 yearly_counts2 <- birth_reduced %>%
   count(year_of_birth, gender)
 ggplot(data=yearly_counts2, 
@@ -54,24 +54,35 @@ ggplot(data=yearly_counts2,
   geom_line(aes(color=gender))
 ```
 
+![](class4_solutions_files/figure-gfm/line-1.png)<!-- -->
+
 #### Challenge-dash
-```{r dash}
+
+``` r
 ggplot(data=yearly_counts2, 
        aes(x=year_of_birth, y=n, color=gender)) +
   geom_line(aes(linetype=gender))
 ```
 
+![](class4_solutions_files/figure-gfm/dash-1.png)<!-- -->
+
 #### Challenge-panels
-```{r panels}
+
+``` r
 ggplot(data=yearly_counts2, 
        aes(x=year_of_birth, y=n, color=gender)) +
   geom_line() +
   facet_wrap(~gender)
 ```
 
+![](class4_solutions_files/figure-gfm/panels-1.png)<!-- -->
+
 #### Challenge-axis
-One possible search result [here](http://www.sthda.com/english/wiki/ggplot2-axis-ticks-a-guide-to-customize-tick-marks-and-labels#set-the-position-of-tick-marks).
-```{r axis}
+
+One possible search result
+[here](http://www.sthda.com/english/wiki/ggplot2-axis-ticks-a-guide-to-customize-tick-marks-and-labels#set-the-position-of-tick-marks).
+
+``` r
 ggplot(data=yearly_counts2, 
        aes(x=year_of_birth, y=n, color=gender)) +
   geom_line() +
@@ -80,7 +91,10 @@ ggplot(data=yearly_counts2,
   facet_wrap(~gender)
 ```
 
+![](class4_solutions_files/figure-gfm/axis-1.png)<!-- -->
+
 ## Extra exercises
 
 #### Challenge-improve
-There are lots of options for this answer!
+
+There are lots of options for this answer\!

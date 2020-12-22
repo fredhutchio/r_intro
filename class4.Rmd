@@ -396,5 +396,6 @@ you may also be interested in modifying and running code in the original R markd
 
 Answers to all challenge exercises are available [here](solutions/). 
 
-The following exercises all use the same `clinical` data from this class.
-
+#### Challenge-improve
+Improve one of the plots previously created today, by changing thickness of lines, 
+name of legend, or color palette (http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/)
