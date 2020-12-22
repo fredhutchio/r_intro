@@ -142,15 +142,13 @@ Check out the help documentation for `read.csv` for more options for importing d
 > This reflects how you're likely to import your own data,
 > as well as recommended practice for retaining data used in an analysis (since data online may be updated).
 
-**Challenge:** Download, inspect, and import the following data files. 
+> #### Challenge-data
+Download, inspect, and import the following data files. 
 The URL for each sample dataset is included along with a name to assign to the object.
 (Hint: you can use the same function as above,
 but may need to update the `sep = ` parameter)
-
 - URL: https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.tsv, object name: `example1`
 - URL: https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.txt, object name: `example2`
-
-(solutions [here](solutions/class2_solutions.R))
 
 Importing data can be tricky and frustrating, 
 However, if you can't get your data into R, 
@@ -269,8 +267,8 @@ first_column_again <- clinical[ , 1]
 Leaving one field blank means you want the entire set in the output
 (in this case, all rows).
 
-**Challenge:** what is the difference in results between the last two lines of code?
-(solutions [here](solutions/class2_solutions.R))
+> #### Challenge-extract
+> What is the difference in results between the last two lines of code?
 
 Similarly, we can also extract only the first row across all columns:
 
@@ -364,22 +362,34 @@ see [this article](https://www.r-bloggers.com/r-accessors-explained/).
 
 The following challenges all use the `clinical` object:
 
-**Challenge:** code as many different ways possible to extract the column days_to_death
-(solutions [here](solutions/class2_solutions.R))
+> #### Challenge-days
+> Code as many different ways possible to extract the column `days_to_death`.
 
-**Challenge:** extract the first 6 rows for only age at diagnosis and days to death
-(solutions [here](solutions/class2_solutions.R))
+> #### Challenge-rows
+> Extract the first 6 rows for only `age_at_diagnosis` and `days_to_death`.
 
-**Challenge:** calculate the range and mean for cigarettes per day
-(solutions [here](solutions/class2_solutions.R))
+> #### Challenge-calculate
+> Calculate the range and mean for `cigarettes_per_day`.
 
 ## Factors
+
+**Note:** This section was written with a previous version of R that automatically interprets
+all character data as factors
+(this is not true of more recent versions of R).
+To execute the code in this section,
+please first import your data again,
+using the following modified command:
+
+```{r}
+clinical <- read.csv("data/clinical.csv", stringsAsFactors = TRUE)
+```
+
 
 This section explores one of the trickier types of data you're likely to encounter:
 factors, which are how R interprets categorical data.
 
 When we imported our dataset into R,
-the `read.csv` function automatically assumed that all the character data
+the `read.csv` function assumed that all the character data
 in our dataset are factors, or categories. 
 Factors have predefined sets of values, called levels.
 We can explore what this means by first creating a factor vector:
@@ -436,9 +446,9 @@ and also illustrates the importance of ordering your levels appropriately.
 We can apply this knowledge to our clinical dataset,
 by first observing how the data are presented when creating a basic plot:
 
-```{r}
+```{r race-plot}
 # quick and dirty plot
-plot(clinical$race) 
+plot(clinical$race)
 ```
 
 The labels as presented by default are not particularly readable, 
@@ -485,7 +495,7 @@ we could also reorder the levels
 Once we are satisfied with the resulting levels,
 we assign the modified factor back to the original dataset:
 
-```{r}
+```{r better-race-plot}
 # replace race in data frame
 clinical$race <- race
 # replot with corrected names
@@ -497,12 +507,12 @@ and it's likely you'll need more information when working with categorical data 
 A good place to start would be [this article](https://peerj.com/preprints/3163/),
 and exploring some of the tools in the tidyverse (which we'll discuss in the next lesson).
 
-**Challenge:** In your clinical dataset, 
-replace "not reported" in ethnicity with NA
-(solutions [here](solutions/class2_solutions.R))
+> #### Challenge-not-reported
+> In your clinical dataset, 
+> replace "not reported" in ethnicity with NA
 
-**Challenge:** What Google search helps you identify additional strategies for renaming missing data?
-(solutions [here](solutions/class2_solutions.R))
+> #### Challenge-remove
+> What Google search helps you identify additional strategies for renaming missing data?
 
 ## Optional: Creating a data frame by hand
 
@@ -559,13 +569,23 @@ we'll begin to explore a set of powerful, elegant data manipulation tools
 for data cleaning, transforming, and summarizing,
 and we'll prepare some data to visualize in our final session.
 
-## Errata
-
-**If you would like more practice,** 
-the [`exercises`](exercises/) directory contains additional tasks for practice.
-Answers to those and in-class questions are available in the [`solutions`](solutions/) directory. 
-
 **This document is written in [R markdown](http://rmarkdown.rstudio.com),**
 which is a method of formatting text, code, and output to create documents that are sharable with other people. 
 While this document is intended to serve as a reference for you to read while typing code into your own script,
 you may also be interested in modifying and running code in the original R markdown file ([`class2.Rmd`](class2.Rmd) in the GitHub repository).
+
+## Extra exercises
+
+Answers to all challenge exercises are available [here](solutions/). 
+
+The following exercises all use the same `clinical` data from this class.
+
+#### Challenge-disease-race
+Extract the last 100 rows for only `disease` and `rac`e and save to an object called `disease_race`.
+
+#### Challenge-min-max
+Calculate the minimum and maximum for `days_to_death`.
+
+#### Challenge-factors
+Change all of the factors of race to shorter names for each category,
+and appropriately indicate missing data.

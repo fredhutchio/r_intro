@@ -10,20 +10,16 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 #### Challenge-hist
-What does the function `hist` do?
-- creates a histogram
+The function `hist` creates a histogram.
 
-What are its main arguments?
+Its main arguments are:
 - x: vector of values for which the histogram is desired
 - breaks: breakpoints for cells
 - ...
 
-How did you determine this?
-- `?hist`
+This can be determined using `?hist`
 
 #### Challenge-values
-For the code chunk below,
-what is the value of each item at each step?
 ```{r}
 mass <- 47.5              # mass = 47.5
 width  <- 122             # width = 122
@@ -33,11 +29,6 @@ mass_index <- mass/width  # mass_index = 0.9313725 (uses second assigned values 
 ```
 
 #### Challenge-organs
-Please answer the following questions about `organs`:
-- How many values are in `organs`?
-- What type of data is `organs`?
-- How can you see an overview of `organs`?
-
 ```{r}
 # creating vector
 organs <- c("lung", "prostate", "breast")
@@ -50,10 +41,6 @@ str(organs)
 ```
 
 #### Challenge-dtypes
-R tends to handle interpreting data types in the background of most operations.
-The following code is designed to cause some unexpected results in R.
-What is unusual about each of the following objects?
-
 ```{r}
 num_char <- c(1, 2, 3, "a")
 class(num_char) # data are character
@@ -69,20 +56,10 @@ class(tricky) # data are character
 ```
 
 #### Challenge-compare
-What does the following code return, and why? 
-```{r}
-"four" > "five"
-```
 R interprets these as character data, and five comes before four alphabetically, which is used to assess the logic statement
 
 #### Challenge-analyze
-Complete the following tasks after executing the code chunk below. 
-(Note: there are multiple solutions):
-> - Remove NAs 
-> - Calculate the median
-> - Identify how many elements in the vector are greater than 67 inches
-> - Visualize the data as a histogram (hint: function `hist`)
-```{r}
+```{r hist}
 # create vector
 more_heights <- c(63, 69, 60, 65, NA, 68, 61, 70, 61, 59, 64, 69, 63, 63, NA, 72, 65, 64, 70, 63, 65)
 # remove NAs from heights
@@ -99,7 +76,6 @@ hist(more_heights_clean)
 ## Extra exercises
 
 #### Challenge-objects
-
 ```{r}
 # create an object called agge that contains your age in years
 agge <- 35
@@ -112,7 +88,6 @@ age * 365
 ```
 
 #### Challenge-num
-
 ```{r}
 # create a object representing a vector that contains the names of buildings on Fred Hutch's campus: https://www.fredhutch.org/en/contact-us/visit-us.html
 buildings <- c("Arnold", "Yale", "Thomas", "Weintraub", "Hutchinson", "Eastlake")
@@ -122,8 +97,7 @@ buildings <- c("Seattle, Washington", buildings, "Steam Plant")
 buildings[2] # for Arnold
 ```
 
-####Challenge-char
-
+#### Challenge-char
 ```{r}
 # the following vector represents the number of vacation days possessed by various employees
 vacation_days <- c(5, 7, 20, 1, 0, 0, 12, 4, 2, 2, 2, 4, 5, 6, 7, 10, 4)

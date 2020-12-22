@@ -182,11 +182,11 @@ filtered_rows <- filter(clinical, disease == "LUSC")
 The syntax here is similar to `select`, 
 and the conditional filters can be applied in similarly to base R functions.
 
-**Challenge:** create a new object from clinical called race_disease that includes only the race, ethnicity, and disease columns
-(solutions [here](solutions/class3_solutions.R))
+> #### Challenge-columns
+> Create a new object from clinical called race_disease that includes only the race, > ethnicity, and disease columns.
 
-**Challenge:** create a new object from race_disease called race_BRCA that includes only BRCA (disease)
-(solutions [here](solutions/class3_solutions.R))
+> #### Challenge-rows 
+> Create a new object from race_disease called race_BRCA that includes only BRCA (from `disease`).
 
 ## Combining commands
 
@@ -265,8 +265,10 @@ because in this case, the order does matter!
 The output from the second line does not include the `year_of_birth` column,
 so R is unable to apply the filter in the third line.
 
-**Challenge:** Use pipes to extract the columns `gender`, `years_smoked`, and `year_of_birth` from the object `clinical` for only living patients (vital_status) who have smoked fewer than 1 `cigarettes_per_day`
-(solutions [here](solutions/class3_solutions.R))
+> #### Challenge-pipes 
+> Use pipes to extract the columns `gender`, `years_smoked`, and `year_of_birth`
+> from the object `clinical` for only living patients (vital_status)
+> who have smoked fewer than 1 `cigarettes_per_day`.
 
 ## Mutate
 
@@ -310,8 +312,11 @@ that type of output can be unweildy.
 `glimpse` allows us to see a preview of the data, 
 including the two new columns created.
 
-**Challenge:** extract only lung cancer patients (LUSC, from disease) and create a new column called total_cig representing an estimate of the total number of cigarettes smoked (use columns years smoked and cigarettes per day)
-(solutions [here](solutions/class3_solutions.R))
+> #### Challenge-lung
+> Extract only lung cancer patients (LUSC, from disease)
+> and create a new column called `total_cig` representing
+> an estimate of the total number of cigarettes smoked
+> (use columns `years_smoked` and `cigarettes_per_day`).
 
 ## Split-apply-combine
 
@@ -372,11 +377,13 @@ clinical %>%
   summarize(mean_days_to_death = mean(days_to_death))
 ```
 
-**Challenge:** create object called smoke_complete from clinical that contains no missing data for cigarettes per day or age at diagnosis 
-(solutions [here](solutions/class3_solutions.R))
+> #### Challenge-smoke-complete
+> Create object called smoke_complete from clinical that
+> contains no missing data for cigarettes per day or age at diagnosis.
 
-**Challenge:** how do you save resulting table to file? How would you find this answer?
-(solutions [here](solutions/class3_solutions.R))
+> #### Challenge-save
+> How do you save resulting table to file?
+> How would you find this answer?
 
 The solution to the challenges above represent the first of two datasets we'll be using for data visualization in our next class. 
 Make sure you've executed this code to save the filtered data file for use next time:
@@ -394,8 +401,9 @@ Base R possesses a function, `write.csv`,
 that performs a similar task,
 but by default includes quotation marks around cells with character data as well as row names (sequential numbers, unless otherwise specified).
 
-**Challenge:** create a new object called birth_complete that contains no missing data for year of birth or vital status
-(solutions [here](solutions/class3_solutions.R))
+> #### Challenge-birth-complete
+> Create a new object called birth_complete that contains
+> no missing data for year of birth or vital status.
 
 This challenge begins filtering the second of our two datasets for next time. 
 Make sure you include the filter to remove missing data that's been encoded as "not reported"!
@@ -457,8 +465,9 @@ Finally, we'll write the final output to a file:
 write_csv(birth_reduced, "data/birth_reduced.csv")
 ```
 
-**Challenge:** extract all tumor stages with more than 200 cases (Hint: also check to see if there are any other missing/ambiguous data!)
-(solutions [here](solutions/class3_solutions.R))
+> #### Challenge-tumor
+> Extract all tumor stages with more than 200 cases
+> (Hint: also check to see if there are any other missing/ambiguous data!)
 
 ## Wrapping up
 
@@ -475,13 +484,32 @@ we'll wrap up the course by creating publication-quality images using `ggplot2`,
 a data visualization package in `tidyverse`,
 and the two datasets we filtered in the sections above.
 
-## Errata
-
-**If you would like more practice,** 
-the [`exercises`](exercises/) directory contains additional tasks for practice.
-Answers to those and in-class questions are available in the [`solutions`](solutions/) directory. 
-
 **This document is written in [R markdown](http://rmarkdown.rstudio.com),**
 which is a method of formatting text, code, and output to create documents that are sharable with other people. 
 While this document is intended to serve as a reference for you to read while typing code into your own script,
 you may also be interested in modifying and running code in the original R markdown file ([`class3.Rmd`](class3.Rmd) in the GitHub repository).
+
+## Extra exercises
+
+Answers to all challenge exercises are available [here](solutions/). 
+
+The following exercises all use the same `clinical` data from this class.
+
+#### Challenge-ethnicity
+How many hispanic or latino individuals in clinical are not also white?
+What are their races?
+
+#### Challenge-years
+Create a new column for clinical called `age_at_death` that calculates this statistic (in years) from `year_of_birth` and `year_of_death`.
+
+#### Challenge-helpers
+`dplyr` includes several "helpers" that allows selection of columns
+meeting particular criteria
+(described on the first page of the dplyr cheatsheet near the top of the right hand column:
+https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf).
+Using one of these tools, extract all columns that include "diagnosis".
+
+#### Challenge-combine
+How many patients are hispanic or latino patients (column ethnicity),
+died after the year 2000 (year_of_death),
+and possess no missing data for cigarettes per day?

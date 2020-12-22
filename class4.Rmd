@@ -203,9 +203,9 @@ This automatically saves the last plot for which code was executed.
 You can view your `figures/` directory to see the exported jpeg file.
 This command interprets the file format for export using the file suffix you specify. The other arguments dictate the size (`width` and `height`) and resolution (`dpi`).
 
-**Challenge:**
-Create a scatterplot showing age at diagnosis vs years smoked with points colored by gender and appropriate axis labels 
-(solutions [here](solutions/class4_solutions.R))
+> #### Challenge-scatterplot
+> Create a scatterplot showing age at diagnosis vs years smoked
+> with points colored by gender and appropriate axis labels.
 
 ## Box and whisker plots
 
@@ -244,20 +244,19 @@ ggplot(smoke_complete) +
   geom_jitter(aes(x = vital_status, y = cigarettes_per_day), alpha = 0.3, color = "blue")
 ```
 
-**Challenge:** 
-Write code comments for each of the following lines of code. 
-What is the advantage of writing code like this? 
-(solutions [here](solutions/class4_solutions.R))
-```{r challenge}
+> #### Challenge-comments
+> Write code comments for each of the following lines of code. 
+> What is the advantage of writing code like this? 
+```{r comments}
 my_plot <- ggplot(smoke_complete, aes(x = vital_status, y = cigarettes_per_day)) 
 my_plot +
   geom_boxplot(outlier.shape = NA) +
   geom_jitter(alpha = 0.2, color = "purple")
 ```
 
-**Challenge:** 
-Does the order of layers in the last plot matter? What happens if `jitter` is coded before `boxplot`? 
-(solutions [here](solutions/class4_solutions.R))
+> #### Challenge-order
+> Does the order of layers in the last plot matter?
+> What happens if `jitter` is coded before `boxplot`? 
 
 ## Time series data as line plots
 
@@ -302,14 +301,12 @@ ggplot(yearly_counts) +
 
 Note that you don't have to include a separate argument for `group = disease` because grouping is assumed by `color = disease`.
 
-**Challenge:** 
-Create a line plot for year of birth and number of patients with lines representing each gender.
-Hint: you'll need to manipulate the `birth_reduced` dataset first. 
-(solutions [here](solutions/class4_solutions.R))
+> #### Challenge-line
+> Create a line plot for year of birth and number of patients with lines representing each gender.
+> Hint: you'll need to manipulate the `birth_reduced` dataset first. 
 
-**Challenge:** 
-How do you show differences in lines using dashes/dots instead of color?
-(solutions [here](solutions/class4_solutions.R))
+> #### Challenge-dash
+> How do you show differences in lines using dashes/dots instead of color?
 
 ## Faceting 
 
@@ -370,13 +367,12 @@ ggplot(smoke_complete) +
 
 Don't forget to look at the help documentation (e.g., `?facet_grid`) to learn more about additional ways to customize your plots!
 
-**Challenge**: 
-Alter your last challenge plot of (birth year by number of patients) to show each gender in separate panels.
-(solutions [here](solutions/class4_solutions.R))
+> #### Challenge-panels
+> Alter your last challenge plot of (birth year by number of patients) to show each gender in separate panels.
 
-**Challenge**: How do you change axis formatting, like tick marks and lines?
-Hint: You may want to use Google!
-(solutions [here](solutions/class4_solutions.R))
+> #### Challenge-axis
+> How do you change axis formatting, like tick marks and lines?
+> Hint: You may want to use Google!
 
 ## Wrapping up
 
@@ -391,13 +387,14 @@ If you are interested in learning more about ggplot:
 - Documentation for all `ggplot` features is available [here](https://ggplot2.tidyverse.org).
 - RStudio also publishes a [ggplot cheat sheet](https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf) that is really handy!
 
-## Errata
-
-**If you would like more practice,** 
-the [`exercises`](exercises/) directory contains additional tasks for practice.
-Answers to those and in-class questions are available in the [`solutions`](solutions/) directory. 
-
 **This document is written in [R markdown](http://rmarkdown.rstudio.com),**
 which is a method of formatting text, code, and output to create documents that are sharable with other people. 
 While this document is intended to serve as a reference for you to read while typing code into your own script,
 you may also be interested in modifying and running code in the original R markdown file ([`class4.Rmd`](class4.Rmd) in the GitHub repository).
+
+## Extra exercises
+
+Answers to all challenge exercises are available [here](solutions/). 
+
+The following exercises all use the same `clinical` data from this class.
+

@@ -1,0 +1,114 @@
+---
+title: 'Introduction to R, Class 2: Solutions'
+output: github_document
+---
+  
+<!--class2_solutions.md is generated from class2_solutions.Rmd. Please edit that file -->
+  
+  ```{r setup, include=FALSE, purl=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r include=FALSE}
+library(tidyverse)
+clinical <- read.csv("../data/clinical.csv")
+```
+
+#### Challenge-data
+```{r eval=FALSE}
+# example1: https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.tsv
+download.file("https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.tsv", "data/clinical.tsv")
+clinical_tsv <- read.delim("data/clinical.tsv")
+# example2: https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.txt
+download.file("https://raw.githubusercontent.com/fredhutchio/R_intro/master/extra/clinical.txt", "data/clinical.txt")
+clinical_txt <- read.table("data/clinical.txt", header=TRUE)
+```
+
+It's also possible to read data into R directly using `read.csv(URL)`,
+but it's often better practice to download data file for reference.
+
+#### Challenge-extract
+```{r}
+# extract first column, assigning each result to object to show that data structure differs between output
+test <- clinical[ , 1]
+test2 <- clinical[1]
+class(test) # factor (technically, a vector of factors)
+class(test2) # data.frame
+```
+
+#### Challenge-days
+```{r eval=FALSE}
+clinical$days_to_death
+clinical[6]
+clinical[,6]
+clinical[[6]]
+clinical["days_to_death"] 
+clinical[ , "days_to_death"] 
+clinical[["days_to_death"]]
+```
+
+#### Challenge-rows
+```{r}
+clinical[1:6, c(3, 6)]
+```
+
+#### Challenge-calculate
+```{r}
+range(clinical$cigarettes_per_day, na.rm = TRUE)
+mean(clinical$cigarettes_per_day, na.rm = TRUE)
+```
+
+#### Challenge-not-reported
+```{r}
+clinical <- read.csv("../data/clinical.csv", stringsAsFactors = TRUE)
+ethnicity <- clinical$ethnicity
+levels(ethnicity) # show levels of factor
+# rename factors
+levels(ethnicity)[3] <- NA
+# replace race in data frame
+clinical$ethnicity <- ethnicity
+# check to see it worked
+levels(ethnicity)
+```
+
+#### Challenge-remove
+Perform a Google search to find additional strategies for renaming missing data.
+For the search "replace missing data R",
+the following result provides a lot of options: 
+https://stackoverflow.com/questions/8161836/how-do-i-replace-na-values-with-zeros-in-an-r-dataframe
+
+## Extra exercises
+
+#### Challenge-disease-race
+```{r}
+# show index positions of column names
+names(clinical)
+# extract desired object
+disease_race <- clinical[6733:6832, c(20, 16)]
+```
+
+#### Challenge-min-max
+```{r}
+min(clinical$days_to_death, na.rm = TRUE)
+max(clinical$days_to_death, na.rm = TRUE)
+range(clinical$days_to_death, na.rm = TRUE) # does both together
+summary(clinical$days_to_death) # all summary stats for this answer
+```
+
+#### Challenge-factors
+```{r}
+# save column to object
+race <- clinical$race 
+# recall levels of object
+levels(race) 
+# rename factors
+levels(race)[1] <- "American Indian"
+levels(race)[2] <- "Asian"
+levels(race)[3] <- "black"
+levels(race)[4] <- "Pacific Islander"
+levels(race)[5] <- NA
+# recall levels of object
+levels(race) 
+# replace race in data frame
+clinical$race <- race
+```
