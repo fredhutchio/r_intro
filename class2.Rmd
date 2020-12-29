@@ -574,6 +574,7 @@ which is a method of formatting text, code, and output to create documents that 
 While this document is intended to serve as a reference for you to read while typing code into your own script,
 you may also be interested in modifying and running code in the original R markdown file ([`class2.Rmd`](class2.Rmd) in the GitHub repository).
 
+The course materials webpage is available [here](README.md).
 Materials for all lessons in this course include:
 
 - [Class 1](class1.md): R syntax, assigning objects, using functions
