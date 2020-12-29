@@ -62,14 +62,14 @@ Once you have the software installed, you’ll need to load it:
 library(tidyverse)
 ```
 
-    ## ── Attaching packages ─────────────────────────────────────────────────────── tidyverse 1.3.0 ──
+    ## ── Attaching packages ────────────────────────────────────────────────────── tidyverse 1.3.0 ──
 
     ## ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
     ## ✓ tibble  3.0.3     ✓ dplyr   1.0.1
     ## ✓ tidyr   1.1.1     ✓ stringr 1.4.0
     ## ✓ readr   1.3.1     ✓ forcats 0.5.0
 
-    ## ── Conflicts ────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+    ## ── Conflicts ───────────────────────────────────────────────────────── tidyverse_conflicts() ──
     ## x dplyr::filter() masks stats::filter()
     ## x dplyr::lag()    masks stats::lag()
 
@@ -619,6 +619,14 @@ with other people. While this document is intended to serve as a
 reference for you to read while typing code into your own script, you
 may also be interested in modifying and running code in the original R
 markdown file ([`class3.Rmd`](class3.Rmd) in the GitHub repository).
+
+Materials for all lessons in this course include:
+
+  - [Class 1](class1.md): R syntax, assigning objects, using functions
+  - [Class 2](class2.md): Data types and structures; slicing and
+    subsetting data
+  - [Class 3](class3.md): Data manipulation with `dplyr`
+  - [Class 4](class4.md): Data visualization in `ggplot2`
 
 ## Extra exercises
 

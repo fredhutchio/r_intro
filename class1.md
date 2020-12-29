@@ -828,6 +828,14 @@ reference for you to read while typing code into your own script, you
 may also be interested in modifying and running code in the original R
 markdown file ([`class1.Rmd`](class1.Rmd) in the GitHub repository).
 
+Materials for all lessons in this course include:
+
+  - [Class 1](class1.md): R syntax, assigning objects, using functions
+  - [Class 2](class2.md): Data types and structures; slicing and
+    subsetting data
+  - [Class 3](class3.md): Data manipulation with `dplyr`
+  - [Class 4](class4.md): Data visualization in `ggplot2`
+
 ## Extra exercises
 
 Answers to all challenge exercises are available [here](solutions/).
