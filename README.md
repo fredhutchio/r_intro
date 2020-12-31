@@ -2,16 +2,17 @@
 
 ## Description
 
-This four class course is designed to introduce R statistical programming and its broad applications,
+This four class course introduces R statistical programming and its broad applications,
 specifically for data analysis relevant to biomedical researchers.
+This course assumes attendees have
+no prior computer coding experience. 
 At the end of this course,
 you will be able to use R to import, manipulate,
 and visualize data.
 Please see each set of class materials for specific learning objectives.
 These materials are developed by fredhutch.io,
 the data and computational analysis training program at Fred Hutch.
-Each class in this course includes brief tutorials interspersed with challenge exercises, and assumes attendees have
-no prior computer coding experience. 
+Each class in this course includes brief tutorials interspersed with challenge exercises.
 
 Sessions of the course are periodically taught by instructors at Fred Hutch;
 each of the four classes is scheduled for two hours.
@@ -19,7 +20,11 @@ The HackMD (interactive page used for sharing links and information) for instruc
 The materials are also freely available for self-guided,
 work-at-your-own-pace study.
 
-**Required software**: Software requirements for this course can be found on [fredhutch.io's Software page](http://www.fredhutch.io/software/#r-and-rstudio). 
+**Required software**: Software requirements for this course include:
+- [R and RStudio](http://www.fredhutch.io/software#r-and-rstudio)
+- [tidyverse](http://www.fredhutch.io/software#tidyverse)
+
+The links above reference relevant sections of [fredhutch.io's Software page](http://www.fredhutch.io/software). 
 
 This course is adapted from content originally appearing in 
 [R for data analysis and visualization of Ecological Data](https://datacarpentry.org/R-ecology-lesson/),
